@@ -53,89 +53,85 @@ public class ConstDef extends TreeNode {
         return res * 4;
     }
 
-    public List<IntermediateInstruction> generateIr(int level) {
+    private List<IntermediateInstruction> generateConstArrayIr(int level) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
-        if (dimSizes.size() != 0) {
-            int addr;
-            if (level == 0) {
-                // save var in global symbol table
-                // get addr, alloc mem, insert into symbol table
-                addr = AddressPtr.getGlobalAddr();
-                // calculate the size of array
-                int size = calcTotalSize(level);
-                AddressPtr.addGlobalAddr(size);
-//                GlobalSymbolTable.insert(level, ident.getName(), SymbolType.ARRAY,
-//                        new ConstArraySymbol(getLineNumber(), ident.getName(), leftBracks.size(), dimSizes),
-//                        addr, size);
-                // TODO initVal parse
-                // TODO lastDimSize
-                int lastDimSize = 0;
+        // if array const define
+        int addr, size;
 
-                try {
-                    lastDimSize = dimSizes.get(dimSizes.size() - 1).getValue(level);
-                } catch (ValueTypeException e) {
-                    e.printStackTrace();
-                }
-
-                constInitVal.generateIr(level, instructions, ident.getName(),
-                        addr, leftBracks.size(), lastDimSize, 0);
-                List<Integer> values = constInitVal.calcValues(level);
-                GlobalSymbolTable.insert(level, ident.getName(), SymbolType.ARRAY,
-                        new ConstArraySymbol(getLineNumber(), ident.getName(), leftBracks.size(), dimSizes, values),
-                        addr, size);
-            } else {
-                addr = AddressPtr.getLocalAddr();
-                int size = 0;
-                AddressPtr.addLocalAddr(size);
-//                LocalSymbolTable.insert(level, ident.getName(), SymbolType.ARRAY,
-//                        new ConstArraySymbol(getLineNumber(), ident.getName(), leftBracks.size(), dimSizes),
-//                        addr, size);
-                // TODO initVal parse
-                // TODO lastDimSize
-                int lastDimSize = 0;
-
-                try {
-                    lastDimSize = dimSizes.get(dimSizes.size() - 1).getValue(level);
-                } catch (ValueTypeException e) {
-                    e.printStackTrace();
-                }
-
-                constInitVal.generateIr(level, instructions, ident.getName(),
-                        addr, leftBracks.size(), lastDimSize, 0);
-                List<Integer> values = constInitVal.calcValues(level);
-                LocalSymbolTable.insert(level, ident.getName(), SymbolType.ARRAY,
-                        new ConstArraySymbol(getLineNumber(), ident.getName(), leftBracks.size(), dimSizes, values),
-                        addr, size);
-            }
+        if (level == 0) {
+            addr = AddressPtr.getGlobalAddr();
+            // calculate the size of array
+            size = calcTotalSize(level);
+            AddressPtr.addGlobalAddr(size);
         } else {
-            // this try catch has ever caught a NullPointerException
-            int addr;
-            if (level == 0) {
-                // save var in global symbol table
-                // get addr, alloc mem, insert into symbol table
-                addr = AddressPtr.getGlobalAddr();
-                AddressPtr.addGlobalAddr(4);
-                int value = 0;
-                try {
-                    value = constInitVal.getValue(level);
-                } catch (ValueTypeException e) {
-                    System.out.println("It's not a const variable!");
-                    e.printStackTrace();
-                }
-                GlobalSymbolTable.insert(level, ident.getName(), SymbolType.VAR, new ConstBTypeSymbol(getLineNumber(),
-                        ident.getName(), value), addr, 4);
-                String id = constInitVal.generateIr(level, instructions);
-                instructions.add(new MovIr(id, "@" + ident.getName() + "@global" +"@" + addr));
-            } else {
-                addr = AddressPtr.getLocalAddr();
-                AddressPtr.addLocalAddr(4);
-                LocalSymbolTable.insert(level, ident.getName(), SymbolType.VAR, new ConstBTypeSymbol(getLineNumber(),
-                        ident.getName()), addr, 4);
-                String id = constInitVal.generateIr(level, instructions);
-                instructions.add(new MovIr(id, "@" + ident.getName() + "@local" +"@" + addr));
-                // todo: is this sentence redundant?
-            }
+            addr = AddressPtr.getLocalAddr();
+            // calculate the size of array
+            size = calcTotalSize(level);
+            AddressPtr.addLocalAddr(size);
+        }
+
+        // calculate lastDimSize of array
+        int lastDimSize = 0;
+        try {
+            lastDimSize = dimSizes.get(dimSizes.size() - 1).getValue(level);
+        } catch (ValueTypeException e) {
+            e.printStackTrace();
+        }
+
+        // calculate init value during compiling
+        constInitVal.generateIr(level, instructions, ident.getName(),
+                addr, leftBracks.size(), lastDimSize, 0);
+        List<Integer> values = constInitVal.calcValues(level);
+        if (level == 0) {
+            GlobalSymbolTable.insert(level, ident.getName(), SymbolType.ARRAY,
+                    new ConstArraySymbol(getLineNumber(), ident.getName(), leftBracks.size(), dimSizes, values),
+                    addr, size);
+        } else {
+            LocalSymbolTable.insert(level, ident.getName(), SymbolType.ARRAY,
+                    new ConstArraySymbol(getLineNumber(), ident.getName(), leftBracks.size(), dimSizes, values),
+                    addr, size);
         }
         return instructions;
+    }
+
+    private List<IntermediateInstruction> generateConstVarIr(int level) {
+        List<IntermediateInstruction> instructions = new ArrayList<>();
+        int addr;
+        if (level == 0) {
+            addr = AddressPtr.getGlobalAddr();
+            AddressPtr.addGlobalAddr(4);
+        } else {
+            addr = AddressPtr.getLocalAddr();
+            AddressPtr.addLocalAddr(4);
+        }
+
+        int value = 0;
+        try {
+            value = constInitVal.getValue(level);
+        } catch (ValueTypeException e) {
+            System.out.println("It's not a const variable!");
+            e.printStackTrace();
+        }
+
+        if (level == 0) {
+            GlobalSymbolTable.insert(level, ident.getName(), SymbolType.VAR, new ConstBTypeSymbol(getLineNumber(),
+                    ident.getName(), value), addr, 4);
+            String id = constInitVal.generateIr(level, instructions);
+            instructions.add(new MovIr(id, "@" + ident.getName() + "@global" +"@" + addr));
+        } else {
+            LocalSymbolTable.insert(level, ident.getName(), SymbolType.VAR, new ConstBTypeSymbol(getLineNumber(),
+                    ident.getName(), value), addr, 4);
+            String id = constInitVal.generateIr(level, instructions);
+            instructions.add(new MovIr(id, "@" + ident.getName() + "@local" +"@" + addr));
+        }
+        return instructions;
+    }
+
+    public List<IntermediateInstruction> generateIr(int level) {
+        if (dimSizes.size() != 0) {
+            return generateConstArrayIr(level);
+        } else {
+            return generateConstVarIr(level);
+        }
     }
 }

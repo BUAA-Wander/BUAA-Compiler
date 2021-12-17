@@ -37,20 +37,27 @@ public class FuncFParam extends TreeNode {
         }
     }
 
-    public List<IntermediateInstruction> generateIr(int level) {
+    private List<IntermediateInstruction> generateVarParamIr(int level) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
-        if (lastDimSize != null) {
-            // array todo
-            System.out.println("Array FuncFParam hasn't implemented yet!");
-            return new ArrayList<>();
-        }
-
         int addr = AddressPtr.getLocalAddr();
         AddressPtr.addLocalAddr(4);
         LocalSymbolTable.insert(level + 1, ident.getName(), SymbolType.VAR,
                 new FParamArraySymbol(getLineNumber(), ident.getName()
                         , lastDimSize, dims), addr, 4);
-
         return instructions;
+    }
+
+    // TODO array param
+    public List<IntermediateInstruction> generateArrayParamIr(int level) {
+        System.out.println("Array FuncFParam hasn't implemented yet!");
+        return null;
+    }
+
+    public List<IntermediateInstruction> generateIr(int level) {
+        if (lastDimSize != null) {
+            return generateArrayParamIr(level);
+        } else {
+            return generateVarParamIr(level);
+        }
     }
 }

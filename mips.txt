@@ -1,8 +1,121 @@
 addi $t2 $0 0
 sw $t2 0($gp)
-addi $sp $sp -1276
+addi $sp $sp -120
 jal main
-addi $sp $sp 1276
+addi $sp $sp 120
 addi $v0 $0 10
 syscall
-aa:
+main:
+addi $t2 $0 1
+sw $t2 -16($sp)
+lw $t0 -16($sp)
+add $t2 $t0 0
+sw $t2 -12($sp)
+lw $t0 -12($sp)
+add $t2 $t0 0
+sw $t2 -8($sp)
+lw $t0 -8($sp)
+add $t2 $t0 0
+sw $t2 0($sp)
+addi $t2 $0 2
+sw $t2 -28($sp)
+lw $t0 -28($sp)
+add $t2 $t0 0
+sw $t2 -24($sp)
+lw $t0 -24($sp)
+add $t2 $t0 0
+sw $t2 -20($sp)
+lw $t0 -20($sp)
+add $t2 $t0 0
+sw $t2 -4($sp)
+lw $t0 0($gp)
+add $t2 $t0 0
+sw $t2 -52($sp)
+addi $t2 $0 1
+sw $t2 -68($sp)
+lw $t0 -68($sp)
+add $t2 $t0 0
+sw $t2 -64($sp)
+lw $t0 -64($sp)
+add $t2 $t0 0
+sw $t2 -60($sp)
+addi $t2 $0 4
+sw $t2 -56($sp)
+addi $t2 $0 0
+sw $t2 -72($sp)
+lw $t0 -56($sp)
+lw $t1 -60($sp)
+mul $t2 $t0 $t1
+mflo $t2
+sw $t2 -60($sp)
+lw $t0 -72($sp)
+lw $t1 -60($sp)
+add $t2 $t0 $t1
+sub $t2 $sp $t2
+lw $t2 0($t2)
+sw $t2 -60($sp)
+lw $t0 -60($sp)
+add $t2 $t0 0
+sw $t2 -48($sp)
+lw $t0 -48($sp)
+add $t2 $t0 0
+sw $t2 -44($sp)
+lw $t0 -44($sp)
+add $t2 $t0 0
+sw $t2 -32($sp)
+lw $t0 0($gp)
+add $t2 $t0 0
+sw $t2 -84($sp)
+addi $t2 $0 0
+sw $t2 -100($sp)
+lw $t0 -100($sp)
+add $t2 $t0 0
+sw $t2 -96($sp)
+lw $t0 -96($sp)
+add $t2 $t0 0
+sw $t2 -92($sp)
+addi $t2 $0 4
+sw $t2 -88($sp)
+addi $t2 $0 0
+sw $t2 -104($sp)
+lw $t0 -88($sp)
+lw $t1 -92($sp)
+mul $t2 $t0 $t1
+mflo $t2
+sw $t2 -92($sp)
+lw $t0 -104($sp)
+lw $t1 -92($sp)
+add $t2 $t0 $t1
+sub $t2 $sp $t2
+lw $t2 0($t2)
+sw $t2 -92($sp)
+lw $t0 -92($sp)
+add $t2 $t0 0
+sw $t2 -80($sp)
+lw $t0 -80($sp)
+add $t2 $t0 0
+sw $t2 -76($sp)
+lw $t0 -76($sp)
+add $t2 $t0 0
+sw $t2 -36($sp)
+addi $t2 $0 2
+sw $t2 -116($sp)
+lw $t0 -116($sp)
+add $t2 $t0 0
+sw $t2 -112($sp)
+lw $t0 -112($sp)
+add $t2 $t0 0
+sw $t2 -108($sp)
+lw $t0 -108($sp)
+add $t2 $t0 0
+sw $t2 -40($sp)
+addi $t2 $0 0
+sw $t2 -128($sp)
+lw $t0 -128($sp)
+add $t2 $t0 0
+sw $t2 -124($sp)
+lw $t0 -124($sp)
+add $t2 $t0 0
+sw $t2 -120($sp)
+lw $v1 -120($sp)
+jr $31

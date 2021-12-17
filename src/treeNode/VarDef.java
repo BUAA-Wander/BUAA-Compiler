@@ -57,60 +57,72 @@ public class VarDef extends TreeNode {
         return res * 4;
     }
 
-    public List<IntermediateInstruction> generateIr(int level) {
+    private List<IntermediateInstruction> generateArrayIr(int level) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
-        if (leftBracks.size() != 0) {
-            int addr;
-            if (level == 0) {
-                addr = AddressPtr.getGlobalAddr();
-                int size = calcTotalSize(level);
-                AddressPtr.addGlobalAddr(size);
-                GlobalSymbolTable.insert(level, ident.getName(), SymbolType.ARRAY,
-                        new VarArraySymbol(getLineNumber(), ident.getName(),
-                                leftBracks.size(), dimSizes), addr, size);
-            } else {
-                addr = AddressPtr.getLocalAddr();
-                int size = calcTotalSize(level);
-                AddressPtr.addLocalAddr(size);
-                LocalSymbolTable.insert(level, ident.getName(), SymbolType.ARRAY,
-                        new VarArraySymbol(getLineNumber(), ident.getName(),
-                                leftBracks.size(), dimSizes), addr, size);
-            }
-            int lastDimSize = 0;
-            try {
-                lastDimSize = dimSizes.get(dimSizes.size() - 1).getValue(level);
-            } catch (ValueTypeException e) {
-                e.printStackTrace();
-            }
-            if (initVal != null) {
-                initVal.generateIr(level, instructions, ident.getName(),
-                        addr, leftBracks.size(), lastDimSize, 0);
-            }
-        } else {
-            // int define
-            int addr;
-            if (level == 0) {
-                addr = AddressPtr.getGlobalAddr();
-                AddressPtr.addGlobalAddr(4);
-                GlobalSymbolTable.insert(level, ident.getName(), SymbolType.VAR,
-                        new VarBTypeSymbol(getLineNumber(), ident.getName()), addr, 4);
-            } else {
-                addr = AddressPtr.getLocalAddr();
-                AddressPtr.addLocalAddr(4);
-                LocalSymbolTable.insert(level, ident.getName(), SymbolType.VAR,
-                        new VarBTypeSymbol(getLineNumber(), ident.getName()), addr, 4);
-            }
 
-            // assign init value
-            if (initVal != null) {
-                String srcId = initVal.generateIr(level, instructions);
-                if (level == 0) {
-                    instructions.add(new MovIr(srcId, "@" + ident.getName() + "@global" + "@" + addr));
-                } else {
-                    instructions.add(new MovIr(srcId, "@" + ident.getName() + "@local" + "@" + addr));
-                }
+        int addr;
+        if (level == 0) {
+            addr = AddressPtr.getGlobalAddr();
+            int size = calcTotalSize(level);
+            AddressPtr.addGlobalAddr(size);
+            GlobalSymbolTable.insert(level, ident.getName(), SymbolType.ARRAY,
+                    new VarArraySymbol(getLineNumber(), ident.getName(),
+                            leftBracks.size(), dimSizes), addr, size);
+        } else {
+            addr = AddressPtr.getLocalAddr();
+            int size = calcTotalSize(level);
+            AddressPtr.addLocalAddr(size);
+            LocalSymbolTable.insert(level, ident.getName(), SymbolType.ARRAY,
+                    new VarArraySymbol(getLineNumber(), ident.getName(),
+                            leftBracks.size(), dimSizes), addr, size);
+        }
+
+        int lastDimSize = 0;
+        try {
+            lastDimSize = dimSizes.get(dimSizes.size() - 1).getValue(level);
+        } catch (ValueTypeException e) {
+            e.printStackTrace();
+        }
+        if (initVal != null) {
+            initVal.generateIr(level, instructions, ident.getName(),
+                    addr, leftBracks.size(), lastDimSize, 0);
+        }
+        return instructions;
+    }
+
+    private List<IntermediateInstruction> generateVarIr(int level) {
+        List<IntermediateInstruction> instructions = new ArrayList<>();
+        // int define
+        int addr;
+        if (level == 0) {
+            addr = AddressPtr.getGlobalAddr();
+            AddressPtr.addGlobalAddr(4);
+            GlobalSymbolTable.insert(level, ident.getName(), SymbolType.VAR,
+                    new VarBTypeSymbol(getLineNumber(), ident.getName()), addr, 4);
+        } else {
+            addr = AddressPtr.getLocalAddr();
+            AddressPtr.addLocalAddr(4);
+            LocalSymbolTable.insert(level, ident.getName(), SymbolType.VAR,
+                    new VarBTypeSymbol(getLineNumber(), ident.getName()), addr, 4);
+        }
+
+        // assign init value
+        if (initVal != null) {
+            String srcId = initVal.generateIr(level, instructions);
+            if (level == 0) {
+                instructions.add(new MovIr(srcId, "@" + ident.getName() + "@global" + "@" + addr));
+            } else {
+                instructions.add(new MovIr(srcId, "@" + ident.getName() + "@local" + "@" + addr));
             }
         }
         return instructions;
+    }
+
+    public List<IntermediateInstruction> generateIr(int level) {
+        if (leftBracks.size() != 0) {
+            return generateArrayIr(level);
+        } else {
+            return generateVarIr(level);
+        }
     }
 }

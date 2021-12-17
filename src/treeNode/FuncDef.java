@@ -32,26 +32,25 @@ public class FuncDef extends TreeNode {
         this.block = block;
     }
 
-    private void changeLocalSymbolTable() {
+    private void changeLocalSymbolTable(int level) {
         LocalSymbolTable.createNewLocalSymbolTable();
         LocalSymbolTable.setFunctionName(ident.getName());
         FunctionLocalSymbolTables.addLocalSymbolTable(ident.getName(), LocalSymbolTable.getCurrentLocalSymbolTable());
         AddressPtr.resetLocalAddr(0);
+
+        GlobalSymbolTable.insert(level, ident.getName(), SymbolType.FUNC,
+                new FuncSymbol(getLineNumber(), ident.getName(),
+                        (funcFParams == null ? 0 : funcFParams.getParamsCount()),
+                        (funcFParams == null ? null : funcFParams.getParamTypes()),
+                        funcType));
     }
 
     public List<IntermediateInstruction> generateIr(int level) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
         instructions.add(new InsertLabelIr(ident.getName()));
 
-        // change local symbol table
-        changeLocalSymbolTable();
-        
-        // save **function name** in global symbolTable
-        GlobalSymbolTable.insert(level, ident.getName(), SymbolType.FUNC,
-                new FuncSymbol(getLineNumber(), ident.getName(),
-                        (funcFParams == null ? 0 : funcFParams.getParamsCount()),
-                        (funcFParams == null ? null : funcFParams.getParamTypes()),
-                        funcType));
+        // change local symbol table and save **function name** in global symbolTable
+        changeLocalSymbolTable(level);
 
         if (funcFParams != null) {
             instructions.addAll(funcFParams.generateIr(level));
