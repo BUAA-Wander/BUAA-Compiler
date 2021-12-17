@@ -24,7 +24,7 @@ public class Exp extends TreeNode {
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {
-        return addExp.generateIr(level, instructions);
+        return addExp.generateIr(level, instructions, 0);
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions, int used) {

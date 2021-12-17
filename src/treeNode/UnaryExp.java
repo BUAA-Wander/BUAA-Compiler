@@ -95,115 +95,74 @@ public class UnaryExp extends TreeNode {
         }
     }
 
-    // return a memory unit id
-    public String generateIr(int level, List<IntermediateInstruction> instructions) {
-        if (type == UnaryExpType.PRIMARY) {
-            return primaryExp.generateIr(level, instructions);
-        } else if (type == UnaryExpType.FUNCCALL) {
-            if (GlobalSymbolTable.isExist(0, ident.getName(), SymbolType.FUNC)) {
-                // we need to alloc a unit for context first
-                // then pass parameter
-                // after that, save context in the unit we prepared before
+    private String generateFunctionCallIr(int level, List<IntermediateInstruction> instructions, int used) {
+        if (GlobalSymbolTable.isExist(0, ident.getName(), SymbolType.FUNC)) {
+            // we need to alloc a unit for context first
+            // then pass parameter
+            // after that, save context in the unit we prepared before
 
-                String raId = TmpVarGenerator.nextId();
-                int addr = AddressPtr.getLocalAddr();
-                AddressPtr.addLocalAddr(4);
-                LocalSymbolTable.insert(level, raId, SymbolType.VAR,
-                        new VarBTypeSymbol(-1, raId), addr, 4);
+            String raId = TmpVarGenerator.nextId(); // save ra
+            int addr = AddressPtr.getLocalAddr();
+            AddressPtr.addLocalAddr(4);
+            LocalSymbolTable.insert(level, raId, SymbolType.VAR,
+                    new VarBTypeSymbol(-1, raId), addr, 4);
 
-                if (funcRParams != null) {
-                    instructions.addAll(funcRParams.generateIr(level));
-                }
-                // save context: ra
-                // offset is negative
-                instructions.add(new SaveContextIr(-addr));
-
-                // modify sp, jal, restore sp, ra
-                instructions.add(new BrIr(ident.getName()));
-
-                // load context: ra
-                // offset is negative
-                instructions.add(new LoadContextIr(-addr));
-
-                // deal with return value
-                // TODO bugs
-                SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.FUNC);
-                Symbol symbol = item.getSymbol();
-                if (symbol instanceof FuncSymbol) {
-                    if (((FuncSymbol) symbol).getReturnType().equals(FuncType.INT)) {
-                        String resId = TmpVarGenerator.nextTmpVar(level);
-                        instructions.add(new GetReturnValueIr(resId));
-                        return resId;
-                    }
-                }
-                // void function
-                return "#0";
-            } else {
-                System.out.println("No such function!");
-                return "invalid_mem_addr";
+            if (funcRParams != null) {
+                instructions.addAll(funcRParams.generateIr(level, used));
             }
+            // save context: ra
+            // offset is negative
+            instructions.add(new SaveContextIr(-addr - used));
+
+            // modify sp, jal, restore sp, ra
+            instructions.add(new BrIr(ident.getName(), -used));
+
+            // load context: ra
+            // offset is negative
+            instructions.add(new LoadContextIr(-addr - used));
+
+            // deal with return value
+            // TODO bugs
+            SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.FUNC);
+            Symbol symbol = item.getSymbol();
+            if (symbol instanceof FuncSymbol) {
+                if (((FuncSymbol) symbol).getReturnType().equals(FuncType.INT)) {
+                    String resId = TmpVarGenerator.nextTmpVar(level);
+                    instructions.add(new GetReturnValueIr(resId));
+                    return resId;
+                }
+            }
+            // void function
+            return "#0";
         } else {
-            String id = TmpVarGenerator.nextTmpVar(level);
-
-            if (unaryOp.getType().equals(UnaryOpType.NOT)) {
-                instructions.add(new NotIr(unaryExp.generateIr(level, instructions), id));
-            } else if (unaryOp.getType().equals(UnaryOpType.ADD)) {
-                instructions.add(
-                        new AddIr(unaryExp.generateIr(level, instructions), "#0", id));
-            } else {
-                instructions.add(
-                        new SubIr("#0", unaryExp.generateIr(level, instructions), id));
-            }
-            return id;
+            System.out.println("No such function!");
+            return "invalid_mem_addr";
         }
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions, int used) {
-        if (type != UnaryExpType.FUNCCALL) {
-            return generateIr(level, instructions);
+    private String generateOtherIr(int level, List<IntermediateInstruction> instructions, int used) {
+        String id = TmpVarGenerator.nextTmpVar(level);
+
+        if (unaryOp.getType().equals(UnaryOpType.NOT)) {
+            instructions.add(new NotIr(unaryExp.generateIr(level, instructions, used), id));
+        } else if (unaryOp.getType().equals(UnaryOpType.ADD)) {
+            instructions.add(
+                    new AddIr(unaryExp.generateIr(level, instructions, used), "#0", id));
         } else {
-            if (GlobalSymbolTable.isExist(0, ident.getName(), SymbolType.FUNC)) {
-                // we need to alloc a unit for context first
-                // then pass parameter
-                // after that, save context in the unit we prepared before
+            instructions.add(
+                    new SubIr("#0", unaryExp.generateIr(level, instructions, used), id));
+        }
+        return id;
+    }
 
-                String raId = TmpVarGenerator.nextId(); // save ra
-                int addr = AddressPtr.getLocalAddr();
-                AddressPtr.addLocalAddr(4);
-                LocalSymbolTable.insert(level, raId, SymbolType.VAR,
-                        new VarBTypeSymbol(-1, raId), addr, 4);
-
-                if (funcRParams != null) {
-                    instructions.addAll(funcRParams.generateIr(level, used));
-                }
-                // save context: ra
-                // offset is negative
-                instructions.add(new SaveContextIr(-addr - used));
-
-                // modify sp, jal, restore sp, ra
-                instructions.add(new BrIr(ident.getName(), -used));
-
-                // load context: ra
-                // offset is negative
-                instructions.add(new LoadContextIr(-addr - used));
-
-                // deal with return value
-                // TODO bugs
-                SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.FUNC);
-                Symbol symbol = item.getSymbol();
-                if (symbol instanceof FuncSymbol) {
-                    if (((FuncSymbol) symbol).getReturnType().equals(FuncType.INT)) {
-                        String resId = TmpVarGenerator.nextTmpVar(level);
-                        instructions.add(new GetReturnValueIr(resId));
-                        return resId;
-                    }
-                }
-                // void function
-                return "#0";
-            } else {
-                System.out.println("No such function!");
-                return "invalid_mem_addr";
-            }
+    // return a memory unit id
+    public String generateIr(int level, List<IntermediateInstruction> instructions, int used) {
+        if (type == UnaryExpType.PRIMARY) {
+            return primaryExp.generateIr(level, instructions);
+        } else if (type == UnaryExpType.FUNCCALL) {
+            return generateFunctionCallIr(level, instructions, used);
+        } else {
+            return generateOtherIr(level, instructions, used);
         }
     }
 }

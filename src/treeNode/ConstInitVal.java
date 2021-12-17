@@ -106,7 +106,7 @@ public class ConstInitVal extends TreeNode {
     // return tmp memory unit id
     public String generateIr(int level, List<IntermediateInstruction> instructions) {
         if (type == ConstInitValType.ARRAY) {
-            // TODO it's impossible to reach to this line!
+            // it's impossible to reach to this line!
             try {
                 throw new ValueTypeException();
             } catch (ValueTypeException e) {

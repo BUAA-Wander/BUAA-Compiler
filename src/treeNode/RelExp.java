@@ -30,7 +30,7 @@ public class RelExp extends TreeNode {
 
         for (int i = 0; i < addExps.size(); i++) {
             // TODO
-            String id = addExps.get(i).generateIr(level, instructions);
+            String id = addExps.get(i).generateIr(level, instructions, 0);
             if (i != 0) {
                 OperatorType type = operators.get(i - 1).getType();
                 if (type.equals(OperatorType.LSS)) {

@@ -50,26 +50,6 @@ public class MulExp extends TreeNode {
         return res;
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions) {
-        String resId = TmpVarGenerator.nextTmpVar(level);
-
-        for (int i = 0; i < unaryExps.size(); i++) {
-            String id = unaryExps.get(i).generateIr(level, instructions);
-            if (i != 0) {
-                if (operators.get(i - 1).getType().equals(OperatorType.MUL)) {
-                    instructions.add(new MulIr(resId, id, resId));
-                } else if (operators.get(i - 1).getType().equals(OperatorType.DIV)) {
-                    instructions.add(new DivIr(resId, id, resId));
-                } else {
-                    instructions.add(new ModIr(resId, id, resId));
-                }
-            } else {
-                instructions.add(new MovIr(id, resId));
-            }
-        }
-        return resId;
-    }
-
     public String generateIr(int level, List<IntermediateInstruction> instructions, int used) {
         String resId = TmpVarGenerator.nextTmpVar(level);
 

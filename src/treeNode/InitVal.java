@@ -37,7 +37,7 @@ public class InitVal extends TreeNode {
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {
         if (type == InitValType.ARRAY) {
-            // TODO
+            // it's impossible to reach to this line!
             try {
                 throw new ValueTypeException();
             } catch (ValueTypeException e) {

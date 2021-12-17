@@ -18,6 +18,6 @@ public class ConstExp extends TreeNode {
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {
-        return addExp.generateIr(level, instructions);
+        return addExp.generateIr(level, instructions, 0);
     }
 }

@@ -9,7 +9,6 @@ import ir.MovImmIr;
 import ir.MovIr;
 import ir.MulIr;
 import ir.ToAbsoluteAddrIr;
-import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
 import symbol.SymbolTable;
@@ -43,6 +42,7 @@ public class LVal extends TreeNode {
         return symbolTable.isConstTableItem(ident.getName());
     }
 
+    // TODO: check if it is right
     public ParamType getParamType(SymbolTable symbolTable) {
         SymbolTableItem item = symbolTable.getItem(ident.getName());
         Symbol symbol = item.getSymbol();
@@ -135,33 +135,6 @@ public class LVal extends TreeNode {
                 // TODO delete expired variable!!!!!!!!!!!!
                 if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.VAR)) {
                     SymbolTableItem item = LocalSymbolTable.getItem(ident.getName(), SymbolType.VAR);
-                    // func is current function
-//                    SymbolTableItem func = GlobalSymbolTable.getItem(
-//                            LocalSymbolTable.getCurrentFunctionName(), SymbolType.FUNC);
-//                    Symbol funcSymbol = func.getSymbol();
-//                    if (funcSymbol instanceof FuncSymbol) {
-//                        int paramAddr = ((FuncSymbol) funcSymbol).getParamCount() * 4;
-//                        // item is function param
-//                        if (item.getAddr() < paramAddr) {
-//                            int pos = item.getAddr() / 4;
-//                            ParamType paramType = ((FuncSymbol) funcSymbol).getParamTypes().get(pos);
-//                            if (paramType == ParamType.INT) {
-//                                // item is int param
-//                                return "@" + item.getName() + "@local@" + item.getAddr();
-//                            } else {
-//                                // item is int[] or int[][]
-//                                if (paramType == ParamType.ARRAY_1) {
-//
-//                                } else if (paramType == ParamType.ARRAY_2) {
-//
-//                                } else {
-//
-//                                }
-//                            }
-//                        } else {
-//                            return "@" + item.getName() + "@local@" + item.getAddr();
-//                        }
-//                    }
                     return "@" + item.getName() + "@local@" + item.getAddr();
                 } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.VAR)) {
                     SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.VAR);
