@@ -3,7 +3,12 @@ package treeNode;
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
 import ir.MovIr;
+import ir.OffsetIr;
+import ir.StorePointerValueIr;
+import ir.TmpVarGenerator;
+import ir.utils.Immediate;
 import ir.utils.Operand;
+import ir.utils.TmpVariable;
 
 import java.util.List;
 
@@ -71,13 +76,17 @@ public class InitVal extends TreeNode {
                     // {1, 2}
                     Operand srcId = initVal.generateIr(level, instructions);
                     int addr = headAddr + id * 4;
+
+                    Operand dstId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), false);
+
                     if (level == 0) {
-//                        instructions.add(
-//                                new MovIr(srcId, new "@" + arrayName + "@global" + "@" + addr + "@" + (addr - headAddr)));
+                        instructions.add(new OffsetIr(
+                                new Immediate(addr), new Immediate(0), dstId, true));
                     } else {
-//                        instructions.add(
-//                                new MovIr(srcId, "@" + arrayName + "@local" + "@" + addr + "@" + (addr - headAddr)));
+                        instructions.add(new OffsetIr(
+                                new Immediate(addr), new Immediate(0), dstId, false));
                     }
+                    instructions.add(new StorePointerValueIr(dstId, new Immediate(0), srcId));
                     id++;
                 }
             }

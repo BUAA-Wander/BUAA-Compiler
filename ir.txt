@@ -2,94 +2,38 @@ MovImm 0 #0
 Br main
 Stop
 InsertLabel main
-Mov #0 #1
-MovImm 0 #5
+MovImm 1 #3
+Mov #3 #2
+Mov #2 #1
+Mov #1 @b@local@0
+MovImm 998 #6
+Mov #6 #5
 Mov #5 #4
-Mov #4 #3
-MovImm 4 #2
-MovImm 0 #6
-Mul #2 #3 #3
-Add #6 #3 #3
-Offset #3 0 #7
-MovImm 998 #10
+Offset 16 0 #7
+StorePointerValue #7 0 #4
+MovImm 244 #10
 Mov #10 #9
 Mov #9 #8
-StorePointerValue #7 0 #8
-Mov #0 #11
-MovImm 1 #15
-Mov #15 #14
+Offset 20 0 #11
+StorePointerValue #11 0 #8
+MovImm 353 #14
 Mov #14 #13
-MovImm 4 #12
-MovImm 0 #16
-Mul #12 #13 #13
-Add #16 #13 #13
-Offset #13 0 #17
-MovImm 244 #20
-Mov #20 #19
-Mov #19 #18
-StorePointerValue #17 0 #18
-Mov #0 #21
-MovImm 2 #25
-Mov #25 #24
-Mov #24 #23
-MovImm 4 #22
+Mov #13 #12
+Offset 24 0 #15
+StorePointerValue #15 0 #12
+Mov #0 #18
+MovImm 2 #22
+Mov #22 #21
+Mov #21 #20
+MovImm 4 #19
+MovImm 16 #23
+Mul #19 #20 #20
+LoadArrayValue #23 #20 #20
+Mov #20 #17
+Mov #17 #16
+WriteInt #16
 MovImm 0 #26
-Mul #22 #23 #23
-Add #26 #23 #23
-Offset #23 0 #27
-Mov #0 #30
-MovImm 1 #34
-Mov #34 #33
-Mov #33 #32
-MovImm 4 #31
-MovImm 0 #35
-Mul #31 #32 #32
-LoadArrayValue #35 #32 #32
-Mov #32 #29
-Mov #29 #28
-MovImm 109 #37
-Mov #37 #36
-Add #28 #36 #28
-StorePointerValue #27 0 #28
-Mov #0 #40
-MovImm 0 #44
-Mov #44 #43
-Mov #43 #42
-MovImm 4 #41
-MovImm 0 #45
-Mul #41 #42 #42
-LoadArrayValue #45 #42 #42
-Mov #42 #39
-Mov #39 #38
-WriteInt #38
-WriteChar  
-Mov #0 #48
-MovImm 1 #52
-Mov #52 #51
-Mov #51 #50
-MovImm 4 #49
-MovImm 0 #53
-Mul #49 #50 #50
-LoadArrayValue #53 #50 #50
-Mov #50 #47
-Mov #47 #46
-WriteInt #46
-WriteChar  
-Mov #0 #56
-MovImm 2 #60
-Mov #60 #59
-Mov #59 #58
-MovImm 4 #57
-MovImm 0 #61
-Mul #57 #58 #58
-LoadArrayValue #61 #58 #58
-Mov #58 #55
-Mov #55 #54
-WriteInt #54
-WriteChar 
-
-MovImm 0 #64
-Mov #64 #63
-Mov #63 #62
-PassReturnValue #62
+Mov #26 #25
+Mov #25 #24
+PassReturnValue #24
 Return
