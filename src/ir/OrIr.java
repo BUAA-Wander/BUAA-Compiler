@@ -1,7 +1,9 @@
 package ir;
 
+import ir.utils.Operand;
+
 public class OrIr extends IntermediateInstruction {
-    public OrIr(String oprandIdx1, String oprandIdx2, String resIdx) {
+    public OrIr(Operand oprandIdx1, Operand oprandIdx2, Operand resIdx) {
         super(oprandIdx1, oprandIdx2, resIdx);
     }
 

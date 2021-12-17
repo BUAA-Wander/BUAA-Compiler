@@ -3,6 +3,7 @@ package treeNode;
 import ir.IntermediateInstruction;
 import ir.WriteCharIr;
 import ir.WriteIntIr;
+import ir.utils.StringOp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,7 @@ public class PrintfStmt extends Stmt {
                     if (i + 1 < len) {
                         i++;
                         if (value.charAt(i) == 'n') {
-                            instructions.add(new WriteCharIr('\n'));
+                            instructions.add(new WriteCharIr(new StringOp(String.valueOf('\n'))));
                         } else {
                             System.out.println("can't solve this convert character");
                         }
@@ -50,7 +51,7 @@ public class PrintfStmt extends Stmt {
                         System.out.println("missing convert character");
                     }
                 } else {
-                    instructions.add(new WriteCharIr(value.charAt(i)));
+                    instructions.add(new WriteCharIr(new StringOp(String.valueOf(value.charAt(i)))));
                 }
             } else {
                 if (i + 1 < len && value.charAt(i + 1) == 'd') {

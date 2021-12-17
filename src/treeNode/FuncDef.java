@@ -3,6 +3,7 @@ package treeNode;
 import ir.InsertLabelIr;
 import ir.IntermediateInstruction;
 import ir.ReturnIr;
+import ir.utils.LabelOp;
 import symbol.AddressPtr;
 import symbol.FunctionLocalSymbolTables;
 import symbol.GlobalSymbolTable;
@@ -47,7 +48,7 @@ public class FuncDef extends TreeNode {
 
     public List<IntermediateInstruction> generateIr(int level) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
-        instructions.add(new InsertLabelIr(ident.getName()));
+        instructions.add(new InsertLabelIr(new LabelOp(ident.getName())));
 
         // change local symbol table and save **function name** in global symbolTable
         changeLocalSymbolTable(level);

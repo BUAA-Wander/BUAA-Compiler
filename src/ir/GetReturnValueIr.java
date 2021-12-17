@@ -1,5 +1,6 @@
 package ir;
 
+import ir.utils.Operand;
 import mips.MipsCode;
 import symbol.SymbolTableItem;
 import symbol.SymbolTableType;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetReturnValueIr extends IntermediateInstruction {
-    public GetReturnValueIr(String dst) {
+    public GetReturnValueIr(Operand dst) {
         super(dst);
     }
 
@@ -19,13 +20,10 @@ public class GetReturnValueIr extends IntermediateInstruction {
     public List<MipsCode> toMips() {
         List<MipsCode> mipsCodes = new ArrayList<>();
 
-        String op = getRes();
-
-        SymbolTableItem item = getItemFromSymbolTable(op);
-        SymbolTableType type = getOperandSymbolTable(op);
+        Operand op = getRes();
 
         // save return value in $v1!!!!!
-        mipsCodes.addAll(save(item, type, "$v1"));
+        mipsCodes.addAll(op.saveValue("$v1"));
         return mipsCodes;
     }
 }

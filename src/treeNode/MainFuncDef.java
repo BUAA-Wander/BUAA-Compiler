@@ -2,6 +2,7 @@ package treeNode;
 
 import ir.InsertLabelIr;
 import ir.IntermediateInstruction;
+import ir.utils.LabelOp;
 import symbol.AddressPtr;
 import symbol.FunctionLocalSymbolTables;
 import symbol.GlobalSymbolTable;
@@ -36,7 +37,7 @@ public class MainFuncDef extends TreeNode {
 
         List<IntermediateInstruction> instructions = new ArrayList<>();
 
-        instructions.add(new InsertLabelIr("main"));
+        instructions.add(new InsertLabelIr(new LabelOp("main")));
         LocalSymbolTable.createNewLocalSymbolTable(); // create a new Local Symbol Table
         AddressPtr.resetLocalAddr(0);
 

@@ -2,6 +2,7 @@ package treeNode;
 
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
+import ir.utils.Operand;
 import symbol.SymbolTable;
 import symbol.type.ParamType;
 
@@ -23,11 +24,11 @@ public class Exp extends TreeNode {
         return addExp.getValue(level);
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions) {
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
         return addExp.generateIr(level, instructions, 0);
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions, int used) {
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions, int used) {
         return addExp.generateIr(level, instructions, used);
     }
 }

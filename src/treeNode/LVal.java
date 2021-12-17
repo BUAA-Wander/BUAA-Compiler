@@ -8,7 +8,10 @@ import ir.LoadArrayValueIr;
 import ir.MovImmIr;
 import ir.MovIr;
 import ir.MulIr;
-import ir.ToAbsoluteAddrIr;
+import ir.utils.Immediate;
+import ir.utils.Operand;
+import ir.utils.TmpVariable;
+import ir.utils.Variable;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
 import symbol.SymbolTable;
@@ -128,32 +131,19 @@ public class LVal extends TreeNode {
         return value;
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions) {
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
         try {
             if (leftBracks.size() == 0) {
                 // TODO why next TODO
                 // TODO delete expired variable!!!!!!!!!!!!
                 if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.VAR)) {
                     SymbolTableItem item = LocalSymbolTable.getItem(ident.getName(), SymbolType.VAR);
-                    return "@" + item.getName() + "@local@" + item.getAddr();
+                    return new Variable(item.getName(), item.getAddr(), false);
                 } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.VAR)) {
                     SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.VAR);
-                    return "@" + item.getName() + "@global@" + item.getAddr();
+                    return new Variable(item.getName(), item.getAddr(), true);
                 } else {
                     System.out.println("TODO: implement array param pass");
-
-                    SymbolTableItem item;
-                    if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
-                        item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
-                        String res = "@" + item.getName() + "@global@" + item.getAddr();
-                        instructions.add(new ToAbsoluteAddrIr(res, true));
-                        return res;
-                    } else if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
-                        item = LocalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
-                        String res = "@" + item.getName() + "@local@" + item.getAddr();
-                        instructions.add(new ToAbsoluteAddrIr(res, false));
-                        return res;
-                    }
                     throw new ValueTypeException();
                 }
             } else {
@@ -179,27 +169,27 @@ public class LVal extends TreeNode {
                     throw new ValueTypeException();
                 }
 
-                String offsetId = TmpVarGenerator.nextTmpVar(level);
-                instructions.add(new MovIr("#0", offsetId));
+                Operand offsetId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+                instructions.add(new MovIr(new TmpVariable("#0", true), offsetId));
 
-                String base = TmpVarGenerator.nextTmpVar(level);
+                Operand base = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
 
                 // calculate index!!!!!
                 if (index.size() == 1) {
                     offsetId = index.get(0).generateIr(level, instructions);
                 } else {
-                    String tmp0 = index.get(0).generateIr(level, instructions);
-                    String tmp1 = index.get(1).generateIr(level, instructions);
-                    String size = dimSizes.get(1).generateIr(level, instructions);
+                    Operand tmp0 = index.get(0).generateIr(level, instructions);
+                    Operand tmp1 = index.get(1).generateIr(level, instructions);
+                    Operand size =  dimSizes.get(1).generateIr(level, instructions);
                     instructions.add(new MulIr(tmp0, size, tmp0));
                     instructions.add(new AddIr(tmp0, tmp1, offsetId));
                 }
 
-                String headAddr = TmpVarGenerator.nextTmpVar(level);
+                Operand headAddr = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
 
                 // base is not the headAddr of array!!! base = 4
-                instructions.add(new MovImmIr(4, base));
-                instructions.add(new MovImmIr(item.getAddr(), headAddr));
+                instructions.add(new MovImmIr(new Immediate(4), base));
+                instructions.add(new MovImmIr(new Immediate(item.getAddr()), headAddr));
                 instructions.add(new MulIr(base, offsetId, offsetId));
 
                 // offsetId is offset to array head

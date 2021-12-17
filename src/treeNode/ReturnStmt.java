@@ -3,6 +3,8 @@ package treeNode;
 import ir.IntermediateInstruction;
 import ir.PassReturnValueIr;
 import ir.ReturnIr;
+import ir.utils.Operand;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,7 @@ public class ReturnStmt extends Stmt {
         List<IntermediateInstruction> instructions = new ArrayList<>();
 
         if (exp != null) {
-            String resId = exp.generateIr(level, instructions);
+            Operand resId = exp.generateIr(level, instructions);
             instructions.add(new PassReturnValueIr(resId));
         }
         instructions.add(new ReturnIr());

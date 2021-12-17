@@ -1,15 +1,15 @@
 package ir;
 
+import ir.utils.LabelOp;
+import ir.utils.Operand;
 import mips.Beq;
 import mips.MipsCode;
-import symbol.SymbolTableItem;
-import symbol.SymbolTableType;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class BranchIfEqIr extends IntermediateInstruction {
-    public BranchIfEqIr(String op1, String op2, String res) {
+    public BranchIfEqIr(Operand op1, Operand op2, Operand res) {
         super(op1, op2, res);
     }
 
@@ -18,21 +18,17 @@ public class BranchIfEqIr extends IntermediateInstruction {
     }
 
     public List<MipsCode> toMips() {
-        String op1 = getLeft();
-        String op2 = getRight();
-        String label = getRes();
-
-        SymbolTableItem item1 = getItemFromSymbolTable(op1);
-        SymbolTableItem item2 = getItemFromSymbolTable(op2);
-
-        SymbolTableType type1 = getOperandSymbolTable(op1);
-        SymbolTableType type2 = getOperandSymbolTable(op2);
+        Operand op1 = getLeft();
+        Operand op2 = getRight();
+        Operand label = getRes();
 
         List<MipsCode> mipsCodes = new ArrayList<>();
         String t0 = "$t0", t1 = "$t1";
-        mipsCodes.addAll(load(item1, type1, t0));
-        mipsCodes.addAll(load(item2, type2, t1));
-        mipsCodes.add(new Beq(t0, t1, label));
+        mipsCodes.addAll(op1.loadToReg(t0));
+        mipsCodes.addAll(op2.loadToReg(t1));
+        if (label instanceof LabelOp) {
+            mipsCodes.add(new Beq(t0, t1, ((LabelOp) label).getLabelName()));
+        }
         return mipsCodes;
     }
 }

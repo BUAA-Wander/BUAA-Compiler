@@ -2,6 +2,7 @@ package treeNode;
 
 import ir.IntermediateInstruction;
 import ir.JumpIr;
+import ir.utils.LabelOp;
 import symbol.SymbolTable;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class BreakStmt extends Stmt {
 
     public List<IntermediateInstruction> generateIr(int level, String label_1, String label_2) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
-        instructions.add(new JumpIr(label_2));
+        instructions.add(new JumpIr(new LabelOp(label_2)));
         return instructions;
     }
 }

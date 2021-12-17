@@ -7,6 +7,8 @@ import ir.MovIr;
 import ir.MulIr;
 import ir.DivIr;
 import ir.ModIr;
+import ir.utils.Operand;
+import ir.utils.TmpVariable;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
@@ -50,11 +52,11 @@ public class MulExp extends TreeNode {
         return res;
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions, int used) {
-        String resId = TmpVarGenerator.nextTmpVar(level);
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions, int used) {
+        Operand resId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         for (int i = 0; i < unaryExps.size(); i++) {
-            String id = unaryExps.get(i).generateIr(level, instructions, used);
+            Operand id = unaryExps.get(i).generateIr(level, instructions, used);
             if (i != 0) {
                 if (operators.get(i - 1).getType().equals(OperatorType.MUL)) {
                     instructions.add(new MulIr(resId, id, resId));

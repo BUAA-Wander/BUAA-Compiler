@@ -2,6 +2,7 @@ package treeNode;
 
 import ir.IntermediateInstruction;
 import ir.PassParamIr;
+import ir.utils.Operand;
 import symbol.SymbolTable;
 import symbol.type.ParamType;
 
@@ -35,7 +36,7 @@ public class FuncRParams extends TreeNode {
     public List<IntermediateInstruction> generateIr(int level, int used) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
         for (int i = 0; i < exps.size(); i++) {
-            String memAddr = exps.get(i).generateIr(level, instructions, i * 4 + used);
+            Operand memAddr = exps.get(i).generateIr(level, instructions, i * 4 + used);
             instructions.add(new PassParamIr(memAddr, -i * 4 - used));
         }
         return instructions;
@@ -45,7 +46,7 @@ public class FuncRParams extends TreeNode {
         List<IntermediateInstruction> instructions = new ArrayList<>();
         for (int i = 0; i < exps.size(); i++) {
             // i * 4 means we deal with i params now
-            String memAddr = exps.get(i).generateIr(level, instructions, i * 4);
+            Operand memAddr = exps.get(i).generateIr(level, instructions, i * 4);
             instructions.add(new PassParamIr(memAddr, -i * 4));
         }
         return instructions;

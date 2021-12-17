@@ -10,6 +10,9 @@ import ir.LoadContextIr;
 import ir.NotIr;
 import ir.SaveContextIr;
 import ir.SubIr;
+import ir.utils.LabelOp;
+import ir.utils.Operand;
+import ir.utils.TmpVariable;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
@@ -95,17 +98,17 @@ public class UnaryExp extends TreeNode {
         }
     }
 
-    private String generateFunctionCallIr(int level, List<IntermediateInstruction> instructions, int used) {
+    private Operand generateFunctionCallIr(int level, List<IntermediateInstruction> instructions, int used) {
         if (GlobalSymbolTable.isExist(0, ident.getName(), SymbolType.FUNC)) {
             // we need to alloc a unit for context first
             // then pass parameter
             // after that, save context in the unit we prepared before
 
-            String raId = TmpVarGenerator.nextId(); // save ra
+            Operand raId = new TmpVariable(TmpVarGenerator.nextId(), (level == 0)); // save ra
             int addr = AddressPtr.getLocalAddr();
             AddressPtr.addLocalAddr(4);
-            LocalSymbolTable.insert(level, raId, SymbolType.VAR,
-                    new VarBTypeSymbol(-1, raId), addr, 4);
+            LocalSymbolTable.insert(level, raId.toString(), SymbolType.VAR,
+                    new VarBTypeSymbol(-1, raId.toString()), addr, 4);
 
             if (funcRParams != null) {
                 instructions.addAll(funcRParams.generateIr(level, used));
@@ -115,7 +118,7 @@ public class UnaryExp extends TreeNode {
             instructions.add(new SaveContextIr(-addr - used));
 
             // modify sp, jal, restore sp, ra
-            instructions.add(new BrIr(ident.getName(), -used));
+            instructions.add(new BrIr(new LabelOp(ident.getName()), -used));
 
             // load context: ra
             // offset is negative
@@ -127,36 +130,36 @@ public class UnaryExp extends TreeNode {
             Symbol symbol = item.getSymbol();
             if (symbol instanceof FuncSymbol) {
                 if (((FuncSymbol) symbol).getReturnType().equals(FuncType.INT)) {
-                    String resId = TmpVarGenerator.nextTmpVar(level);
+                    Operand resId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
                     instructions.add(new GetReturnValueIr(resId));
                     return resId;
                 }
             }
             // void function
-            return "#0";
+            return new TmpVariable("#0", true);
         } else {
             System.out.println("No such function!");
-            return "invalid_mem_addr";
+            return null;
         }
     }
 
-    private String generateOtherIr(int level, List<IntermediateInstruction> instructions, int used) {
-        String id = TmpVarGenerator.nextTmpVar(level);
+    private Operand generateOtherIr(int level, List<IntermediateInstruction> instructions, int used) {
+        Operand id = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         if (unaryOp.getType().equals(UnaryOpType.NOT)) {
             instructions.add(new NotIr(unaryExp.generateIr(level, instructions, used), id));
         } else if (unaryOp.getType().equals(UnaryOpType.ADD)) {
             instructions.add(
-                    new AddIr(unaryExp.generateIr(level, instructions, used), "#0", id));
+                    new AddIr(unaryExp.generateIr(level, instructions, used), new TmpVariable("#0", true), id));
         } else {
             instructions.add(
-                    new SubIr("#0", unaryExp.generateIr(level, instructions, used), id));
+                    new SubIr(new TmpVariable("#0", true), unaryExp.generateIr(level, instructions, used), id));
         }
         return id;
     }
 
     // return a memory unit id
-    public String generateIr(int level, List<IntermediateInstruction> instructions, int used) {
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions, int used) {
         if (type == UnaryExpType.PRIMARY) {
             return primaryExp.generateIr(level, instructions);
         } else if (type == UnaryExpType.FUNCCALL) {

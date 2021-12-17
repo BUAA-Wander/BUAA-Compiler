@@ -2,6 +2,7 @@ package ir.utils;
 
 import mips.Lw;
 import mips.MipsCode;
+import mips.Sw;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
 import symbol.SymbolTableItem;
@@ -15,6 +16,7 @@ public class TmpVariable extends Operand {
     private boolean isGlobal;
 
     public TmpVariable(String name, boolean isGlobal) {
+        super();
         this.name = name;
         this.isGlobal = isGlobal;
     }
@@ -32,5 +34,24 @@ public class TmpVariable extends Operand {
             mipsCodes.add(new Lw(reg, "$sp", -item.getAddr()));
         }
         return mipsCodes;
+    }
+
+    @Override
+    public List<MipsCode> saveValue(String reg) {
+        List<MipsCode> mipsCodes = new ArrayList<>();
+        SymbolTableItem item;
+        if (isGlobal) {
+            item = GlobalSymbolTable.getItem(name, SymbolType.VAR);
+            mipsCodes.add(new Sw(reg, "$gp", item.getAddr()));
+        } else {
+            item = LocalSymbolTable.getItem(name, SymbolType.VAR);
+            mipsCodes.add(new Sw(reg, "$sp", -item.getAddr()));
+        }
+        return mipsCodes;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

@@ -5,6 +5,9 @@ import ir.InsertLabelIr;
 import ir.IntermediateInstruction;
 import ir.JumpIr;
 import ir.LabelGenerator;
+import ir.utils.LabelOp;
+import ir.utils.Operand;
+import ir.utils.TmpVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,19 +47,19 @@ public class IfStmt extends Stmt {
         String label_1 = LabelGenerator.nextLabel();
         String label_2 = LabelGenerator.nextLabel();
 
-        String resId = cond.generateIr(level, instructions);
-        instructions.add(new BranchIfEqIr(resId, "#0", label_2));
+        Operand resId = cond.generateIr(level, instructions);
+        instructions.add(new BranchIfEqIr(resId, new TmpVariable("#0", true), new LabelOp(label_2)));
 
         // TODO create code and insert tag
         if (stmt != null) {
             instructions.addAll(stmt.generateIr(level));
         }
-        instructions.add(new JumpIr(label_1));
-        instructions.add(new InsertLabelIr(label_2));
+        instructions.add(new JumpIr(new LabelOp(label_1)));
+        instructions.add(new InsertLabelIr(new LabelOp(label_2)));
         if (elseStmt != null) {
             instructions.addAll(elseStmt.generateIr(level));
         }
-        instructions.add(new InsertLabelIr(label_1));
+        instructions.add(new InsertLabelIr(new LabelOp(label_1)));
         return instructions;
     }
 
@@ -66,19 +69,19 @@ public class IfStmt extends Stmt {
         String label_1 = LabelGenerator.nextLabel();
         String label_2 = LabelGenerator.nextLabel();
 
-        String resId = cond.generateIr(level, instructions);
-        instructions.add(new BranchIfEqIr(resId, "#0", label_2));
+        Operand resId = cond.generateIr(level, instructions);
+        instructions.add(new BranchIfEqIr(resId, new TmpVariable("#0", true), new LabelOp(label_2)));
 
         // TODO create code and insert tag
         if (stmt != null) {
             instructions.addAll(stmt.generateIr(level, label_begin, label_end));
         }
-        instructions.add(new JumpIr(label_1));
-        instructions.add(new InsertLabelIr(label_2));
+        instructions.add(new JumpIr(new LabelOp(label_1)));
+        instructions.add(new InsertLabelIr(new LabelOp(label_2)));
         if (elseStmt != null) {
             instructions.addAll(elseStmt.generateIr(level, label_begin, label_end));
         }
-        instructions.add(new InsertLabelIr(label_1));
+        instructions.add(new InsertLabelIr(new LabelOp(label_1)));
         return instructions;
     }
 }

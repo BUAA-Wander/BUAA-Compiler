@@ -3,6 +3,8 @@ package treeNode;
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
 import ir.MovIr;
+import ir.utils.Operand;
+
 import java.util.List;
 
 public class InitVal extends TreeNode {
@@ -35,7 +37,7 @@ public class InitVal extends TreeNode {
         rightBrace = rb;
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions) {
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
         if (type == InitValType.ARRAY) {
             // it's impossible to reach to this line!
             try {
@@ -43,7 +45,8 @@ public class InitVal extends TreeNode {
             } catch (ValueTypeException e) {
                 e.printStackTrace();
             }
-            return "it's array's init_val!";
+            System.out.println("it's array's init_val!");
+            return null;
         } else {
             return simpleInitVal.generateIr(level, instructions);
         }
@@ -66,14 +69,14 @@ public class InitVal extends TreeNode {
                     id += size;
                 } else {
                     // {1, 2}
-                    String srcId = initVal.generateIr(level, instructions);
+                    Operand srcId = initVal.generateIr(level, instructions);
                     int addr = headAddr + id * 4;
                     if (level == 0) {
-                        instructions.add(
-                                new MovIr(srcId, "@" + arrayName + "@global" + "@" + addr + "@" + (addr - headAddr)));
+//                        instructions.add(
+//                                new MovIr(srcId, new "@" + arrayName + "@global" + "@" + addr + "@" + (addr - headAddr)));
                     } else {
-                        instructions.add(
-                                new MovIr(srcId, "@" + arrayName + "@local" + "@" + addr + "@" + (addr - headAddr)));
+//                        instructions.add(
+//                                new MovIr(srcId, "@" + arrayName + "@local" + "@" + addr + "@" + (addr - headAddr)));
                     }
                     id++;
                 }

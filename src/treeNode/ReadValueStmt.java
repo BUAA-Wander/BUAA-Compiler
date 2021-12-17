@@ -2,6 +2,7 @@ package treeNode;
 
 import ir.GetintIr;
 import ir.IntermediateInstruction;
+import ir.utils.Operand;
 import symbol.SymbolTable;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class ReadValueStmt extends Stmt {
 
     public List<IntermediateInstruction> generateIr(int level) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
-        String dst = lVal.generateIr(level, instructions);
+        Operand dst = lVal.generateIr(level, instructions);
         instructions.add(new GetintIr(dst));
         return instructions;
     }

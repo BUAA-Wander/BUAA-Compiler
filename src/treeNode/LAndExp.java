@@ -4,6 +4,8 @@ import ir.AndIr;
 import ir.TmpVarGenerator;
 import ir.IntermediateInstruction;
 import ir.MovIr;
+import ir.utils.Operand;
+import ir.utils.TmpVariable;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
@@ -22,12 +24,12 @@ public class LAndExp extends TreeNode {
         this.operators = operators;
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions) {
-        String resId = TmpVarGenerator.nextTmpVar(level);
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
+        Operand resId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         for (int i = 0; i < eqExps.size(); i++) {
             // TODO
-            String id = eqExps.get(i).generateIr(level, instructions);
+            Operand id = eqExps.get(i).generateIr(level, instructions);
             if (i != 0) {
                 instructions.add(new AndIr(resId, id, resId));
             } else {

@@ -4,6 +4,9 @@ import exception.ValueTypeException;
 import ir.TmpVarGenerator;
 import ir.IntermediateInstruction;
 import ir.MovImmIr;
+import ir.utils.Immediate;
+import ir.utils.Operand;
+import ir.utils.TmpVariable;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
@@ -64,12 +67,12 @@ public class PrimaryExp extends TreeNode {
         }
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions) {
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
         if (type == PrimaryExpType.NUMBER) {
-            String id = TmpVarGenerator.nextTmpVar(level);
+            Operand id = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
 
             int value = num.getValue();
-            instructions.add(new MovImmIr(value, id));
+            instructions.add(new MovImmIr(new Immediate(value), id));
             return id;
         } else if (type == PrimaryExpType.EXP) {
             return exp.generateIr(level, instructions);

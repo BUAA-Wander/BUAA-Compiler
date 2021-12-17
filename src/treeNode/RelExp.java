@@ -7,6 +7,8 @@ import ir.LargerIr;
 import ir.LeqIr;
 import ir.LessIr;
 import ir.MovIr;
+import ir.utils.Operand;
+import ir.utils.TmpVariable;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
@@ -25,12 +27,12 @@ public class RelExp extends TreeNode {
         this.operators = operators;
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions) {
-        String resId = TmpVarGenerator.nextTmpVar(level);
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
+        Operand resId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         for (int i = 0; i < addExps.size(); i++) {
             // TODO
-            String id = addExps.get(i).generateIr(level, instructions, 0);
+            Operand id = addExps.get(i).generateIr(level, instructions, 0);
             if (i != 0) {
                 OperatorType type = operators.get(i - 1).getType();
                 if (type.equals(OperatorType.LSS)) {

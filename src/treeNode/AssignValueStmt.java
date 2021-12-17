@@ -2,6 +2,7 @@ package treeNode;
 
 import ir.IntermediateInstruction;
 import ir.MovIr;
+import ir.utils.Operand;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +23,8 @@ public class AssignValueStmt extends Stmt {
 
     public List<IntermediateInstruction> generateIr(int level) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
-        String dst = lVal.generateIr(level, instructions);
-        String src = exp.generateIr(level, instructions);
+        Operand dst = lVal.generateIr(level, instructions);
+        Operand src = exp.generateIr(level, instructions);
         instructions.add(new MovIr(src, dst));
         return instructions;
     }

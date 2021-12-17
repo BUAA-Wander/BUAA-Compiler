@@ -1,5 +1,7 @@
 package ir;
 
+import ir.utils.LabelOp;
+import ir.utils.Operand;
 import mips.Label;
 import mips.MipsCode;
 import symbol.FunctionLocalSymbolTables;
@@ -9,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InsertLabelIr extends IntermediateInstruction {
-    public InsertLabelIr(String label) {
+    public InsertLabelIr(Operand label) {
         super(label);
     }
 
@@ -18,17 +20,18 @@ public class InsertLabelIr extends IntermediateInstruction {
     }
 
     public List<MipsCode> toMips() {
-        String label = getRes();
-
+        Operand op = getRes();
+        List<MipsCode> mipsCodes = new ArrayList<>();
         // change symbolTable
         // ensure we are in correct local symbol table
-        if (FunctionLocalSymbolTables.hasLocalSymbolTable(label)) {
-            LocalSymbolTable.setSymbolTable(
-                    FunctionLocalSymbolTables.getLocalSymbolTableByFunctionName(label));
+        if (op instanceof LabelOp) {
+            String label = ((LabelOp) op).getLabelName();
+            if (FunctionLocalSymbolTables.hasLocalSymbolTable(label)) {
+                LocalSymbolTable.setSymbolTable(
+                        FunctionLocalSymbolTables.getLocalSymbolTableByFunctionName(label));
+            }
+            mipsCodes.add(new Label(label));
         }
-
-        List<MipsCode> mipsCodes = new ArrayList<>();
-        mipsCodes.add(new Label(label));
         return mipsCodes;
     }
 }

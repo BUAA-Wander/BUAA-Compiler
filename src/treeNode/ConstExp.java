@@ -2,6 +2,7 @@ package treeNode;
 
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
+import ir.utils.Operand;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class ConstExp extends TreeNode {
         return addExp.getValue(level);
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions) {
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
         return addExp.generateIr(level, instructions, 0);
     }
 }

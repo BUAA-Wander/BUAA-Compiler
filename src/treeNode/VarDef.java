@@ -3,6 +3,8 @@ package treeNode;
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
 import ir.MovIr;
+import ir.utils.Operand;
+import ir.utils.Variable;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
@@ -108,11 +110,11 @@ public class VarDef extends TreeNode {
 
         // assign init value
         if (initVal != null) {
-            String srcId = initVal.generateIr(level, instructions);
+            Operand srcId = initVal.generateIr(level, instructions);
             if (level == 0) {
-                instructions.add(new MovIr(srcId, "@" + ident.getName() + "@global" + "@" + addr));
+                instructions.add(new MovIr(srcId, new Variable(ident.getName(), addr, true)));
             } else {
-                instructions.add(new MovIr(srcId, "@" + ident.getName() + "@local" + "@" + addr));
+                instructions.add(new MovIr(srcId, new Variable(ident.getName(), addr, false)));
             }
         }
         return instructions;

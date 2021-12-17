@@ -1,5 +1,6 @@
 package ir;
 
+import ir.utils.Operand;
 import mips.Lw;
 import mips.MipsCode;
 import mips.Sw;
@@ -13,22 +14,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class IntermediateInstruction {
-    private String left;
-    private String right;
-    private String res;
+    private Operand left;
+    private Operand right;
+    private Operand res;
 
-    public IntermediateInstruction(String left, String right, String res) {
+    public IntermediateInstruction(Operand left, Operand right, Operand res) {
         this.left = left;
         this.right = right;
         this.res = res;
     }
 
-    public IntermediateInstruction(String left, String res) {
+    public IntermediateInstruction(Operand left, Operand res) {
         this.left = left;
         this.res = res;
     }
 
-    public IntermediateInstruction(String res) {
+    public IntermediateInstruction(Operand res) {
         this.res = res;
     }
 
@@ -36,15 +37,15 @@ public class IntermediateInstruction {
 
     }
 
-    public String getLeft() {
+    public Operand getLeft() {
         return left;
     }
 
-    public String getRight() {
+    public Operand getRight() {
         return right;
     }
 
-    public String getRes() {
+    public Operand getRes() {
         return res;
     }
 

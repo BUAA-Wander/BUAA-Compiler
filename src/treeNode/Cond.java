@@ -1,6 +1,7 @@
 package treeNode;
 
 import ir.IntermediateInstruction;
+import ir.utils.Operand;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class Cond extends TreeNode {
         this.lOrExp = lOrExp;
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions) {
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
         return lOrExp.generateIr(level, instructions);
     }
 }

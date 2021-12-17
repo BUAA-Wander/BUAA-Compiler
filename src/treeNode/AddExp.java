@@ -6,6 +6,8 @@ import ir.TmpVarGenerator;
 import ir.IntermediateInstruction;
 import ir.MovIr;
 import ir.SubIr;
+import ir.utils.Operand;
+import ir.utils.TmpVariable;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
@@ -47,11 +49,11 @@ public class AddExp extends TreeNode {
         return res;
     }
 
-    public String generateIr(int level, List<IntermediateInstruction> instructions, int used) {
-        String resId = TmpVarGenerator.nextTmpVar(level);
+    public Operand generateIr(int level, List<IntermediateInstruction> instructions, int used) {
+        Operand resId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         for (int i = 0; i < mulExps.size(); i++) {
-            String id = mulExps.get(i).generateIr(level, instructions, used);
+            Operand id = mulExps.get(i).generateIr(level, instructions, used);
             if (i != 0) {
                 if (operators.get(i - 1).getType().equals(OperatorType.ADD)) {
                     instructions.add(new AddIr(resId, id, resId));

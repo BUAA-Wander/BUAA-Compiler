@@ -4,6 +4,9 @@ import ir.BrIr;
 import ir.IntermediateInstruction;
 import ir.MovImmIr;
 import ir.StopIr;
+import ir.utils.Immediate;
+import ir.utils.LabelOp;
+import ir.utils.TmpVariable;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.type.SymbolType;
@@ -31,7 +34,7 @@ public class CompUnit extends TreeNode {
         AddressPtr.addGlobalAddr(4);
         GlobalSymbolTable.insert(level, "#0", SymbolType.VAR,
                 new VarBTypeSymbol(-1, "#0"), addr, 4);
-        instructions.add(new MovImmIr(0, "#0"));
+        instructions.add(new MovImmIr(new Immediate(0), new TmpVariable("#0", true)));
 
         for (int i = 0; i < decls.size(); i++) {
             // if level == 0, then declare a global variable
@@ -39,7 +42,7 @@ public class CompUnit extends TreeNode {
         }
 
         // after declare all global variables, jump to main and execute it
-        instructions.add(new BrIr("main"));
+        instructions.add(new BrIr(new LabelOp("main")));
         instructions.add(new StopIr());
 
         for (int i = 0; i < funcDefs.size(); i++) {

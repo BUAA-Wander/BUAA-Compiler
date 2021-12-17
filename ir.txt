@@ -1,43 +1,23 @@
-MovImm 0 #0
-Br main
+MovImm ir.utils.Immediate@36baf30c #0
+Br ir.utils.LabelOp@7a81197d
 Stop
-InsertLabel main
-MovImm 1 #3
+InsertLabel ir.utils.LabelOp@5ca881b5
+MovImm ir.utils.Immediate@24d46ca6 #3
 Mov #3 #2
 Mov #2 #1
-Mov #1 @a@local@0@0
-MovImm 2 #6
+Mov #1 ir.utils.Variable@4517d9a3
+MovImm ir.utils.Immediate@372f7a8d #6
 Mov #6 #5
 Mov #5 #4
-Mov #4 @a@local@4@4
-Mov #0 #9
-MovImm 1 #13
-Mov #13 #12
-Mov #12 #11
-MovImm 4 #10
-MovImm 0 #14
-Mul #10 #11 #11
-LoadArrayValue #14 #11 #11
-Mov #11 #8
+Mov #4 ir.utils.Variable@2f92e0f4
+Mov ir.utils.Variable@28a418fc #8
 Mov #8 #7
-Mov #7 @b@local@32@0
-Mov #0 #17
-MovImm 0 #21
-Mov #21 #20
-Mov #20 #19
-MovImm 4 #18
-MovImm 0 #22
-Mul #18 #19 #19
-LoadArrayValue #22 #19 #19
-Mov #19 #16
-Mov #16 #15
-Mov #15 @b@local@36@4
-MovImm 2 #25
-Mov #25 #24
-Mov #24 #23
-Mov #23 @b@local@40@8
-MovImm 0 #28
-Mov #28 #27
-Mov #27 #26
-PassReturnValue #26
+Mov ir.utils.Variable@5305068a #9
+Add #7 #9 #7
+WriteInt #7
+WriteChar ir.utils.StringOp@1f32e575
+MovImm ir.utils.Immediate@279f2327 #12
+Mov #12 #11
+Mov #11 #10
+PassReturnValue #10
 Return

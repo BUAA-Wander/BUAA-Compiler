@@ -3,6 +3,8 @@ package treeNode;
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
 import ir.MovIr;
+import ir.utils.Operand;
+import ir.utils.Variable;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
@@ -116,13 +118,13 @@ public class ConstDef extends TreeNode {
         if (level == 0) {
             GlobalSymbolTable.insert(level, ident.getName(), SymbolType.VAR, new ConstBTypeSymbol(getLineNumber(),
                     ident.getName(), value), addr, 4);
-            String id = constInitVal.generateIr(level, instructions);
-            instructions.add(new MovIr(id, "@" + ident.getName() + "@global" +"@" + addr));
+            Operand id = constInitVal.generateIr(level, instructions);
+            instructions.add(new MovIr(id, new Variable(ident.getName(), addr, true)));
         } else {
             LocalSymbolTable.insert(level, ident.getName(), SymbolType.VAR, new ConstBTypeSymbol(getLineNumber(),
                     ident.getName(), value), addr, 4);
-            String id = constInitVal.generateIr(level, instructions);
-            instructions.add(new MovIr(id, "@" + ident.getName() + "@local" +"@" + addr));
+            Operand id = constInitVal.generateIr(level, instructions);
+            instructions.add(new MovIr(id, new Variable(ident.getName(), addr, false)));
         }
         return instructions;
     }

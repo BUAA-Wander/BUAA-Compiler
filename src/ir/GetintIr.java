@@ -1,5 +1,6 @@
 package ir;
 
+import ir.utils.Operand;
 import mips.Add;
 import mips.Addi;
 import mips.MipsCode;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GetintIr extends IntermediateInstruction {
-    public GetintIr(String readIdx) {
+    public GetintIr(Operand readIdx) {
         super(readIdx);
     }
 
@@ -24,11 +25,9 @@ public class GetintIr extends IntermediateInstruction {
         mipsCodes.add(new Addi("$0", "$v0", 5));
         mipsCodes.add(new Syscall());
 
-        String op = getRes();
-        SymbolTableItem item = getItemFromSymbolTable(op);
-        SymbolTableType type = getOperandSymbolTable(op);
+        Operand op = getRes();
 
-        mipsCodes.addAll(save(item, type, "$v0"));
+        mipsCodes.addAll(op.saveValue("$v0"));
         return mipsCodes;
     }
 }

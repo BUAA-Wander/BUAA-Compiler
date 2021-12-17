@@ -1,5 +1,7 @@
 package ir;
 
+import ir.utils.LabelOp;
+import ir.utils.Operand;
 import mips.Addi;
 import mips.Jal;
 import mips.MipsCode;
@@ -10,11 +12,11 @@ import java.util.List;
 
 public class BrIr extends IntermediateInstruction {
     private int offset;
-    public BrIr(String label) {
+    public BrIr(Operand label) {
         super(label);
     }
 
-    public BrIr(String label, int offset) {
+    public BrIr(Operand label, int offset) {
         super(label);
         this.offset = offset;
     }
@@ -32,7 +34,10 @@ public class BrIr extends IntermediateInstruction {
         int off = -4 * LocalSymbolTable.getCurrentLocalSymbolTable().getSize();
 
         mipsCodes.add(new Addi("$sp", "$sp", off + offset));
-        mipsCodes.add(new Jal(getRes()));
+        Operand label = getRes();
+        if (label instanceof LabelOp) {
+            mipsCodes.add(new Jal(((LabelOp) label).getLabelName()));
+        }
         mipsCodes.add(new Addi("$sp", "$sp", -off - offset));
 
         return mipsCodes;

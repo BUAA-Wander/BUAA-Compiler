@@ -2,6 +2,7 @@ package ir.utils;
 
 import mips.Lw;
 import mips.MipsCode;
+import mips.Sw;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ public class Variable extends Operand {
     private boolean isGlobal;
 
     public Variable(String name, int offset, boolean isGlobal) {
+        super();
         this.name = name;
         this.offset = offset;
         this.isGlobal = isGlobal;
@@ -24,6 +26,17 @@ public class Variable extends Operand {
             mipsCodes.add(new Lw("$gp", reg, offset));
         } else {
             mipsCodes.add(new Lw("$sp", reg, -offset));
+        }
+        return mipsCodes;
+    }
+
+    @Override
+    public List<MipsCode> saveValue(String reg) {
+        List<MipsCode> mipsCodes = new ArrayList<>();
+        if (isGlobal) {
+            mipsCodes.add(new Sw("$gp", reg, offset));
+        } else {
+            mipsCodes.add(new Sw("$sp", reg, offset));
         }
         return mipsCodes;
     }
