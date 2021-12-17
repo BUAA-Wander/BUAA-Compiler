@@ -1,17 +1,13 @@
 package treeNode;
 
-import error.Error;
 import ir.BranchIfEqIr;
 import ir.InsertLabelIr;
 import ir.IntermediateInstruction;
 import ir.JumpIr;
 import ir.LabelGenerator;
-import symbol.SymbolTable;
-import symbol.type.Symbol;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class IfStmt extends Stmt {
     private If ifToken;
@@ -40,41 +36,6 @@ public class IfStmt extends Stmt {
 
     public boolean hasElseStmt() {
         return elseStmt != null;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(ifToken.outputAdaptToHomework()).append("\n");
-        builder.append(leftParent.outputAdaptToHomework()).append("\n");
-        builder.append(cond.outputAdaptToHomework()).append("\n");
-        builder.append(rightParent.outputAdaptToHomework()).append("\n");
-        builder.append(stmt.outputAdaptToHomework()).append("\n");
-        if (elseToken != null) {
-            builder.append(elseToken.outputAdaptToHomework()).append("\n");
-            builder.append(elseStmt.outputAdaptToHomework()).append("\n");
-        }
-        builder.append("<Stmt>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        cond.createSymbolTable(level, symbolTable, errors);
-        stmt.createSymbolTable(level, symbolTable, errors);
-        if (hasElseStmt()) {
-            elseStmt.createSymbolTable(level, symbolTable, errors);
-        }
-    }
-
-    public boolean dealWithErrorF(FuncType funcType, List<Error> errors) {
-        return true;
-    }
-
-    public void dealWithErrorM(List<Error> errors, boolean isLoop) {
-        stmt.dealWithErrorM(errors, isLoop);
-        if (elseStmt != null) {
-            elseStmt.dealWithErrorM(errors, isLoop);
-        }
     }
 
     public List<IntermediateInstruction> generateIr(int level) {

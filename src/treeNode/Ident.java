@@ -8,10 +8,6 @@ public class Ident extends TreeNode {
         this.name = name;
     }
 
-    public String outputAdaptToHomework() {
-        return "IDENFR " + name;
-    }
-
     public String getName() {
         return name;
     }

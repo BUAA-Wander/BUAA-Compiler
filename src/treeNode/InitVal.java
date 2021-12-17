@@ -1,14 +1,9 @@
 package treeNode;
 
-import error.Error;
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
 import ir.MovIr;
-import symbol.SymbolTable;
-import symbol.type.Symbol;
-
 import java.util.List;
-import java.util.Map;
 
 public class InitVal extends TreeNode {
     private InitValType type; // ARRAY, SIMPLE
@@ -38,35 +33,6 @@ public class InitVal extends TreeNode {
         arrayInitVal = vals;
         this.commas = commas;
         rightBrace = rb;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        if (type == InitValType.SIMPLE) {
-            builder.append(simpleInitVal.outputAdaptToHomework()).append("\n");
-        } else {
-            builder.append(leftBrace.outputAdaptToHomework()).append("\n");
-            for (int i = 0; i < arrayInitVal.size(); i++) {
-                builder.append(arrayInitVal.get(i).outputAdaptToHomework());
-                if (i + 1 < arrayInitVal.size()) {
-                    builder.append(commas.get(i).outputAdaptToHomework());
-                }
-            }
-            builder.append(rightBrace.outputAdaptToHomework());
-        }
-        builder.append("<InitVal>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable,
-                                  List<Error> errors) {
-        if (type == InitValType.ARRAY) {
-            for (int i = 0; i < arrayInitVal.size(); i++) {
-                arrayInitVal.get(i).createSymbolTable(level, symbolTable, errors);
-            }
-        } else {
-            simpleInitVal.createSymbolTable(level, symbolTable, errors);
-        }
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {

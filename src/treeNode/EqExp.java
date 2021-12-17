@@ -1,17 +1,13 @@
 package treeNode;
 
-import error.Error;
-import ir.AddIr;
 import ir.EqIr;
 import ir.IdGenerator;
 import ir.IntermediateInstruction;
 import ir.MovIr;
 import ir.NeqIr;
-import ir.SubIr;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
-import symbol.SymbolTable;
 import symbol.type.SymbolType;
 import symbol.type.VarBTypeSymbol;
 
@@ -25,26 +21,6 @@ public class EqExp extends TreeNode {
         super(num);
         this.relExps = relExps;
         this.operators = operators;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < relExps.size(); i++) {
-            builder.append(relExps.get(i).outputAdaptToHomework()).append("\n");
-            builder.append("<EqExp>");
-            if (i + 1 < relExps.size()) {
-                builder.append("\n");
-                builder.append(operators.get(i).outputAdaptToHomework()).append("\n");
-            }
-        }
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        for (int i = 0; i < relExps.size(); i++) {
-            relExps.get(i).createSymbolTable(level, symbolTable, errors);
-        }
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {

@@ -1,6 +1,5 @@
 package treeNode;
 
-import error.Error;
 import ir.GeqIr;
 import ir.IdGenerator;
 import ir.IntermediateInstruction;
@@ -25,26 +24,6 @@ public class RelExp extends TreeNode {
         super(num);
         this.addExps = addExps;
         this.operators = operators;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < addExps.size(); i++) {
-            builder.append(addExps.get(i).outputAdaptToHomework()).append("\n");
-            builder.append("<RelExp>");
-            if (i + 1 < addExps.size()) {
-                builder.append("\n");
-                builder.append(operators.get(i).outputAdaptToHomework()).append("\n");
-            }
-        }
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        for (int i = 0; i < addExps.size(); i++) {
-            addExps.get(i).createSymbolTable(level, symbolTable, errors);
-        }
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {

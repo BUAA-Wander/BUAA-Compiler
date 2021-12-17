@@ -1,17 +1,14 @@
 package treeNode;
 
-import error.Error;
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
 import ir.MovIr;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
-import symbol.type.ConstArraySymbol;
 import symbol.type.SymbolType;
 import symbol.type.VarArraySymbol;
 import symbol.type.VarBTypeSymbol;
-import symbol.SymbolTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,62 +42,6 @@ public class VarDef extends TreeNode {
 
     public boolean hasInitVal() {
         return initVal != null;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(ident.outputAdaptToHomework()).append("\n");
-        for (int i = 0; i < leftBracks.size(); i++) {
-            builder.append(leftBracks.get(i).outputAdaptToHomework()).append("\n");
-            builder.append(dimSizes.get(i).outputAdaptToHomework()).append("\n");
-            builder.append(rightBracks.get(i).outputAdaptToHomework()).append("\n");
-        }
-
-        if (hasInitVal()) {
-            builder.append(assignToken.outputAdaptToHomework()).append("\n");
-            builder.append(initVal.outputAdaptToHomework()).append("\n");
-        }
-
-        builder.append("<VarDef>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable,
-                                  List<Error> errors) {
-        if (!dealWithErrorB(level, symbolTable, errors)) {
-            return;
-        }
-
-        if (leftBracks.size() != 0) {
-            // array define
-            int dims = leftBracks.size();
-            symbolTable.insert(level, ident.getName(), SymbolType.VAR,
-                    new VarArraySymbol(getLineNumber()
-                    , ident.getName(), dims, dimSizes));
-        } else {
-            // int define
-            symbolTable.insert(level, ident.getName(), SymbolType.VAR,
-                    new VarBTypeSymbol(getLineNumber(), ident.getName()));
-        }
-
-        if (initVal != null) {
-            if (leftBracks.size() != 0) {
-                for (int i = 0; i < dimSizes.size(); i++) {
-                    dimSizes.get(i).createSymbolTable(level, symbolTable, errors);
-                }
-            } else {
-                initVal.createSymbolTable(level, symbolTable, errors);
-            }
-        }
-    }
-
-    public boolean dealWithErrorB(int level, SymbolTable symbolTable, List<Error> errors) {
-        if (symbolTable.isExistInCurrentLevel(level, ident.getName(),
-                SymbolType.VAR)) {
-            errors.add(new Error(ident.getLineNumber(), "b"));
-            return false;
-        }
-        return true;
     }
 
     private int calcTotalSize(int level) {

@@ -1,6 +1,5 @@
 package treeNode;
 
-import error.Error;
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
 import ir.MovIr;
@@ -32,51 +31,6 @@ public class ConstDef extends TreeNode {
         this.rightBracks = rb;
         this.assignToken = assign;
         this.constInitVal = val;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(ident.outputAdaptToHomework()).append("\n");
-        for (int i = 0; i < leftBracks.size(); i++) {
-            builder.append(leftBracks.get(i).outputAdaptToHomework()).append("\n");
-            builder.append(dimSizes.get(i).outputAdaptToHomework()).append("\n");
-            builder.append(rightBracks.get(i).outputAdaptToHomework()).append("\n");
-        }
-        builder.append(assignToken.outputAdaptToHomework()).append("\n");
-        builder.append(constInitVal.outputAdaptToHomework()).append("\n");
-        builder.append("<ConstDef>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-//        if (!dealWithErrorB(level, symbolTable, errors)) {
-//            return;
-//        }
-
-        if (dimSizes.size() != 0) {
-            for (int i = 0; i < dimSizes.size(); i++) {
-                dimSizes.get(i).createSymbolTable(level, symbolTable, errors);
-            }
-            symbolTable.insert(level, ident.getName(), SymbolType.VAR, new ConstArraySymbol(getLineNumber(), ident.getName()
-                    , dimSizes.size(), dimSizes));
-        } else {
-            symbolTable.insert(level, ident.getName(), SymbolType.VAR, new ConstBTypeSymbol(getLineNumber(),
-                    ident.getName()));
-//            try {
-//                System.out.println(getValue());
-//            } catch (ValueTypeException e) {
-//                e.printStackTrace();
-//            }
-        }
-    }
-
-    public boolean dealWithErrorB(int level, SymbolTable symbolTable, List<Error> errors) {
-        if (symbolTable.isExistInCurrentLevel(level, ident.getName(), SymbolType.VAR)) {
-            errors.add(new Error(ident.getLineNumber(), "b"));
-            return false;
-        }
-        return true;
     }
 
     public int getValue(int level) throws ValueTypeException {

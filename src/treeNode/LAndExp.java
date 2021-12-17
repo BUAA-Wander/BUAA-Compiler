@@ -1,21 +1,16 @@
 package treeNode;
 
-import error.Error;
 import ir.AndIr;
 import ir.IdGenerator;
 import ir.IntermediateInstruction;
 import ir.MovIr;
-import ir.OrIr;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
-import symbol.SymbolTable;
-import symbol.type.Symbol;
 import symbol.type.SymbolType;
 import symbol.type.VarBTypeSymbol;
 
 import java.util.List;
-import java.util.Map;
 
 public class LAndExp extends TreeNode {
     private List<EqExp> eqExps;
@@ -25,25 +20,6 @@ public class LAndExp extends TreeNode {
         super(num);
         this.eqExps = eqExps;
         this.operators = operators;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < eqExps.size(); i++) {
-            builder.append(eqExps.get(i).outputAdaptToHomework()).append("\n");
-            if (i + 1 < eqExps.size()) {
-                builder.append(operators.get(i).outputAdaptToHomework()).append("\n");
-            }
-        }
-        builder.append("<LAndExp>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        for (int i = 0; i < eqExps.size(); i++) {
-            eqExps.get(i).createSymbolTable(level, symbolTable, errors);
-        }
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {

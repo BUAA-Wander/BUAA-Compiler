@@ -1,10 +1,8 @@
 package treeNode;
 
-import error.Error;
 import ir.IntermediateInstruction;
 import symbol.AddressPtr;
 import symbol.LocalSymbolTable;
-import symbol.SymbolTable;
 import symbol.type.FParamArraySymbol;
 import symbol.type.ParamType;
 import symbol.type.SymbolType;
@@ -29,37 +27,6 @@ public class FuncFParam extends TreeNode {
         this.lastDimSize = lastDimSize;
     }
 
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("INTTK int\n");
-        builder.append(ident.outputAdaptToHomework()).append("\n");
-        for (int i = 0; i < leftBracks.size(); i++) {
-            builder.append(leftBracks.get(i).outputAdaptToHomework()).append("\n");
-            if (i == leftBracks.size() - 1) {
-                if (lastDimSize != null) {
-                    builder.append(lastDimSize.outputAdaptToHomework()).append("\n");
-                }
-            }
-            builder.append(rightBracks.get(i).outputAdaptToHomework()).append("\n");
-        }
-        builder.append("<FuncFParam>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        if (!dealWithErrorB(level + 1, symbolTable, errors)) {
-            return;
-        }
-
-        if (lastDimSize != null) {
-            lastDimSize.createSymbolTable(level, symbolTable, errors);
-        }
-        symbolTable.insert(level + 1, ident.getName(), SymbolType.VAR,
-                new FParamArraySymbol(getLineNumber(), ident.getName()
-                , lastDimSize, dims));
-    }
-
     public ParamType getParamType() {
         if (dims == 0) {
             return ParamType.INT;
@@ -68,14 +35,6 @@ public class FuncFParam extends TreeNode {
         } else {
             return ParamType.ARRAY_2;
         }
-    }
-
-    public boolean dealWithErrorB(int level, SymbolTable symbolTable, List<Error> errors) {
-        if (symbolTable.isExistInCurrentLevel(level, ident.getName(), SymbolType.VAR)) {
-            errors.add(new Error(ident.getLineNumber(), "b"));
-            return false;
-        }
-        return true;
     }
 
     public List<IntermediateInstruction> generateIr(int level) {

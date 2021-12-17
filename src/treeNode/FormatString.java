@@ -8,10 +8,6 @@ public class FormatString extends TreeNode {
         this.value = value;
     }
 
-    public String outputAdaptToHomework() {
-        return "STRCON " + value;
-    }
-
     public String getValue() {
         return value;
     }

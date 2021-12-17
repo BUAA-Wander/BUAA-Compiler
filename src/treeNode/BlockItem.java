@@ -1,12 +1,8 @@
 package treeNode;
 
-import error.Error;
 import ir.IntermediateInstruction;
-import symbol.SymbolTable;
-import symbol.type.Symbol;
 
 import java.util.List;
-import java.util.Map;
 
 public class BlockItem extends TreeNode {
     private BlockItemType type = null; // DECL, STMT
@@ -23,43 +19,6 @@ public class BlockItem extends TreeNode {
         super(num);
         this.type = type;
         this.stmt = stmt;
-    }
-
-    public String outputAdaptToHomework() {
-        if (type == BlockItemType.STMT) {
-            return stmt.outputAdaptToHomework();
-        } else {
-            return decl.outputAdaptToHomework();
-        }
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        if (type == BlockItemType.DECL) {
-            decl.createSymbolTable(level, symbolTable, errors);
-        } else {
-            stmt.createSymbolTable(level, symbolTable, errors);
-        }
-    }
-
-    public boolean dealWithErrorF(FuncType funcType, List<Error> errors) {
-        if (stmt == null) {
-            return true;
-        }
-        return stmt.dealWithErrorF(funcType, errors);
-    }
-
-    public boolean dealWithErrorG(FuncType funcType, List<Error> errors) {
-        if (stmt == null) {
-            return false;
-        }
-        return stmt.dealWithErrorG(funcType, errors);
-    }
-
-    public void dealWithErrorM(List<Error> errors, boolean isLoop) {
-        if (stmt != null) {
-            stmt.dealWithErrorM(errors, isLoop);
-        }
     }
 
     public int getReturnLineNumber() {

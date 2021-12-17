@@ -8,13 +8,6 @@ public class Num extends TreeNode {
         this.intConst = intConst;
     }
 
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(intConst.outputAdaptToHomework()).append("\n");
-        builder.append("<Number>");
-        return builder.toString();
-    }
-
     public int getValue() {
         return intConst.getValue();
     }

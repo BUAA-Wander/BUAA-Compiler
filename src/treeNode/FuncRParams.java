@@ -1,6 +1,5 @@
 package treeNode;
 
-import error.Error;
 import ir.IntermediateInstruction;
 import ir.PassParamIr;
 import symbol.SymbolTable;
@@ -17,25 +16,6 @@ public class FuncRParams extends TreeNode {
         super(num);
         this.exps = exps;
         this.commas = commas;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < exps.size(); i++) {
-            builder.append(exps.get(i).outputAdaptToHomework()).append("\n");
-            if (i + 1 < exps.size()) {
-                builder.append(commas.get(i).outputAdaptToHomework()).append("\n");
-            }
-        }
-        builder.append("<FuncRParams>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        for (int i = 0; i < exps.size(); i++) {
-            exps.get(i).createSymbolTable(level, symbolTable, errors);
-        }
     }
 
     public int getParamCount() {

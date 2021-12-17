@@ -1,16 +1,11 @@
 package treeNode;
 
-import error.Error;
-import exception.ValueTypeException;
 import ir.IntermediateInstruction;
 import ir.WriteCharIr;
 import ir.WriteIntIr;
-import symbol.SymbolTable;
-import symbol.type.Symbol;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class PrintfStmt extends Stmt {
     private Printf printToken;
@@ -31,56 +26,6 @@ public class PrintfStmt extends Stmt {
         this.exps = exps;
         this.rightParent = rightParent;
         this.semicolon = semicolon;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(printToken.outputAdaptToHomework()).append("\n");
-        builder.append(leftParent.outputAdaptToHomework()).append("\n");
-        builder.append(formatString.outputAdaptToHomework()).append("\n");
-        for (int i = 0; i < commas.size(); i++) {
-            builder.append(commas.get(i).outputAdaptToHomework()).append("\n");
-            builder.append(exps.get(i).outputAdaptToHomework()).append("\n");
-        }
-        builder.append(rightParent.outputAdaptToHomework()).append("\n");
-        builder.append(semicolon.outputAdaptToHomework()).append("\n");
-        builder.append("<Stmt>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        dealWithErrorL(errors);
-
-        if (exps == null) {
-            return;
-        }
-        for (int i = 0; i < exps.size(); i++) {
-            exps.get(i).createSymbolTable(level, symbolTable, errors);
-        }
-    }
-
-    public boolean dealWithErrorF(FuncType funcType, List<Error> errors) {
-        return true;
-    }
-
-    public void dealWithErrorL(List<Error> errors) {
-        int expCount = 0;
-        if (exps != null) {
-            expCount = exps.size();
-        }
-        int formatCharCount = 0;
-        String value = formatString.getValue();
-        for (int i = 0; i < value.length(); i++) {
-            if (value.charAt(i) == '%') {
-                if (i + 1 < value.length() && value.charAt(i + 1) == 'd') {
-                    formatCharCount++;
-                }
-            }
-        }
-        if (formatCharCount != expCount) {
-            errors.add(new Error(printToken.getLineNumber(), "l"));
-        }
     }
 
     public List<IntermediateInstruction> generateIr(int level) {

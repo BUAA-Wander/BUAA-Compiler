@@ -39,29 +39,6 @@ public class LVal extends TreeNode {
         this.rightBracks = rightBracks;
     }
 
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(ident.outputAdaptToHomework()).append("\n");
-        for (int i = 0; i < leftBracks.size(); i++) {
-            builder.append(leftBracks.get(i).outputAdaptToHomework()).append("\n");
-            builder.append(index.get(i).outputAdaptToHomework()).append("\n");
-            builder.append(rightBracks.get(i).outputAdaptToHomework()).append("\n");
-        }
-        builder.append("<LVal>");
-        return builder.toString();
-    }
-
-//    public void createSymbolTable(int level, SymbolTable symbolTable,
-//                                  List<Error> errors) {
-//        if (!dealWithErrorC(symbolTable, errors)) {
-//            return;
-//        }
-//
-//        for (int i = 0; i < index.size(); i++) {
-//            index.get(i).createSymbolTable(level, symbolTable, errors);
-//        }
-//    }
-
     public boolean isConstLVal(SymbolTable symbolTable) {
         return symbolTable.isConstTableItem(ident.getName());
     }
@@ -88,14 +65,6 @@ public class LVal extends TreeNode {
         }
         return ParamType.INT;
     }
-
-//    public boolean dealWithErrorC(SymbolTable symbolTable, List<Error> errors) {
-//        if (!symbolTable.isExist(ident.getName(), SymbolType.VAR)) {
-//            errors.add(new Error(ident.getLineNumber(), "c"));
-//            return false;
-//        }
-//        return true;
-//    }
 
     public int getValue(int level) throws ValueTypeException {
         // const int a[1][2] = {{1, 2}};

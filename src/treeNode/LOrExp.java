@@ -1,6 +1,5 @@
 package treeNode;
 
-import error.Error;
 import ir.IdGenerator;
 import ir.IntermediateInstruction;
 import ir.MovIr;
@@ -8,7 +7,6 @@ import ir.OrIr;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
-import symbol.SymbolTable;
 import symbol.type.SymbolType;
 import symbol.type.VarBTypeSymbol;
 
@@ -22,25 +20,6 @@ public class LOrExp extends TreeNode {
         super(num);
         this.lAndExps = lAndExps;
         this.operators = operators;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < lAndExps.size(); i++) {
-            builder.append(lAndExps.get(i).outputAdaptToHomework()).append("\n");
-            if (i + 1 < lAndExps.size()) {
-                builder.append(operators.get(i).outputAdaptToHomework()).append("\n");
-            }
-        }
-        builder.append("<LOrExp>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        for (int i = 0; i < lAndExps.size(); i++) {
-            lAndExps.get(i).createSymbolTable(level, symbolTable, errors);
-        }
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {

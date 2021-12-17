@@ -1,6 +1,5 @@
 package treeNode;
 
-import error.Error;
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
 import symbol.SymbolTable;
@@ -14,18 +13,6 @@ public class Exp extends TreeNode {
     public Exp(int num, AddExp addExp) {
         super(num);
         this.addExp = addExp;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(addExp.outputAdaptToHomework()).append("\n");
-        builder.append("<Exp>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable,
-                                  List<Error> errors) {
-        addExp.createSymbolTable(level, symbolTable, errors);
     }
 
     public ParamType getParamType(SymbolTable symbolTable) {

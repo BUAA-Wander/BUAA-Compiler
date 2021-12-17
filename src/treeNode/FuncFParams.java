@@ -1,8 +1,6 @@
 package treeNode;
 
-import error.Error;
 import ir.IntermediateInstruction;
-import symbol.SymbolTable;
 import symbol.type.ParamType;
 
 import java.util.ArrayList;
@@ -18,27 +16,8 @@ public class FuncFParams extends TreeNode {
         this.commas = commas;
     }
 
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < funcFParams.size(); i++) {
-            builder.append(funcFParams.get(i).outputAdaptToHomework()).append("\n");
-            if (i + 1 < funcFParams.size()) {
-                builder.append(commas.get(i).outputAdaptToHomework()).append("\n");
-            }
-        }
-        builder.append("<FuncFParams>");
-        return builder.toString();
-    }
-
     public int getParamsCount() {
         return funcFParams.size();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        for (int i = 0; i < funcFParams.size(); i++) {
-            funcFParams.get(i).createSymbolTable(level, symbolTable, errors);
-        }
     }
 
     public List<ParamType> getParamTypes() {

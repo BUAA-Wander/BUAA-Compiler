@@ -4,8 +4,4 @@ public class Const extends TreeNode {
     public Const(int num) {
         super(num);
     }
-
-    public String outputAdaptToHomework() {
-        return "CONSTTK const";
-    }
 }

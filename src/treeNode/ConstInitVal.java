@@ -1,11 +1,8 @@
 package treeNode;
 
-import error.Error;
 import exception.ValueTypeException;
 import ir.IntermediateInstruction;
 import ir.MovIr;
-import symbol.SymbolTable;
-import symbol.type.Symbol;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,35 +35,6 @@ public class ConstInitVal extends TreeNode {
         this.commas = commas;
         this.rightBrace = rb;
         this.simpleConstInitVal = null;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        if (type == ConstInitValType.ARRAY) {
-            builder.append(leftBrace.outputAdaptToHomework()).append("\n");
-            for (int i = 0; i < arrayConstInitVal.size(); i++) {
-                builder.append(arrayConstInitVal.get(i).outputAdaptToHomework()).append("\n");
-                if (i + 1 < arrayConstInitVal.size()) {
-                    builder.append(commas.get(i).outputAdaptToHomework()).append("\n");
-                }
-            }
-            builder.append(rightBrace.outputAdaptToHomework()).append("\n");
-        } else {
-            builder.append(simpleConstInitVal.outputAdaptToHomework()).append("\n");
-        }
-        builder.append("<ConstInitVal>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        if (type == ConstInitValType.ARRAY) {
-            for (int i = 0; i < arrayConstInitVal.size(); i++) {
-                arrayConstInitVal.get(i).createSymbolTable(level, symbolTable, errors);
-            }
-        } else {
-            simpleConstInitVal.createSymbolTable(level, symbolTable, errors);
-        }
     }
 
     public int getValue(int level) throws ValueTypeException {
@@ -150,13 +118,4 @@ public class ConstInitVal extends TreeNode {
             return simpleConstInitVal.generateIr(level, instructions);
         }
     }
-
-//    public List<Integer> getValues() throws ValueTypeException {
-//        if (type == ConstInitValType.ARRAY) {
-//            List<Integer> res = new ArrayList<>();
-//            for (ConstInitVal i : arrayConstInitVal) {
-//                res.add(i.getValue());
-//            }
-//        }
-//    }
 }

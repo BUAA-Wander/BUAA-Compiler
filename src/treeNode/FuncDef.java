@@ -1,8 +1,5 @@
 package treeNode;
 
-import error.Error;
-import ir.BrIr;
-import ir.CallStack;
 import ir.InsertLabelIr;
 import ir.IntermediateInstruction;
 import ir.ReturnIr;
@@ -10,7 +7,6 @@ import symbol.AddressPtr;
 import symbol.FunctionLocalSymbolTables;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
-import symbol.SymbolTable;
 import symbol.type.FuncSymbol;
 import symbol.type.SymbolType;
 
@@ -34,78 +30,6 @@ public class FuncDef extends TreeNode {
         this.funcFParams = funcFParams;
         this.rightParent = rightParent;
         this.block = block;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        if (funcType == FuncType.VOID) {
-            builder.append("VOIDTK void\n");
-        } else {
-            builder.append("INTTK int\n");
-        }
-        builder.append("<FuncType>\n");
-
-        builder.append(ident.outputAdaptToHomework()).append("\n");
-        builder.append(leftParent.outputAdaptToHomework()).append("\n");
-        if (funcFParams != null) {
-            builder.append(funcFParams.outputAdaptToHomework()).append("\n");
-        }
-        builder.append(rightParent.outputAdaptToHomework()).append("\n");
-        builder.append(block.outputAdaptToHomework()).append("\n");
-        builder.append("<FuncDef>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        if (!dealWithErrorB(level, symbolTable, errors)) {
-            return;
-        }
-        dealWithErrorM(errors, false);
-        dealWithErrorF(funcType, errors);
-        dealWithErrorG(funcType, errors);
-
-        if (funcFParams != null) {
-            funcFParams.createSymbolTable(level, symbolTable, errors);
-            symbolTable.insert(level, ident.getName(), SymbolType.FUNC,
-                    new FuncSymbol(getLineNumber(), ident.getName()
-                            , funcFParams.getParamsCount(), funcFParams.getParamTypes(), funcType));
-        } else {
-            symbolTable.insert(level, ident.getName(), SymbolType.FUNC,
-                    new FuncSymbol(getLineNumber(), ident.getName()
-                            , 0, null, funcType));
-        }
-        block.createSymbolTable(level, symbolTable, errors);
-    }
-
-    public boolean dealWithErrorF(FuncType funcType, List<Error> errors) {
-        if (block.dealWithErrorF(funcType, errors)) {
-            return true;
-        }
-        int num = block.getReturnLineNumber();
-        errors.add(new Error(num, "f"));
-        return false;
-    }
-
-    public boolean dealWithErrorG(FuncType funcType, List<Error> errors) {
-        if (block.dealWithErrorG(funcType, errors)) {
-            return true;
-        }
-        int num = block.getLastRBraceLineNumber();
-        errors.add(new Error(num, "g"));
-        return false;
-    }
-
-    public boolean dealWithErrorB(int level, SymbolTable symbolTable, List<Error> errors) {
-        if (symbolTable.isExistInCurrentLevel(level, ident.getName(), SymbolType.FUNC)) {
-            errors.add(new Error(ident.getLineNumber(), "b"));
-            return false;
-        }
-        return true;
-    }
-
-    public void dealWithErrorM(List<Error> errors, boolean isLoop) {
-        block.dealWithErrorM(errors, isLoop);
     }
 
     public List<IntermediateInstruction> generateIr(int level) {

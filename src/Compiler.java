@@ -1,4 +1,4 @@
-import error.Error;
+
 import exception.NoMatchToken;
 import exception.ParseError;
 import exception.ParseOutOfBound;
@@ -18,7 +18,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Compiler {
@@ -72,17 +71,6 @@ public class Compiler {
             }
             pos++;
         }
-    }
-
-    public static void outputError(List<Error> errors) throws IOException {
-        Collections.sort(errors);
-        File file = new File("error.txt");
-        FileWriter writer = new FileWriter(file);
-        for (int i = 0; i < errors.size(); i++) {
-            writer.write(errors.get(i).toString());
-            writer.write("\n");
-        }
-        writer.flush();
     }
 
     public static void outputMips(List<MipsCode> codes) throws IOException {

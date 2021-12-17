@@ -1,6 +1,5 @@
 package treeNode;
 
-import error.Error;
 import exception.ValueTypeException;
 import ir.IdGenerator;
 import ir.IntermediateInstruction;
@@ -43,32 +42,6 @@ public class PrimaryExp extends TreeNode {
         super(number);
         this.type = type;
         this.num = num;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        if (type == PrimaryExpType.EXP) {
-            builder.append(leftParent.outputAdaptToHomework()).append("\n");
-            builder.append(exp.outputAdaptToHomework()).append("\n");
-            builder.append(rightParent.outputAdaptToHomework()).append("\n");
-        } else if (type == PrimaryExpType.LVAL) {
-            builder.append(lVal.outputAdaptToHomework()).append("\n");
-        } else {
-            builder.append(num.outputAdaptToHomework()).append("\n");
-        }
-        builder.append("<PrimaryExp>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable,
-                                  List<Error> errors) {
-        if (type == PrimaryExpType.EXP) {
-            exp.createSymbolTable(level, symbolTable, errors);
-        } else if (type == PrimaryExpType.LVAL) {
-            lVal.createSymbolTable(level, symbolTable, errors);
-        } else {
-            // do nothing
-        }
     }
 
     public ParamType getParamType(SymbolTable symbolTable) {

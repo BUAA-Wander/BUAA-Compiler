@@ -1,12 +1,10 @@
 package treeNode;
 
-import error.Error;
 import ir.BranchIfEqIr;
 import ir.InsertLabelIr;
 import ir.IntermediateInstruction;
 import ir.JumpIr;
 import ir.LabelGenerator;
-import symbol.SymbolTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,27 +24,6 @@ public class WhileStmt extends Stmt {
         this.cond = cond;
         this.rightParent = rightParent;
         this.stmt = stmt;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(whileToken.outputAdaptToHomework()).append("\n");
-        builder.append(leftParent.outputAdaptToHomework()).append("\n");
-        builder.append(cond.outputAdaptToHomework()).append("\n");
-        builder.append(rightParent.outputAdaptToHomework()).append("\n");
-        builder.append(stmt.outputAdaptToHomework()).append("\n");
-        builder.append("<Stmt>");
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable
-            , List<Error> errors) {
-        cond.createSymbolTable(level, symbolTable, errors);
-        stmt.createSymbolTable(level, symbolTable, errors);
-    }
-
-    public void dealWithErrorM(List<Error> errors, boolean isLoop) {
-        stmt.dealWithErrorM(errors, true);
     }
 
     public List<IntermediateInstruction> generateIr(int level) {

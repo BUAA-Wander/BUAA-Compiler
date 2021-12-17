@@ -1,14 +1,11 @@
 package treeNode;
 
-import error.Error;
 import ir.InsertLabelIr;
 import ir.IntermediateInstruction;
-import ir.ReturnIr;
 import symbol.AddressPtr;
 import symbol.FunctionLocalSymbolTables;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
-import symbol.SymbolTable;
 import symbol.type.FuncSymbol;
 import symbol.type.SymbolType;
 
@@ -31,50 +28,6 @@ public class MainFuncDef extends TreeNode {
         this.rightParent = rp;
         this.block = block;
     }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        if (funcType == FuncType.VOID) {
-            builder.append("VOIDTK void\n");
-        } else {
-            builder.append("INTTK int\n");
-        }
-
-        builder.append("MAINTK main\n");
-        builder.append(leftParent.outputAdaptToHomework()).append("\n");
-        builder.append(rightParent.outputAdaptToHomework()).append("\n");
-        builder.append(block.outputAdaptToHomework()).append("\n");
-        builder.append("<MainFuncDef>");
-        return builder.toString();
-    }
-
-//    public void createSymbolTable(int level, SymbolTable symbolTable
-//            , List<Error> errors) {
-//        dealWithErrorG(funcType, errors);
-//        dealWithErrorM(errors, false);
-//
-//        symbolTable.insert(level, "main", SymbolType.FUNC,
-//                new FuncSymbol(getLineNumber(), "main"
-//                , 0, null, FuncType.INT));
-//        try {
-//            block.createSymbolTable(level, symbolTable, errors);
-//        } catch (NullPointerException e) {
-//            System.out.println("fuck");
-//        }
-//    }
-
-//    public boolean dealWithErrorG(FuncType funcType, List<Error> errors) {
-//        if (block.dealWithErrorG(funcType, errors)) {
-//            return true;
-//        }
-//        int num = block.getLastRBraceLineNumber();
-//        errors.add(new Error(num, "g"));
-//        return false;
-//    }
-
-//    public void dealWithErrorM(List<Error> errors, boolean isLoop) {
-//        block.dealWithErrorM(errors, false);
-//    }
 
     public List<IntermediateInstruction> generateIr(int level) {
         GlobalSymbolTable.insert(level, "main", SymbolType.FUNC,

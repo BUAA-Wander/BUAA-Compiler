@@ -8,10 +8,6 @@ public class IntConst extends TreeNode {
         this.value = value;
     }
 
-    public String outputAdaptToHomework() {
-        return "INTCON " + value;
-    }
-
     public int getValue() {
         return Integer.parseInt(value);
     }

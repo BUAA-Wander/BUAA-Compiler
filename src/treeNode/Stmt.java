@@ -1,8 +1,6 @@
 package treeNode;
 
-import error.Error;
 import ir.IntermediateInstruction;
-import symbol.SymbolTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,18 +12,6 @@ public class Stmt extends TreeNode {
     public Stmt(int num, StmtType type) {
         super(num);
         this.type = type;
-    }
-
-    public boolean dealWithErrorF(FuncType funcType, List<Error> errors) {
-        return true;
-    }
-
-    public boolean dealWithErrorG(FuncType funcType, List<Error> errors) {
-        return false;
-    }
-
-    public void dealWithErrorM(List<Error> errors, boolean isLoop) {
-
     }
 
     public int getReturnLineNumber() {

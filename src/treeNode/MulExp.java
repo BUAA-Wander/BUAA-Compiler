@@ -1,6 +1,5 @@
 package treeNode;
 
-import error.Error;
 import exception.ValueTypeException;
 import ir.IdGenerator;
 import ir.IntermediateInstruction;
@@ -26,26 +25,6 @@ public class MulExp extends TreeNode {
         super(num);
         this.unaryExps = unaryExps;
         this.operators = operators;
-    }
-
-    public String outputAdaptToHomework() {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < unaryExps.size(); i++) {
-            builder.append(unaryExps.get(i).outputAdaptToHomework()).append("\n");
-            builder.append("<MulExp>");
-            if (i + 1 < unaryExps.size()) {
-                builder.append("\n");
-                builder.append(operators.get(i).outputAdaptToHomework()).append("\n");
-            }
-        }
-        return builder.toString();
-    }
-
-    public void createSymbolTable(int level, SymbolTable symbolTable,
-                                  List<Error> errors) {
-        for (int i = 0; i < unaryExps.size(); i++) {
-            unaryExps.get(i).createSymbolTable(level, symbolTable, errors);
-        }
     }
 
     public ParamType getParamType(SymbolTable symbolTable) {
