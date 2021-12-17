@@ -1,7 +1,18 @@
-/*cover basis, focus on Decl*/
-int main(){
-	const int b = 1;
-	int c[3] = {998, 244, 353};
-	printf("%d", c[2]);
-	return 0;
+int global_var = 0;
+int func() {
+    global_var = global_var + 1;
+    return 1;
+}
+int main() {
+    if (0 && func()){
+        ;
+    }
+    printf("first: %d\n",global_var);
+
+    if (1 || func()) {
+        ;
+    }
+
+    printf("second: %d\n", global_var);
+    return 0;
 }

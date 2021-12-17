@@ -1,6 +1,7 @@
 package ir;
 
 import ir.utils.Operand;
+import mips.And;
 import mips.MipsCode;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class AndIr extends IntermediateInstruction {
         mipsCodes.addAll(op1.loadToReg(t0));
         mipsCodes.addAll(op2.loadToReg(t1));
         // TODO
+        mipsCodes.add(new And(t0, t1, t2));
         mipsCodes.addAll(op3.saveValue(t2));
 
         return mipsCodes;

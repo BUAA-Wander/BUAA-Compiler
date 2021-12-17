@@ -1,6 +1,5 @@
 package ir.utils;
 
-import com.sun.media.sound.ModelDestination;
 import mips.Lw;
 import mips.MipsCode;
 import mips.Sw;

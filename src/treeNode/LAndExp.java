@@ -1,9 +1,14 @@
 package treeNode;
 
 import ir.AndIr;
+import ir.BranchIfEqIr;
+import ir.BranchIfNotEqIr;
+import ir.InsertLabelIr;
+import ir.LabelGenerator;
 import ir.TmpVarGenerator;
 import ir.IntermediateInstruction;
 import ir.MovIr;
+import ir.utils.LabelOp;
 import ir.utils.Operand;
 import ir.utils.TmpVariable;
 import symbol.AddressPtr;
@@ -26,7 +31,7 @@ public class LAndExp extends TreeNode {
 
     public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
         Operand resId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
-
+        LabelOp label = new LabelOp(LabelGenerator.nextLabel());
         for (int i = 0; i < eqExps.size(); i++) {
             // TODO
             Operand id = eqExps.get(i).generateIr(level, instructions);
@@ -35,7 +40,11 @@ public class LAndExp extends TreeNode {
             } else {
                 instructions.add(new MovIr(id, resId));
             }
+            // 短路求值
+            instructions.add(
+                    new BranchIfEqIr(resId, new TmpVariable("#0", true), label));
         }
+        instructions.add(new InsertLabelIr(label));
         return resId;
     }
 }
