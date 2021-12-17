@@ -5,9 +5,6 @@ import mips.Add;
 import mips.Lw;
 import mips.MipsCode;
 import mips.Sub;
-import symbol.SymbolTableItem;
-import symbol.SymbolTableType;
-
 import java.util.ArrayList;
 import java.util.List;
 

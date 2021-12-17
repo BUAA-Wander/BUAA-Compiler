@@ -2,68 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bb7268e-7126-446a-91c7-6ec883c8c2e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ir/utils/Immediate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ir/utils/LabelOp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ir/utils/StringOp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/AddIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/AddIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/AndIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/AndIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/BrIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/BrIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/BranchIfEqIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/BranchIfEqIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/CallStack.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/DivIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/DivIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/EqIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/EqIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/GeqIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/GeqIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/GetReturnValueIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/GetReturnValueIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/GetintIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/GetintIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/InsertLabelIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/InsertLabelIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/IntermediateInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/IntermediateInstruction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/JumpIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/JumpIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/LargerIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/LargerIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/LeqIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/LeqIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/LessIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/LessIr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ir.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ir.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mips.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mips.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/ir/LoadArrayValueIr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/ir/LoadArrayValueIr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/ir/utils/Variable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/ir/utils/Variable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/WhileStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/WhileStmt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src.rar" beforeDir="false" afterPath="$PROJECT_DIR$/src.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ir/LoadArrayValueIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/LoadArrayValueIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/ModIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/ModIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/MovImmIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/MovImmIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/MovIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/MovIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/MulIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/MulIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/NeqIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/NeqIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/NotIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/NotIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/OrIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/OrIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/PassParamIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/PassParamIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/PassReturnValueIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/PassReturnValueIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/SubIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/SubIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/ToAbsoluteAddrIr.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/WriteCharIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/WriteCharIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/WriteIntIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/WriteIntIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/utils/Operand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/utils/Operand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ir/utils/TmpVariable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/utils/TmpVariable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/utils/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/utils/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/AddExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/AddExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/AssignValueStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/AssignValueStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/CompUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/CompUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ConstDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ConstDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ConstExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ConstExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ConstInitVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ConstInitVal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ContinueStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ContinueStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/EqExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/EqExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Exp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Exp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/FuncDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/FuncDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/FuncRParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/FuncRParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/IfStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/IfStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/InitVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/InitVal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/LAndExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LAndExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/LOrExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LOrExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/LVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LVal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/MainFuncDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/MainFuncDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/MulExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/MulExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/PrimaryExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/PrimaryExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/PrintfStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/PrintfStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ReadValueStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ReadValueStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/RelExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/RelExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ReturnStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ReturnStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/UnaryExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/UnaryExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/VarDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/VarDef.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/WhileStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/WhileStmt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testfile.txt" afterDir="false" />
     </list>
@@ -129,7 +76,7 @@
       <workItem from="1639715615701" duration="4182000" />
       <workItem from="1639720561481" duration="1650000" />
       <workItem from="1639724982616" duration="6772000" />
-      <workItem from="1639742981246" duration="12051000" />
+      <workItem from="1639742981246" duration="13398000" />
     </task>
     <servers />
   </component>
@@ -149,22 +96,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="267" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1639751970288" />
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom" timestamp="1639732227086">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1639756564483">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639732227086" />
-    <state width="1493" height="261" key="GridCell.Tab.0.center" timestamp="1639732227086">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639756564483" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1639756564483">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1639732227086" />
-    <state width="1493" height="261" key="GridCell.Tab.0.left" timestamp="1639732227086">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1639756564483" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1639756564482">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1639732227086" />
-    <state width="1493" height="261" key="GridCell.Tab.0.right" timestamp="1639732227086">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1639756564482" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1639756564483">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="261" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1639732227086" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1639756564483" />
     <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1639732227096">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

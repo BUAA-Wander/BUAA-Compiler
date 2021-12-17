@@ -1,59 +1,831 @@
 addi $t2 $0 0
-sw $gp 0($t2)
-addi $sp $sp -56
+sw $t2 0($gp)
+addi $t2 $0 1
+sw $t2 16($gp)
+lw $t0 16($gp)
+add $t2 $t0 0
+sw $t2 12($gp)
+lw $t0 12($gp)
+add $t2 $t0 0
+sw $t2 8($gp)
+lw $t0 8($gp)
+add $t2 $t0 0
+sw $t2 4($gp)
+addi $t2 $0 3
+sw $t2 36($gp)
+lw $t0 36($gp)
+lw $t1 0($gp)
+add $t2 $t0 $t1
+sw $t2 32($gp)
+lw $t0 32($gp)
+add $t2 $t0 0
+sw $t2 28($gp)
+lw $t0 28($gp)
+add $t2 $t0 0
+sw $t2 24($gp)
+lw $t0 24($gp)
+add $t2 $t0 0
+sw $t2 20($gp)
+addi $t2 $0 8
+sw $t2 52($gp)
+lw $t0 52($gp)
+add $t2 $t0 0
+sw $t2 48($gp)
+lw $t0 48($gp)
+add $t2 $t0 0
+sw $t2 44($gp)
+lw $t0 44($gp)
+add $t2 $t0 0
+sw $t2 40($gp)
+addi $t2 $0 0
+sw $t2 68($gp)
+lw $t0 68($gp)
+add $t2 $t0 0
+sw $t2 64($gp)
+lw $t0 64($gp)
+add $t2 $t0 0
+sw $t2 60($gp)
+addi $t2 $0 2
+sw $t2 76($gp)
+lw $t0 76($gp)
+add $t2 $t0 0
+sw $t2 72($gp)
+lw $t0 60($gp)
+lw $t1 72($gp)
+add $t2 $t0 $t1
+sw $t2 60($gp)
+lw $t0 60($gp)
+add $t2 $t0 0
+sw $t2 56($gp)
+addi $t2 $0 5
+sw $t2 96($gp)
+lw $t0 0($gp)
+lw $t1 96($gp)
+sub $t2 $t0 $t1
+sw $t2 92($gp)
+lw $t0 92($gp)
+add $t2 $t0 0
+sw $t2 88($gp)
+lw $t0 88($gp)
+add $t2 $t0 0
+sw $t2 84($gp)
+lw $t0 84($gp)
+add $t2 $t0 0
+sw $t2 80($gp)
+addi $t2 $0 6
+sw $t2 116($gp)
+lw $t0 116($gp)
+lw $t1 0($gp)
+add $t2 $t0 $t1
+sw $t2 112($gp)
+lw $t0 112($gp)
+add $t2 $t0 0
+sw $t2 108($gp)
+lw $t0 108($gp)
+add $t2 $t0 0
+sw $t2 104($gp)
+lw $t0 104($gp)
+add $t2 $t0 0
+sw $t2 100($gp)
+addi $sp $sp -304
 jal main
-addi $sp $sp 56
+addi $sp $sp 304
 addi $v0 $0 10
 syscall
 main:
+addi $a0 $0 49
+addi $v0 $0 11
+syscall
+addi $a0 $0 57
+addi $v0 $0 11
+syscall
+addi $a0 $0 50
+addi $v0 $0 11
+syscall
+addi $a0 $0 51
+addi $v0 $0 11
+syscall
+addi $a0 $0 49
+addi $v0 $0 11
+syscall
+addi $a0 $0 50
+addi $v0 $0 11
+syscall
+addi $a0 $0 48
+addi $v0 $0 11
+syscall
+addi $a0 $0 52
+addi $v0 $0 11
+syscall
+addi $a0 $0 10
+addi $v0 $0 11
+syscall
 addi $t2 $0 10
-sw $sp -12($t2)
-lw $sp -12($t0)
+sw $t2 -12($sp)
+lw $t0 -12($sp)
 add $t2 $t0 0
-sw $sp -8($t2)
-lw $sp -8($t0)
+sw $t2 -8($sp)
+lw $t0 -8($sp)
 add $t2 $t0 0
-sw $sp -4($t2)
-lw $sp -4($t0)
+sw $t2 -4($sp)
+lw $t0 -4($sp)
 add $t2 $t0 0
 sw $t2 0($sp)
-addi $t2 $0 5
-sw $sp -28($t2)
-lw $sp -28($t0)
-add $t2 $t0 0
-sw $sp -24($t2)
-lw $sp -24($t0)
-add $t2 $t0 0
-sw $sp -20($t2)
-lw $sp -20($t0)
-add $t2 $t0 0
-sw $t2 16($sp)
+label_1:
 lw $t0 0($sp)
 add $t2 $t0 0
-sw $sp -36($t2)
-lw $sp -36($t0)
+sw $t2 -36($sp)
+lw $t0 -36($sp)
 add $t2 $t0 0
-sw $sp -32($t2)
+sw $t2 -32($sp)
+lw $t0 -32($sp)
+add $t2 $t0 0
+sw $t2 -28($sp)
+lw $t0 -28($sp)
+add $t2 $t0 0
+sw $t2 -24($sp)
+lw $t0 -24($sp)
+add $t2 $t0 0
+sw $t2 -20($sp)
+lw $t0 -20($sp)
+add $t2 $t0 0
+sw $t2 -16($sp)
 lw $t0 -16($sp)
+lw $t1 0($gp)
+beq $t0 $t1 label_2
+lw $t0 0($sp)
 add $t2 $t0 0
-sw $sp -40($t2)
-lw $sp -32($t0)
-lw $sp -40($t1)
+sw $t2 -44($sp)
+lw $t0 -44($sp)
+add $t2 $t0 0
+sw $t2 -40($sp)
+addi $t2 $0 1
+sw $t2 -52($sp)
+lw $t0 -52($sp)
+add $t2 $t0 0
+sw $t2 -48($sp)
+lw $t0 -40($sp)
+lw $t1 -48($sp)
+sub $t2 $t0 $t1
+sw $t2 -40($sp)
+lw $t0 -40($sp)
+add $t2 $t0 0
+sw $t2 0($sp)
+lw $t0 0($sp)
+add $t2 $t0 0
+sw $t2 -76($sp)
+lw $t0 -76($sp)
+add $t2 $t0 0
+sw $t2 -72($sp)
+lw $t0 -72($sp)
+add $t2 $t0 0
+sw $t2 -68($sp)
+lw $t0 100($gp)
+add $t2 $t0 0
+sw $t2 -84($sp)
+lw $t0 -84($sp)
+add $t2 $t0 0
+sw $t2 -80($sp)
+lw $t0 -68($sp)
+lw $t1 -80($sp)
+slt $t2 $t0 $t1
+sw $t2 -68($sp)
+lw $t0 -68($sp)
+add $t2 $t0 0
+sw $t2 -64($sp)
+lw $t0 -64($sp)
+add $t2 $t0 0
+sw $t2 -60($sp)
+lw $t0 -60($sp)
+add $t2 $t0 0
+sw $t2 -56($sp)
+lw $t0 -56($sp)
+lw $t1 0($gp)
+beq $t0 $t1 label_4
+j label_1
+addi $a0 $0 67
+addi $v0 $0 11
+syscall
+addi $a0 $0 111
+addi $v0 $0 11
+syscall
+addi $a0 $0 110
+addi $v0 $0 11
+syscall
+addi $a0 $0 116
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 110
+addi $v0 $0 11
+syscall
+addi $a0 $0 117
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 111
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 33
+addi $v0 $0 11
+syscall
+addi $a0 $0 10
+addi $v0 $0 11
+syscall
+j label_3
+label_4:
+label_3:
+lw $t0 0($sp)
+add $t2 $t0 0
+sw $t2 -108($sp)
+lw $t0 -108($sp)
+add $t2 $t0 0
+sw $t2 -104($sp)
+lw $t0 -104($sp)
+add $t2 $t0 0
+sw $t2 -100($sp)
+lw $t0 4($gp)
+add $t2 $t0 0
+sw $t2 -116($sp)
+lw $t0 -116($sp)
+add $t2 $t0 0
+sw $t2 -112($sp)
+lw $t0 -100($sp)
+lw $t1 -112($sp)
+slt $t2 $t0 $t1
+sw $t2 -100($sp)
+lw $t0 -100($sp)
+add $t2 $t0 0
+sw $t2 -96($sp)
+lw $t0 -96($sp)
+add $t2 $t0 0
+sw $t2 -92($sp)
+lw $t0 -92($sp)
+add $t2 $t0 0
+sw $t2 -88($sp)
+lw $t0 -88($sp)
+lw $t1 0($gp)
+beq $t0 $t1 label_6
+j label_2
+addi $a0 $0 66
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 97
+addi $v0 $0 11
+syscall
+addi $a0 $0 107
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 111
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 33
+addi $v0 $0 11
+syscall
+addi $a0 $0 65
+addi $v0 $0 11
+syscall
+addi $a0 $0 110
+addi $v0 $0 11
+syscall
+addi $a0 $0 100
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 60
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 111
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 33
+addi $v0 $0 11
+syscall
+addi $a0 $0 10
+addi $v0 $0 11
+syscall
+j label_5
+label_6:
+label_5:
+lw $t0 0($sp)
+add $t2 $t0 0
+sw $t2 -140($sp)
+lw $t0 -140($sp)
+add $t2 $t0 0
+sw $t2 -136($sp)
+lw $t0 -136($sp)
+add $t2 $t0 0
+sw $t2 -132($sp)
+lw $t0 -132($sp)
+add $t2 $t0 0
+sw $t2 -128($sp)
+lw $t0 20($gp)
+add $t2 $t0 0
+sw $t2 -152($sp)
+lw $t0 -152($sp)
+add $t2 $t0 0
+sw $t2 -148($sp)
+lw $t0 -148($sp)
+add $t2 $t0 0
+sw $t2 -144($sp)
+lw $t0 -128($sp)
+lw $t1 -144($sp)
+seq $t2 $t0 $t1
+sw $t2 -128($sp)
+lw $t0 -128($sp)
+add $t2 $t0 0
+sw $t2 -124($sp)
+lw $t0 -124($sp)
+add $t2 $t0 0
+sw $t2 -120($sp)
+lw $t0 -120($sp)
+lw $t1 0($gp)
+beq $t0 $t1 label_8
+addi $a0 $0 43
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 99
+addi $v0 $0 11
+syscall
+addi $a0 $0 111
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 99
+addi $v0 $0 11
+syscall
+addi $a0 $0 116
+addi $v0 $0 11
+syscall
+addi $a0 $0 33
+addi $v0 $0 11
+syscall
+addi $a0 $0 10
+addi $v0 $0 11
+syscall
+j label_7
+label_8:
+addi $a0 $0 43
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 111
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 33
+addi $v0 $0 11
+syscall
+addi $a0 $0 10
+addi $v0 $0 11
+syscall
+label_7:
+lw $t0 0($sp)
+add $t2 $t0 0
+sw $t2 -176($sp)
+lw $t0 -176($sp)
+add $t2 $t0 0
+sw $t2 -172($sp)
+lw $t0 -172($sp)
+add $t2 $t0 0
+sw $t2 -168($sp)
+lw $t0 -168($sp)
+add $t2 $t0 0
+sw $t2 -164($sp)
+lw $t0 56($gp)
+add $t2 $t0 0
+sw $t2 -188($sp)
+lw $t0 -188($sp)
+add $t2 $t0 0
+sw $t2 -184($sp)
+lw $t0 -184($sp)
+add $t2 $t0 0
+sw $t2 -180($sp)
+lw $t0 -164($sp)
+lw $t1 -180($sp)
+seq $t2 $t0 $t1
+sw $t2 -164($sp)
+lw $t0 -164($sp)
+add $t2 $t0 0
+sw $t2 -160($sp)
+lw $t0 -160($sp)
+add $t2 $t0 0
+sw $t2 -156($sp)
+lw $t0 -156($sp)
+lw $t1 0($gp)
+beq $t0 $t1 label_10
+j label_2
+j label_9
+label_10:
+label_9:
+j label_1
+label_2:
+lw $t0 0($sp)
+add $t2 $t0 0
+sw $t2 -212($sp)
+lw $t0 -212($sp)
+add $t2 $t0 0
+sw $t2 -208($sp)
+lw $t0 -208($sp)
+add $t2 $t0 0
+sw $t2 -204($sp)
+lw $t0 -204($sp)
+add $t2 $t0 0
+sw $t2 -200($sp)
+lw $t0 56($gp)
+add $t2 $t0 0
+sw $t2 -224($sp)
+lw $t0 -224($sp)
+add $t2 $t0 0
+sw $t2 -220($sp)
+lw $t0 -220($sp)
+add $t2 $t0 0
+sw $t2 -216($sp)
+lw $t0 -200($sp)
+lw $t1 -216($sp)
+sne $t2 $t0 $t1
+sw $t2 -200($sp)
+lw $t0 -200($sp)
+add $t2 $t0 0
+sw $t2 -196($sp)
+lw $t0 -196($sp)
+add $t2 $t0 0
+sw $t2 -192($sp)
+lw $t0 -192($sp)
+lw $t1 0($gp)
+beq $t0 $t1 label_12
+lw $t0 0($sp)
+add $t2 $t0 0
+sw $t2 -248($sp)
+lw $t0 -248($sp)
+add $t2 $t0 0
+sw $t2 -244($sp)
+lw $t0 -244($sp)
+add $t2 $t0 0
+sw $t2 -240($sp)
+lw $t0 -240($sp)
+add $t2 $t0 0
+sw $t2 -236($sp)
+addi $t2 $0 0
+sw $t2 -264($sp)
+lw $t0 -264($sp)
+add $t2 $t0 0
+sw $t2 -260($sp)
+lw $t0 -260($sp)
+add $t2 $t0 0
+sw $t2 -256($sp)
+lw $t0 -256($sp)
+add $t2 $t0 0
+sw $t2 -252($sp)
+lw $t0 -236($sp)
+lw $t1 -252($sp)
+seq $t2 $t0 $t1
+sw $t2 -236($sp)
+lw $t0 -236($sp)
+add $t2 $t0 0
+sw $t2 -232($sp)
+lw $t0 -232($sp)
+add $t2 $t0 0
+sw $t2 -228($sp)
+lw $t0 -228($sp)
+lw $t1 0($gp)
+beq $t0 $t1 label_14
+addi $a0 $0 66
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 97
+addi $v0 $0 11
+syscall
+addi $a0 $0 107
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 111
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 33
+addi $v0 $0 11
+syscall
+addi $a0 $0 10
+addi $v0 $0 11
+syscall
+j label_13
+label_14:
+addi $a0 $0 67
+addi $v0 $0 11
+syscall
+addi $a0 $0 111
+addi $v0 $0 11
+syscall
+addi $a0 $0 110
+addi $v0 $0 11
+syscall
+addi $a0 $0 116
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 110
+addi $v0 $0 11
+syscall
+addi $a0 $0 117
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 111
+addi $v0 $0 11
+syscall
+addi $a0 $0 114
+addi $v0 $0 11
+syscall
+addi $a0 $0 33
+addi $v0 $0 11
+syscall
+addi $a0 $0 10
+addi $v0 $0 11
+syscall
+label_13:
+j label_11
+label_12:
+label_11:
+addi $a0 $0 97
+addi $v0 $0 11
+syscall
+addi $a0 $0 49
+addi $v0 $0 11
+syscall
+addi $a0 $0 43
+addi $v0 $0 11
+syscall
+addi $a0 $0 98
+addi $v0 $0 11
+syscall
+addi $a0 $0 49
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+lw $t0 4($gp)
+add $t2 $t0 0
+sw $t2 -272($sp)
+lw $t0 -272($sp)
+add $t2 $t0 0
+sw $t2 -268($sp)
+lw $t0 56($gp)
+add $t2 $t0 0
+sw $t2 -276($sp)
+lw $t0 -268($sp)
+lw $t1 -276($sp)
 add $t2 $t0 $t1
-sw $sp -32($t2)
-lw $sp -32($a0)
+sw $t2 -268($sp)
+lw $a0 -268($sp)
+addi $v0 $0 1
+syscall
+addi $a0 $0 10
+addi $v0 $0 11
+syscall
+addi $a0 $0 97
+addi $v0 $0 11
+syscall
+addi $a0 $0 50
+addi $v0 $0 11
+syscall
+addi $a0 $0 43
+addi $v0 $0 11
+syscall
+addi $a0 $0 98
+addi $v0 $0 11
+syscall
+addi $a0 $0 50
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 105
+addi $v0 $0 11
+syscall
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+lw $t0 20($gp)
+add $t2 $t0 0
+sw $t2 -284($sp)
+lw $t0 -284($sp)
+add $t2 $t0 0
+sw $t2 -280($sp)
+lw $t0 80($gp)
+add $t2 $t0 0
+sw $t2 -288($sp)
+lw $t0 -280($sp)
+lw $t1 -288($sp)
+add $t2 $t0 $t1
+sw $t2 -280($sp)
+lw $a0 -280($sp)
 addi $v0 $0 1
 syscall
 addi $a0 $0 10
 addi $v0 $0 11
 syscall
 addi $t2 $0 0
-sw $sp -52($t2)
-lw $sp -52($t0)
+sw $t2 -300($sp)
+lw $t0 -300($sp)
 add $t2 $t0 0
-sw $sp -48($t2)
-lw $sp -48($t0)
+sw $t2 -296($sp)
+lw $t0 -296($sp)
 add $t2 $t0 0
-sw $sp -44($t2)
-lw $sp -44($v1)
+sw $t2 -292($sp)
+lw $v1 -292($sp)
 jr $31

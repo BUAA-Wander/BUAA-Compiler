@@ -8,7 +8,6 @@ import ir.LabelGenerator;
 import ir.utils.LabelOp;
 import ir.utils.Operand;
 import ir.utils.TmpVariable;
-import ir.utils.Variable;
 
 import java.util.ArrayList;
 import java.util.List;

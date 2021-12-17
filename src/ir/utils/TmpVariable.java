@@ -28,10 +28,10 @@ public class TmpVariable extends Operand {
         SymbolTableItem item;
         if (isGlobal) {
             item = GlobalSymbolTable.getItem(name, SymbolType.VAR);
-            mipsCodes.add(new Lw(reg, "$gp", item.getAddr()));
+            mipsCodes.add(new Lw("$gp", reg, item.getAddr()));
         } else {
             item = LocalSymbolTable.getItem(name, SymbolType.VAR);
-            mipsCodes.add(new Lw(reg, "$sp", -item.getAddr()));
+            mipsCodes.add(new Lw("$sp", reg, -item.getAddr()));
         }
         return mipsCodes;
     }
@@ -42,10 +42,10 @@ public class TmpVariable extends Operand {
         SymbolTableItem item;
         if (isGlobal) {
             item = GlobalSymbolTable.getItem(name, SymbolType.VAR);
-            mipsCodes.add(new Sw(reg, "$gp", item.getAddr()));
+            mipsCodes.add(new Sw("$gp", reg, item.getAddr()));
         } else {
             item = LocalSymbolTable.getItem(name, SymbolType.VAR);
-            mipsCodes.add(new Sw(reg, "$sp", -item.getAddr()));
+            mipsCodes.add(new Sw("$sp", reg, -item.getAddr()));
         }
         return mipsCodes;
     }
