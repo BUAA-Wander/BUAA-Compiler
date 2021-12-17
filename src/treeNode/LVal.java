@@ -2,7 +2,7 @@ package treeNode;
 
 import exception.ValueTypeException;
 import ir.AddIr;
-import ir.IdGenerator;
+import ir.TmpVarGenerator;
 import ir.IntermediateInstruction;
 import ir.LoadArrayValueIr;
 import ir.MovImmIr;
@@ -205,34 +205,10 @@ public class LVal extends TreeNode {
                     throw new ValueTypeException();
                 }
 
-                String offsetId = IdGenerator.nextId();
-                if (level == 0) {
-                    int addr = AddressPtr.getGlobalAddr();
-                    AddressPtr.addGlobalAddr(4);
-                    GlobalSymbolTable.insert(level, offsetId, SymbolType.VAR,
-                            new VarBTypeSymbol(-1, offsetId), addr, 4);
-                } else {
-                    int addr = AddressPtr.getLocalAddr();
-                    AddressPtr.addLocalAddr(4);
-                    LocalSymbolTable.insert(level, offsetId, SymbolType.VAR,
-                            new VarBTypeSymbol(-1, offsetId), addr, 4);
-                    // move sp only when we call function or call back!
-                }
+                String offsetId = TmpVarGenerator.nextTmpVar(level);
                 instructions.add(new MovIr("#0", offsetId));
 
-                String base = IdGenerator.nextId();
-                if (level == 0) {
-                    int addr = AddressPtr.getGlobalAddr();
-                    AddressPtr.addGlobalAddr(4);
-                    GlobalSymbolTable.insert(level, base, SymbolType.VAR,
-                            new VarBTypeSymbol(-1, base), addr, 4);
-                } else {
-                    int addr = AddressPtr.getLocalAddr();
-                    AddressPtr.addLocalAddr(4);
-                    LocalSymbolTable.insert(level, base, SymbolType.VAR,
-                            new VarBTypeSymbol(-1, base), addr, 4);
-                    // move sp only when we call function or call back!
-                }
+                String base = TmpVarGenerator.nextTmpVar(level);
 
                 // calculate index!!!!!
                 if (index.size() == 1) {
@@ -245,19 +221,7 @@ public class LVal extends TreeNode {
                     instructions.add(new AddIr(tmp0, tmp1, offsetId));
                 }
 
-                String headAddr = IdGenerator.nextId();
-                if (level == 0) {
-                    int addr = AddressPtr.getGlobalAddr();
-                    AddressPtr.addGlobalAddr(4);
-                    GlobalSymbolTable.insert(level, headAddr, SymbolType.VAR,
-                            new VarBTypeSymbol(-1, headAddr), addr, 4);
-                } else {
-                    int addr = AddressPtr.getLocalAddr();
-                    AddressPtr.addLocalAddr(4);
-                    LocalSymbolTable.insert(level, headAddr, SymbolType.VAR,
-                            new VarBTypeSymbol(-1, headAddr), addr, 4);
-                    // move sp only when we call function or call back!
-                }
+                String headAddr = TmpVarGenerator.nextTmpVar(level);
 
                 // base is not the headAddr of array!!! base = 4
                 instructions.add(new MovImmIr(4, base));

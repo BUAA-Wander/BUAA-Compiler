@@ -2,73 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bb7268e-7126-446a-91c7-6ec883c8c2e2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ir/TmpVarGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/error/Error.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/ir/IdGenerator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/AddExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/AddExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/ConstDef.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/ConstDef.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/EqExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/EqExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LAndExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LAndExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LOrExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LOrExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LVal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LVal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/MulExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/MulExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/PrimaryExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/PrimaryExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/RelExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/RelExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/UnaryExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/UnaryExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ir/IdGenerator.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/AddExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/AddExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Assign.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Assign.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/AssignValueStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/AssignValueStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/BType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/BType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Block.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/BlockItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/BlockItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/BlockStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/BlockStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Break.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Break.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/BreakStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/BreakStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Comma.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Comma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/CompUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/CompUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Cond.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Cond.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Const.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ConstDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ConstDecl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/ConstDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ConstDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ConstExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ConstExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ConstInitVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ConstInitVal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Continue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Continue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ContinueStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ContinueStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Decl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Decl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Else.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Else.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/EqExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/EqExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Exp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Exp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ExpStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ExpStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/FormatString.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/FormatString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/FuncDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/FuncDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/FuncFParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/FuncFParam.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/FuncFParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/FuncFParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/FuncRParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/FuncRParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Getint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Getint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Ident.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Ident.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/If.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/If.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/IfStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/IfStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/InitVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/InitVal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/IntConst.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/IntConst.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/LAndExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LAndExp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/LOrExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LOrExp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/LVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LVal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/LeftBrace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LeftBrace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/LeftBrack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LeftBrack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/LeftParent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LeftParent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/MainFuncDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/MainFuncDef.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/MulExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/MulExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Num.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Num.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Operator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Operator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/PrimaryExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/PrimaryExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Printf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Printf.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/PrintfStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/PrintfStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ReadValueStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ReadValueStmt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/RelExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/RelExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Return.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Return.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/ReturnStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ReturnStmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/RightBrace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/RightBrace.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/RightBrack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/RightBrack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/RightParent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/RightParent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Semicolon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Semicolon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/Stmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Stmt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/TreeNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/TreeNode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/UnaryExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/UnaryExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/UnaryOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/UnaryOp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/VarDecl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/VarDecl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/VarDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/VarDef.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/While.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/While.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/WhileStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/WhileStmt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +45,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../OOguidebook/OO.xml" />
@@ -94,6 +53,20 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="org.infernus.idea.checkstyle.CheckStyleConfigurable" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Compiler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Compiler" />
+      <module name="complier_refactor" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Compiler" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -106,7 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1639713350063</updated>
       <workItem from="1639713355587" duration="177000" />
-      <workItem from="1639715615701" duration="1015000" />
+      <workItem from="1639715615701" duration="3749000" />
     </task>
     <servers />
   </component>
@@ -114,6 +87,22 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1639719266356">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639719266356" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1639719266356">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1639719266356" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1639719266356">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1639719266356" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1639719266356">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1639719266356" />
     <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1639715615650">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

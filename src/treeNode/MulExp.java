@@ -1,7 +1,7 @@
 package treeNode;
 
 import exception.ValueTypeException;
-import ir.IdGenerator;
+import ir.TmpVarGenerator;
 import ir.IntermediateInstruction;
 import ir.MovIr;
 import ir.MulIr;
@@ -51,20 +51,7 @@ public class MulExp extends TreeNode {
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {
-        String resId = IdGenerator.nextId();
-
-        // insert tmp variable into symbolTable
-        if (level == 0) {
-            int addr = AddressPtr.getGlobalAddr();
-            AddressPtr.addGlobalAddr(4);
-            GlobalSymbolTable.insert(level, resId, SymbolType.VAR,
-                    new VarBTypeSymbol(-1, resId), addr, 4);
-        } else {
-            int addr = AddressPtr.getLocalAddr();
-            AddressPtr.addLocalAddr(4);
-            LocalSymbolTable.insert(level, resId, SymbolType.VAR,
-                    new VarBTypeSymbol(-1, resId), addr, 4);
-        }
+        String resId = TmpVarGenerator.nextTmpVar(level);
 
         for (int i = 0; i < unaryExps.size(); i++) {
             String id = unaryExps.get(i).generateIr(level, instructions);
@@ -84,20 +71,7 @@ public class MulExp extends TreeNode {
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions, int used) {
-        String resId = IdGenerator.nextId();
-
-        // insert tmp variable into symbolTable
-        if (level == 0) {
-            int addr = AddressPtr.getGlobalAddr();
-            AddressPtr.addGlobalAddr(4);
-            GlobalSymbolTable.insert(level, resId, SymbolType.VAR,
-                    new VarBTypeSymbol(-1, resId), addr, 4);
-        } else {
-            int addr = AddressPtr.getLocalAddr();
-            AddressPtr.addLocalAddr(4);
-            LocalSymbolTable.insert(level, resId, SymbolType.VAR,
-                    new VarBTypeSymbol(-1, resId), addr, 4);
-        }
+        String resId = TmpVarGenerator.nextTmpVar(level);
 
         for (int i = 0; i < unaryExps.size(); i++) {
             String id = unaryExps.get(i).generateIr(level, instructions, used);

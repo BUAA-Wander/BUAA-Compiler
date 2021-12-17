@@ -1,7 +1,7 @@
 package treeNode;
 
 import exception.ValueTypeException;
-import ir.IdGenerator;
+import ir.TmpVarGenerator;
 import ir.IntermediateInstruction;
 import ir.MovImmIr;
 import symbol.AddressPtr;
@@ -66,20 +66,7 @@ public class PrimaryExp extends TreeNode {
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {
         if (type == PrimaryExpType.NUMBER) {
-            String id = IdGenerator.nextId();
-
-            // insert tmp variable into symbolTable
-            if (level == 0) {
-                int addr = AddressPtr.getGlobalAddr();
-                AddressPtr.addGlobalAddr(4);
-                GlobalSymbolTable.insert(level, id, SymbolType.VAR,
-                        new VarBTypeSymbol(-1, id), addr, 4);
-            } else {
-                int addr = AddressPtr.getLocalAddr();
-                AddressPtr.addLocalAddr(4);
-                LocalSymbolTable.insert(level, id, SymbolType.VAR,
-                        new VarBTypeSymbol(-1, id), addr, 4);
-            }
+            String id = TmpVarGenerator.nextTmpVar(level);
 
             int value = num.getValue();
             instructions.add(new MovImmIr(value, id));

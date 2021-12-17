@@ -6,7 +6,6 @@ import ir.MovIr;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
-import symbol.SymbolTable;
 import symbol.type.ConstArraySymbol;
 import symbol.type.ConstBTypeSymbol;
 import symbol.type.SymbolType;

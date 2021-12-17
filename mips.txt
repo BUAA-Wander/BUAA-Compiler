@@ -1,0 +1,8 @@
+addi $t2 $0 0
+sw $t2 0($gp)
+addi $sp $sp -1276
+jal main
+addi $sp $sp 1276
+addi $v0 $0 10
+syscall
+aa:

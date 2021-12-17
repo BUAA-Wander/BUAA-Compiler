@@ -4,7 +4,7 @@ import exception.ValueTypeException;
 import ir.AddIr;
 import ir.BrIr;
 import ir.GetReturnValueIr;
-import ir.IdGenerator;
+import ir.TmpVarGenerator;
 import ir.IntermediateInstruction;
 import ir.LoadContextIr;
 import ir.NotIr;
@@ -105,7 +105,7 @@ public class UnaryExp extends TreeNode {
                 // then pass parameter
                 // after that, save context in the unit we prepared before
 
-                String raId = IdGenerator.nextId(); // save ra
+                String raId = TmpVarGenerator.nextId();
                 int addr = AddressPtr.getLocalAddr();
                 AddressPtr.addLocalAddr(4);
                 LocalSymbolTable.insert(level, raId, SymbolType.VAR,
@@ -131,20 +131,7 @@ public class UnaryExp extends TreeNode {
                 Symbol symbol = item.getSymbol();
                 if (symbol instanceof FuncSymbol) {
                     if (((FuncSymbol) symbol).getReturnType().equals(FuncType.INT)) {
-                        String resId = IdGenerator.nextId();
-                        if (level == 0) {
-                            addr = AddressPtr.getGlobalAddr();
-                            AddressPtr.addGlobalAddr(4);
-                            GlobalSymbolTable.insert(
-                                    0, resId, SymbolType.VAR, new VarBTypeSymbol(-1, resId),
-                                    addr, 4);
-                        } else {
-                            addr = AddressPtr.getLocalAddr();
-                            AddressPtr.addLocalAddr(4);
-                            LocalSymbolTable.insert(
-                                    0, resId, SymbolType.VAR, new VarBTypeSymbol(-1, resId),
-                                    addr, 4);
-                        }
+                        String resId = TmpVarGenerator.nextTmpVar(level);
                         instructions.add(new GetReturnValueIr(resId));
                         return resId;
                     }
@@ -156,20 +143,7 @@ public class UnaryExp extends TreeNode {
                 return "invalid_mem_addr";
             }
         } else {
-            String id = IdGenerator.nextId();
-
-            // insert tmp variable into symbolTable
-            if (level != 0) {
-                int addr = AddressPtr.getLocalAddr();
-                AddressPtr.addLocalAddr(4);
-                LocalSymbolTable.insert(level, id, SymbolType.VAR,
-                        new VarBTypeSymbol(-1, id), addr, 4);
-            } else {
-                int addr = AddressPtr.getGlobalAddr();
-                AddressPtr.addGlobalAddr(4);
-                GlobalSymbolTable.insert(level, id, SymbolType.VAR,
-                        new VarBTypeSymbol(-1, id), addr, 4);
-            }
+            String id = TmpVarGenerator.nextTmpVar(level);
 
             if (unaryOp.getType().equals(UnaryOpType.NOT)) {
                 instructions.add(new NotIr(unaryExp.generateIr(level, instructions), id));
@@ -193,7 +167,7 @@ public class UnaryExp extends TreeNode {
                 // then pass parameter
                 // after that, save context in the unit we prepared before
 
-                String raId = IdGenerator.nextId(); // save ra
+                String raId = TmpVarGenerator.nextId(); // save ra
                 int addr = AddressPtr.getLocalAddr();
                 AddressPtr.addLocalAddr(4);
                 LocalSymbolTable.insert(level, raId, SymbolType.VAR,
@@ -219,20 +193,7 @@ public class UnaryExp extends TreeNode {
                 Symbol symbol = item.getSymbol();
                 if (symbol instanceof FuncSymbol) {
                     if (((FuncSymbol) symbol).getReturnType().equals(FuncType.INT)) {
-                        String resId = IdGenerator.nextId();
-                        if (level == 0) {
-                            addr = AddressPtr.getGlobalAddr();
-                            AddressPtr.addGlobalAddr(4);
-                            GlobalSymbolTable.insert(
-                                    0, resId, SymbolType.VAR, new VarBTypeSymbol(-1, resId),
-                                    addr, 4);
-                        } else {
-                            addr = AddressPtr.getLocalAddr();
-                            AddressPtr.addLocalAddr(4);
-                            LocalSymbolTable.insert(
-                                    0, resId, SymbolType.VAR, new VarBTypeSymbol(-1, resId),
-                                    addr, 4);
-                        }
+                        String resId = TmpVarGenerator.nextTmpVar(level);
                         instructions.add(new GetReturnValueIr(resId));
                         return resId;
                     }

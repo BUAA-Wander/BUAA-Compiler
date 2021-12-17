@@ -1,7 +1,7 @@
 package treeNode;
 
 import ir.GeqIr;
-import ir.IdGenerator;
+import ir.TmpVarGenerator;
 import ir.IntermediateInstruction;
 import ir.LargerIr;
 import ir.LeqIr;
@@ -10,7 +10,6 @@ import ir.MovIr;
 import symbol.AddressPtr;
 import symbol.GlobalSymbolTable;
 import symbol.LocalSymbolTable;
-import symbol.SymbolTable;
 import symbol.type.SymbolType;
 import symbol.type.VarBTypeSymbol;
 
@@ -27,21 +26,7 @@ public class RelExp extends TreeNode {
     }
 
     public String generateIr(int level, List<IntermediateInstruction> instructions) {
-        String resId = IdGenerator.nextId();
-
-        // insert tmp variable into symbolTable
-        if (level == 0) {
-            int addr = AddressPtr.getGlobalAddr();
-            AddressPtr.addGlobalAddr(4);
-            GlobalSymbolTable.insert(level, resId, SymbolType.VAR,
-                    new VarBTypeSymbol(-1, resId), addr, 4);
-        } else {
-            int addr = AddressPtr.getLocalAddr();
-            AddressPtr.addLocalAddr(4);
-            LocalSymbolTable.insert(level, resId, SymbolType.VAR,
-                    new VarBTypeSymbol(-1, resId), addr, 4);
-            // move sp only when we call function or call back!
-        }
+        String resId = TmpVarGenerator.nextTmpVar(level);
 
         for (int i = 0; i < addExps.size(); i++) {
             // TODO
