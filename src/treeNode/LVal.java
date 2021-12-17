@@ -141,6 +141,7 @@ public class LVal extends TreeNode {
                     return "@" + item.getName() + "@global@" + item.getAddr();
                 } else {
                     System.out.println("TODO: implement array param pass");
+
                     SymbolTableItem item;
                     if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
                         item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
