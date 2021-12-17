@@ -2,6 +2,7 @@ package treeNode;
 
 import exception.ValueTypeException;
 import ir.AddIr;
+import ir.OffsetIr;
 import ir.TmpVarGenerator;
 import ir.IntermediateInstruction;
 import ir.LoadArrayValueIr;
@@ -32,6 +33,7 @@ public class LVal extends TreeNode {
     private List<LeftBrack> leftBracks;
     private List<Exp> index;
     private List<RightBrack> rightBracks;
+    private boolean analyseMode;
 
     public LVal(int num, Ident ident, List<LeftBrack> leftBracks, List<Exp> index, List<RightBrack> rightBracks) {
         super(num);
@@ -39,6 +41,10 @@ public class LVal extends TreeNode {
         this.leftBracks = leftBracks;
         this.index = index;
         this.rightBracks = rightBracks;
+    }
+
+    public void setAnalyseMode(boolean flag) {
+        analyseMode = flag;
     }
 
     public boolean isConstLVal(SymbolTable symbolTable) {
@@ -131,6 +137,172 @@ public class LVal extends TreeNode {
         return value;
     }
 
+    // 判断此左值是不是指针，由此判断调用该左值的代码生成方法得到的是一个已有的变量还是指向已有变量的指针
+    // a[1][2] 这种数组元素也算是指针，要返回a[1][2]的地址，然后赋值的时候往存储的这个地址写值
+    public boolean isPointer(int level) {
+        try {
+            if (leftBracks.size() == 0) {
+                // TODO why next TODO
+                // TODO delete expired variable!!!!!!!!!!!!
+                if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.VAR)) {
+                    return false;
+                } else {
+                    return !GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.VAR);
+                }
+            } else {
+                return true;
+//                SymbolTableItem item;
+//                if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
+//                    item = LocalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+//                } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
+//                    item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+//                } else {
+//                    throw new ValueTypeException();
+//                }
+//
+//                Symbol symbol = item.getSymbol();
+//                List<ConstExp> dimSizes;
+//                if (symbol instanceof ConstArraySymbol) {
+//                    dimSizes = ((ConstArraySymbol) symbol).getDimSizes();
+//                } else if (symbol instanceof VarArraySymbol) {
+//                    dimSizes = ((VarArraySymbol) symbol).getDimSizes();
+//                } else {
+//                    throw new ValueTypeException();
+//                }
+//
+//                if (dimSizes.size() == leftBracks.size()) {
+//                    return false;
+//                } else if (dimSizes.size() < leftBracks.size()) {
+//                    return true;
+//                } else {
+//                    System.out.println("Neither a var nor a pointer");
+//                    throw new ValueTypeException();
+//                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    private Operand analyseRightMode(int level, List<IntermediateInstruction> instructions)
+            throws ValueTypeException {
+        // return a value
+        SymbolTableItem item;
+        int scope;
+        if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
+            item = LocalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+            scope = 1;
+        } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
+            item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+            scope = 0;
+        } else {
+            throw new ValueTypeException();
+        }
+
+        Symbol symbol = item.getSymbol();
+        List<ConstExp> dimSizes;
+        if (symbol instanceof ConstArraySymbol) {
+            dimSizes = ((ConstArraySymbol) symbol).getDimSizes();
+        } else if (symbol instanceof VarArraySymbol) {
+            dimSizes = ((VarArraySymbol) symbol).getDimSizes();
+        } else {
+            throw new ValueTypeException();
+        }
+
+        Operand offsetId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        instructions.add(new MovIr(new TmpVariable("#0", true), offsetId));
+
+        Operand base = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+
+        // calculate index!!!!!
+        if (index.size() == 1) {
+            offsetId = index.get(0).generateIr(level, instructions);
+        } else {
+            Operand tmp0 = index.get(0).generateIr(level, instructions);
+            Operand tmp1 = index.get(1).generateIr(level, instructions);
+            Operand size =  dimSizes.get(1).generateIr(level, instructions);
+            instructions.add(new MulIr(tmp0, size, tmp0));
+            instructions.add(new AddIr(tmp0, tmp1, offsetId));
+        }
+
+        Operand headAddr = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+
+        // base is not the headAddr of array!!! base = 4
+        instructions.add(new MovImmIr(new Immediate(4), base));
+        instructions.add(new MovImmIr(new Immediate(item.getAddr()), headAddr));
+        instructions.add(new MulIr(base, offsetId, offsetId));
+
+        // offsetId is offset to array head
+        // TODO: find value by offset and array head
+        if (level == 0) {
+            instructions.add(new LoadArrayValueIr(headAddr, offsetId, offsetId, scope));
+        } else {
+            instructions.add(new LoadArrayValueIr(headAddr, offsetId, offsetId, scope));
+        }
+
+        return offsetId;
+    }
+
+    private Operand analyseLeftMode(int level, List<IntermediateInstruction> instructions)
+            throws ValueTypeException {
+        SymbolTableItem item;
+        int scope;
+        if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
+            item = LocalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+            scope = 1;
+        } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
+            item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+            scope = 0;
+        } else {
+            throw new ValueTypeException();
+        }
+
+        Symbol symbol = item.getSymbol();
+        List<ConstExp> dimSizes;
+        if (symbol instanceof ConstArraySymbol) {
+            dimSizes = ((ConstArraySymbol) symbol).getDimSizes();
+        } else if (symbol instanceof VarArraySymbol) {
+            dimSizes = ((VarArraySymbol) symbol).getDimSizes();
+        } else {
+            throw new ValueTypeException();
+        }
+
+        Operand offsetId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        instructions.add(new MovIr(new TmpVariable("#0", true), offsetId));
+
+        Operand base = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+
+        // calculate index!!!!!
+        if (index.size() == 1) {
+            offsetId = index.get(0).generateIr(level, instructions);
+        } else {
+            Operand tmp0 = index.get(0).generateIr(level, instructions);
+            Operand tmp1 = index.get(1).generateIr(level, instructions);
+            Operand size =  dimSizes.get(1).generateIr(level, instructions);
+            instructions.add(new MulIr(tmp0, size, tmp0));
+            instructions.add(new AddIr(tmp0, tmp1, offsetId));
+        }
+
+        Operand headAddr = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+
+        // base is not the headAddr of array!!! base = 4
+        instructions.add(new MovImmIr(new Immediate(4), base));
+        instructions.add(new MovImmIr(new Immediate(item.getAddr()), headAddr));
+        instructions.add(new MulIr(base, offsetId, offsetId));
+
+        Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        instructions.add(new AddIr(headAddr, offsetId, offsetId));
+        if (scope == 0) {
+            instructions.add(new OffsetIr(
+                    offsetId, new Immediate(0), res, true));
+        } else {
+            instructions.add(new OffsetIr(
+                    offsetId, new Immediate(0), res, false));
+        }
+        return res;
+    }
+
     public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
         try {
             if (leftBracks.size() == 0) {
@@ -143,64 +315,32 @@ public class LVal extends TreeNode {
                     SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.VAR);
                     return new Variable(item.getName(), item.getAddr(), true);
                 } else {
-                    System.out.println("TODO: implement array param pass");
-                    throw new ValueTypeException();
+                    if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
+                        SymbolTableItem item = LocalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+                        int addr = item.getAddr();
+                        Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+                        instructions.add(new OffsetIr(
+                                new Immediate(addr), new Immediate(0), res, false));
+                        return res;
+                    } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
+                        SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+                        int addr = item.getAddr();
+                        Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+                        instructions.add(new OffsetIr(
+                                new Immediate(addr), new Immediate(0), res, true));
+                        // 这种情况下res里面存的是一个地址
+                        return res;
+                    } else {
+                        System.out.println("mei you zhen mei you");
+                        throw new ValueTypeException();
+                    }
                 }
             } else {
-                SymbolTableItem item;
-                int scope;
-                if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
-                    item = LocalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
-                    scope = 1;
-                } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
-                    item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
-                    scope = 0;
+                if (analyseMode) {
+                    return analyseLeftMode(level, instructions);
                 } else {
-                    throw new ValueTypeException();
+                    return analyseRightMode(level, instructions);
                 }
-
-                Symbol symbol = item.getSymbol();
-                List<ConstExp> dimSizes;
-                if (symbol instanceof ConstArraySymbol) {
-                    dimSizes = ((ConstArraySymbol) symbol).getDimSizes();
-                } else if (symbol instanceof VarArraySymbol) {
-                    dimSizes = ((VarArraySymbol) symbol).getDimSizes();
-                } else {
-                    throw new ValueTypeException();
-                }
-
-                Operand offsetId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
-                instructions.add(new MovIr(new TmpVariable("#0", true), offsetId));
-
-                Operand base = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
-
-                // calculate index!!!!!
-                if (index.size() == 1) {
-                    offsetId = index.get(0).generateIr(level, instructions);
-                } else {
-                    Operand tmp0 = index.get(0).generateIr(level, instructions);
-                    Operand tmp1 = index.get(1).generateIr(level, instructions);
-                    Operand size =  dimSizes.get(1).generateIr(level, instructions);
-                    instructions.add(new MulIr(tmp0, size, tmp0));
-                    instructions.add(new AddIr(tmp0, tmp1, offsetId));
-                }
-
-                Operand headAddr = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
-
-                // base is not the headAddr of array!!! base = 4
-                instructions.add(new MovImmIr(new Immediate(4), base));
-                instructions.add(new MovImmIr(new Immediate(item.getAddr()), headAddr));
-                instructions.add(new MulIr(base, offsetId, offsetId));
-
-                // offsetId is offset to array head
-                // TODO: find value by offset and array head
-                if (level == 0) {
-                    instructions.add(new LoadArrayValueIr(headAddr, offsetId, offsetId, scope));
-                } else {
-                    instructions.add(new LoadArrayValueIr(headAddr, offsetId, offsetId, scope));
-                }
-
-                return offsetId;
             }
         } catch (ValueTypeException e) {
             e.printStackTrace();

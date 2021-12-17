@@ -1,5 +1,6 @@
 package ir.utils;
 
+import com.sun.media.sound.ModelDestination;
 import mips.Lw;
 import mips.MipsCode;
 import mips.Sw;
@@ -17,6 +18,14 @@ public class Variable extends Operand {
         this.name = name;
         this.offset = offset;
         this.isGlobal = isGlobal;
+    }
+
+    public String toString() {
+        if (isGlobal) {
+            return "@" + name + "@global@" + offset;
+        } else {
+            return "@" + name + "@local@" + offset;
+        }
     }
 
     @Override

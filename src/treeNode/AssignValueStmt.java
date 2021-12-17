@@ -2,7 +2,10 @@ package treeNode;
 
 import ir.IntermediateInstruction;
 import ir.MovIr;
+import ir.StorePointerValueIr;
+import ir.utils.Immediate;
 import ir.utils.Operand;
+import ir.utils.Pointer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +26,15 @@ public class AssignValueStmt extends Stmt {
 
     public List<IntermediateInstruction> generateIr(int level) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
+        lVal.setAnalyseMode(true);
         Operand dst = lVal.generateIr(level, instructions);
+        lVal.setAnalyseMode(false);
         Operand src = exp.generateIr(level, instructions);
-        instructions.add(new MovIr(src, dst));
+        if (lVal.isPointer(level)) {
+            instructions.add(new StorePointerValueIr(dst, new Immediate(0), src));
+        } else {
+            instructions.add(new MovIr(src, dst));
+        }
         return instructions;
     }
 

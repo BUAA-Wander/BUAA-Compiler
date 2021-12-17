@@ -8,6 +8,10 @@ public class LabelOp extends Operand {
         this.labelName = labelName;
     }
 
+    public String toString() {
+        return labelName;
+    }
+
     public String getLabelName() {
         return labelName;
     }

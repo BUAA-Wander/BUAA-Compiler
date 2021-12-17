@@ -1,20 +1,33 @@
 package ir.utils;
 
+import mips.Lw;
 import mips.MipsCode;
+import mips.Sw;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pointer extends Operand {
-    private int offset;
+    // absolute addr
+    private int addr;
     private boolean isGlobal;
 
-    public Pointer(int offset, boolean isGlobal) {
-        this.offset = offset;
+    public Pointer(int addr, boolean isGlobal) {
+        this.addr = addr;
         this.isGlobal = isGlobal;
     }
 
     @Override
     public List<MipsCode> loadToReg(String reg) {
-        return null;
+        List<MipsCode> mipsCodes = new ArrayList<>();
+        mipsCodes.add(new Lw("$0", reg, addr));
+        return mipsCodes;
+    }
+
+    @Override
+    public List<MipsCode> saveValue(String reg) {
+        List<MipsCode> mipsCodes = new ArrayList<>();
+        mipsCodes.add(new Sw("$0", reg, addr));
+        return mipsCodes;
     }
 }

@@ -1,8 +1,8 @@
 int main() {
-	int a = 1, b = 2;
-	if (a < b) {
-	    int c = 3;
-	    printf("%d\n", c);
-	}
+	int a[3];
+	a[0] = 998;
+	a[1] = 244;
+	a[2] = a[1]  + 109;
+	printf("%d %d %d\n", a[0], a[1], a[2]);
 	return 0;
 }
