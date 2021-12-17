@@ -36,7 +36,7 @@ public class Variable extends Operand {
         if (isGlobal) {
             mipsCodes.add(new Sw("$gp", reg, offset));
         } else {
-            mipsCodes.add(new Sw("$sp", reg, offset));
+            mipsCodes.add(new Sw("$sp", reg, -offset));
         }
         return mipsCodes;
     }

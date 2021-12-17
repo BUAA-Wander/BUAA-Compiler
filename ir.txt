@@ -1,295 +1,38 @@
 MovImm ir.utils.Immediate@36baf30c #0
-MovImm ir.utils.Immediate@7a81197d #3
+Br ir.utils.LabelOp@7a81197d
+Stop
+InsertLabel ir.utils.LabelOp@5ca881b5
+MovImm ir.utils.Immediate@24d46ca6 #3
 Mov #3 #2
 Mov #2 #1
-Mov #1 ir.utils.Variable@5ca881b5
-MovImm ir.utils.Immediate@24d46ca6 #7
-Add #7 #0 #6
+Mov #1 ir.utils.Variable@4517d9a3
+MovImm ir.utils.Immediate@372f7a8d #6
 Mov #6 #5
 Mov #5 #4
-Mov #4 ir.utils.Variable@4517d9a3
-MovImm ir.utils.Immediate@372f7a8d #10
+Mov #4 ir.utils.Variable@2f92e0f4
+Mov ir.utils.Variable@28a418fc #12
+Mov #12 #11
+Mov #11 #10
+Mov ir.utils.Variable@5305068a #14
+Mov #14 #13
+Less #10 #13 #10
 Mov #10 #9
 Mov #9 #8
-Mov #8 ir.utils.Variable@2f92e0f4
-MovImm ir.utils.Immediate@28a418fc #13
-Mov #13 #12
-Mov #12 #11
-MovImm ir.utils.Immediate@5305068a #15
-Mov #15 #14
-Add #11 #14 #11
-Mov #11 ir.utils.Variable@1f32e575
-MovImm ir.utils.Immediate@279f2327 #19
-Sub #0 #19 #18
-Mov #18 #17
+Mov #8 #7
+BranchIfEq #7 #0 ir.utils.LabelOp@1f32e575
+MovImm ir.utils.Immediate@279f2327 #17
 Mov #17 #16
-Mov #16 ir.utils.Variable@2ff4acd0
-MovImm ir.utils.Immediate@54bedef2 #23
-Add #23 #0 #22
+Mov #16 #15
+Mov #15 ir.utils.Variable@2ff4acd0
+Mov ir.utils.Variable@54bedef2 #19
+Mov #19 #18
+WriteInt #18
+WriteChar ir.utils.StringOp@5caf905d
+Jump ir.utils.LabelOp@27716f4
+InsertLabel ir.utils.LabelOp@8efb846
+InsertLabel ir.utils.LabelOp@2a84aee7
+MovImm ir.utils.Immediate@a09ee92 #22
 Mov #22 #21
 Mov #21 #20
-Mov #20 ir.utils.Variable@5caf905d
-Br ir.utils.LabelOp@27716f4
-Stop
-InsertLabel ir.utils.LabelOp@8efb846
-WriteChar ir.utils.StringOp@2a84aee7
-WriteChar ir.utils.StringOp@a09ee92
-WriteChar ir.utils.StringOp@30f39991
-WriteChar ir.utils.StringOp@452b3a41
-WriteChar ir.utils.StringOp@4a574795
-WriteChar ir.utils.StringOp@f6f4d33
-WriteChar ir.utils.StringOp@23fc625e
-WriteChar ir.utils.StringOp@3f99bd52
-WriteChar ir.utils.StringOp@4f023edb
-MovImm ir.utils.Immediate@3a71f4dd #26
-Mov #26 #25
-Mov #25 #24
-Mov #24 ir.utils.Variable@7adf9f5f
-InsertLabel ir.utils.LabelOp@85ede7b
-Mov ir.utils.Variable@5674cd4d #32
-Mov #32 #31
-Mov #31 #30
-Mov #30 #29
-Mov #29 #28
-Mov #28 #27
-BranchIfEq #27 #0 ir.utils.LabelOp@63961c42
-Mov ir.utils.Variable@65b54208 #34
-Mov #34 #33
-MovImm ir.utils.Immediate@1be6f5c3 #36
-Mov #36 #35
-Sub #33 #35 #33
-Mov #33 ir.utils.Variable@6b884d57
-Mov ir.utils.Variable@38af3868 #42
-Mov #42 #41
-Mov #41 #40
-Mov ir.utils.Variable@77459877 #44
-Mov #44 #43
-Less #40 #43 #40
-Mov #40 #39
-Mov #39 #38
-Mov #38 #37
-BranchIfEq #37 #0 ir.utils.LabelOp@5b2133b1
-Jump ir.utils.LabelOp@72ea2f77
-WriteChar ir.utils.StringOp@33c7353a
-WriteChar ir.utils.StringOp@681a9515
-WriteChar ir.utils.StringOp@3af49f1c
-WriteChar ir.utils.StringOp@19469ea2
-WriteChar ir.utils.StringOp@13221655
-WriteChar ir.utils.StringOp@2f2c9b19
-WriteChar ir.utils.StringOp@31befd9f
-WriteChar ir.utils.StringOp@1c20c684
-WriteChar ir.utils.StringOp@1fb3ebeb
-WriteChar ir.utils.StringOp@548c4f57
-WriteChar ir.utils.StringOp@1218025c
-WriteChar ir.utils.StringOp@816f27d
-WriteChar ir.utils.StringOp@87aac27
-WriteChar ir.utils.StringOp@3e3abc88
-WriteChar ir.utils.StringOp@6ce253f1
-WriteChar ir.utils.StringOp@53d8d10a
-WriteChar ir.utils.StringOp@e9e54c2
-WriteChar ir.utils.StringOp@65ab7765
-WriteChar ir.utils.StringOp@1b28cdfa
-Jump ir.utils.LabelOp@eed1f14
-InsertLabel ir.utils.LabelOp@7229724f
-InsertLabel ir.utils.LabelOp@4c873330
-Mov ir.utils.Variable@119d7047 #50
-Mov #50 #49
-Mov #49 #48
-Mov ir.utils.Variable@776ec8df #52
-Mov #52 #51
-Less #48 #51 #48
-Mov #48 #47
-Mov #47 #46
-Mov #46 #45
-BranchIfEq #45 #0 ir.utils.LabelOp@4eec7777
-Jump ir.utils.LabelOp@3b07d329
-WriteChar ir.utils.StringOp@41629346
-WriteChar ir.utils.StringOp@404b9385
-WriteChar ir.utils.StringOp@6d311334
-WriteChar ir.utils.StringOp@682a0b20
-WriteChar ir.utils.StringOp@3d075dc0
-WriteChar ir.utils.StringOp@214c265e
-WriteChar ir.utils.StringOp@448139f0
-WriteChar ir.utils.StringOp@7cca494b
-WriteChar ir.utils.StringOp@7ba4f24f
-WriteChar ir.utils.StringOp@3b9a45b3
-WriteChar ir.utils.StringOp@7699a589
-WriteChar ir.utils.StringOp@58372a00
-WriteChar ir.utils.StringOp@4dd8dc3
-WriteChar ir.utils.StringOp@6d03e736
-WriteChar ir.utils.StringOp@568db2f2
-WriteChar ir.utils.StringOp@378bf509
-WriteChar ir.utils.StringOp@5fd0d5ae
-WriteChar ir.utils.StringOp@2d98a335
-WriteChar ir.utils.StringOp@16b98e56
-WriteChar ir.utils.StringOp@7ef20235
-WriteChar ir.utils.StringOp@27d6c5e0
-WriteChar ir.utils.StringOp@4f3f5b24
-WriteChar ir.utils.StringOp@15aeb7ab
-WriteChar ir.utils.StringOp@7b23ec81
-WriteChar ir.utils.StringOp@6acbcfc0
-WriteChar ir.utils.StringOp@5f184fc6
-WriteChar ir.utils.StringOp@3feba861
-WriteChar ir.utils.StringOp@5b480cf9
-WriteChar ir.utils.StringOp@6f496d9f
-WriteChar ir.utils.StringOp@723279cf
-WriteChar ir.utils.StringOp@10f87f48
-Jump ir.utils.LabelOp@b4c966a
-InsertLabel ir.utils.LabelOp@2f4d3709
-InsertLabel ir.utils.LabelOp@4e50df2e
-Mov ir.utils.Variable@1d81eb93 #58
-Mov #58 #57
-Mov #57 #56
-Mov #56 #55
-Mov ir.utils.Variable@7291c18f #61
-Mov #61 #60
-Mov #60 #59
-Eq #55 #59 #55
-Mov #55 #54
-Mov #54 #53
-BranchIfEq #53 #0 ir.utils.LabelOp@34a245ab
-WriteChar ir.utils.StringOp@7cc355be
-WriteChar ir.utils.StringOp@6e8cf4c6
-WriteChar ir.utils.StringOp@12edcd21
-WriteChar ir.utils.StringOp@34c45dca
-WriteChar ir.utils.StringOp@52cc8049
-WriteChar ir.utils.StringOp@5b6f7412
-WriteChar ir.utils.StringOp@27973e9b
-WriteChar ir.utils.StringOp@312b1dae
-WriteChar ir.utils.StringOp@7530d0a
-WriteChar ir.utils.StringOp@27bc2616
-WriteChar ir.utils.StringOp@3941a79c
-WriteChar ir.utils.StringOp@506e1b77
-WriteChar ir.utils.StringOp@4fca772d
-WriteChar ir.utils.StringOp@9807454
-Jump ir.utils.LabelOp@3d494fbf
-InsertLabel ir.utils.LabelOp@1ddc4ec2
-WriteChar ir.utils.StringOp@133314b
-WriteChar ir.utils.StringOp@b1bc7ed
-WriteChar ir.utils.StringOp@7cd84586
-WriteChar ir.utils.StringOp@30dae81
-WriteChar ir.utils.StringOp@1b2c6ec2
-WriteChar ir.utils.StringOp@4edde6e5
-WriteChar ir.utils.StringOp@70177ecd
-WriteChar ir.utils.StringOp@1e80bfe8
-WriteChar ir.utils.StringOp@66a29884
-WriteChar ir.utils.StringOp@4769b07b
-WriteChar ir.utils.StringOp@cc34f4d
-WriteChar ir.utils.StringOp@17a7cec2
-InsertLabel ir.utils.LabelOp@65b3120a
-Mov ir.utils.Variable@6f539caf #67
-Mov #67 #66
-Mov #66 #65
-Mov #65 #64
-Mov ir.utils.Variable@79fc0f2f #70
-Mov #70 #69
-Mov #69 #68
-Eq #64 #68 #64
-Mov #64 #63
-Mov #63 #62
-BranchIfEq #62 #0 ir.utils.LabelOp@50040f0c
-Jump ir.utils.LabelOp@2dda6444
-Jump ir.utils.LabelOp@5e9f23b4
-InsertLabel ir.utils.LabelOp@4783da3f
-InsertLabel ir.utils.LabelOp@378fd1ac
-Jump ir.utils.LabelOp@49097b5d
-InsertLabel ir.utils.LabelOp@6e2c634b
-Mov ir.utils.Variable@37a71e93 #76
-Mov #76 #75
-Mov #75 #74
-Mov #74 #73
-Mov ir.utils.Variable@7e6cbb7a #79
-Mov #79 #78
-Mov #78 #77
-Neq #73 #77 #73
-Mov #73 #72
-Mov #72 #71
-BranchIfEq #71 #0 ir.utils.LabelOp@7c3df479
-Mov ir.utils.Variable@7106e68e #85
-Mov #85 #84
-Mov #84 #83
-Mov #83 #82
-MovImm ir.utils.Immediate@7eda2dbb #89
-Mov #89 #88
-Mov #88 #87
-Mov #87 #86
-Eq #82 #86 #82
-Mov #82 #81
-Mov #81 #80
-BranchIfEq #80 #0 ir.utils.LabelOp@6576fe71
-WriteChar ir.utils.StringOp@76fb509a
-WriteChar ir.utils.StringOp@300ffa5d
-WriteChar ir.utils.StringOp@1f17ae12
-WriteChar ir.utils.StringOp@4d405ef7
-WriteChar ir.utils.StringOp@6193b845
-WriteChar ir.utils.StringOp@2e817b38
-WriteChar ir.utils.StringOp@c4437c4
-WriteChar ir.utils.StringOp@433c675d
-WriteChar ir.utils.StringOp@3f91beef
-WriteChar ir.utils.StringOp@1a6c5a9e
-WriteChar ir.utils.StringOp@37bba400
-WriteChar ir.utils.StringOp@179d3b25
-WriteChar ir.utils.StringOp@254989ff
-WriteChar ir.utils.StringOp@5d099f62
-WriteChar ir.utils.StringOp@37f8bb67
-WriteChar ir.utils.StringOp@49c2faae
-Jump ir.utils.LabelOp@20ad9418
-InsertLabel ir.utils.LabelOp@31cefde0
-WriteChar ir.utils.StringOp@439f5b3d
-WriteChar ir.utils.StringOp@1d56ce6a
-WriteChar ir.utils.StringOp@5197848c
-WriteChar ir.utils.StringOp@17f052a3
-WriteChar ir.utils.StringOp@2e0fa5d3
-WriteChar ir.utils.StringOp@5010be6
-WriteChar ir.utils.StringOp@685f4c2e
-WriteChar ir.utils.StringOp@7daf6ecc
-WriteChar ir.utils.StringOp@2e5d6d97
-WriteChar ir.utils.StringOp@238e0d81
-WriteChar ir.utils.StringOp@31221be2
-WriteChar ir.utils.StringOp@377dca04
-WriteChar ir.utils.StringOp@728938a9
-WriteChar ir.utils.StringOp@21b8d17c
-WriteChar ir.utils.StringOp@6433a2
-WriteChar ir.utils.StringOp@5910e440
-WriteChar ir.utils.StringOp@6267c3bb
-WriteChar ir.utils.StringOp@533ddba
-WriteChar ir.utils.StringOp@246b179d
-InsertLabel ir.utils.LabelOp@7a07c5b4
-Jump ir.utils.LabelOp@26a1ab54
-InsertLabel ir.utils.LabelOp@3d646c37
-InsertLabel ir.utils.LabelOp@41cf53f9
-WriteChar ir.utils.StringOp@5a10411
-WriteChar ir.utils.StringOp@2ef1e4fa
-WriteChar ir.utils.StringOp@306a30c7
-WriteChar ir.utils.StringOp@b81eda8
-WriteChar ir.utils.StringOp@68de145
-WriteChar ir.utils.StringOp@27fa135a
-WriteChar ir.utils.StringOp@46f7f36a
-WriteChar ir.utils.StringOp@421faab1
-WriteChar ir.utils.StringOp@2b71fc7e
-Mov ir.utils.Variable@5ce65a89 #91
-Mov #91 #90
-Mov ir.utils.Variable@25f38edc #92
-Add #90 #92 #90
-WriteInt #90
-WriteChar ir.utils.StringOp@1a86f2f1
-WriteChar ir.utils.StringOp@3eb07fd3
-WriteChar ir.utils.StringOp@506c589e
-WriteChar ir.utils.StringOp@69d0a921
-WriteChar ir.utils.StringOp@446cdf90
-WriteChar ir.utils.StringOp@799f7e29
-WriteChar ir.utils.StringOp@4b85612c
-WriteChar ir.utils.StringOp@277050dc
-WriteChar ir.utils.StringOp@5c29bfd
-WriteChar ir.utils.StringOp@7aec35a
-Mov ir.utils.Variable@67424e82 #94
-Mov #94 #93
-Mov ir.utils.Variable@42110406 #95
-Add #93 #95 #93
-WriteInt #93
-WriteChar ir.utils.StringOp@531d72ca
-MovImm ir.utils.Immediate@22d8cfe0 #98
-Mov #98 #97
-Mov #97 #96
-PassReturnValue #96
+PassReturnValue #20
 Return
