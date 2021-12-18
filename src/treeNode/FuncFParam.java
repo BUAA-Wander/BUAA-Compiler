@@ -5,6 +5,7 @@ import symbol.AddressPtr;
 import symbol.LocalSymbolTable;
 import symbol.type.FParamArraySymbol;
 import symbol.type.ParamType;
+import symbol.type.PointerSymbol;
 import symbol.type.SymbolType;
 
 import java.util.ArrayList;
@@ -47,15 +48,22 @@ public class FuncFParam extends TreeNode {
         return instructions;
     }
 
-    // TODO array param
-    public List<IntermediateInstruction> generateArrayParamIr(int level) {
-        System.out.println("Array FuncFParam hasn't implemented yet!");
-        return null;
+    // TODO pointer param
+    public List<IntermediateInstruction> generatePointerParamIr(int level) {
+        // System.out.println("Array FuncFParam hasn't implemented yet!");
+        List<IntermediateInstruction> instructions = new ArrayList<>();
+        int addr = AddressPtr.getLocalAddr();
+        AddressPtr.addLocalAddr(4);
+        LocalSymbolTable.insert(level + 1, ident.getName(), SymbolType.POINTER,
+                new PointerSymbol(getLineNumber(), ident.getName()
+                        , lastDimSize, dims), addr, 4);
+
+        return instructions;
     }
 
     public List<IntermediateInstruction> generateIr(int level) {
-        if (lastDimSize != null) {
-            return generateArrayParamIr(level);
+        if (leftBracks.size() != 0) {
+            return generatePointerParamIr(level);
         } else {
             return generateVarParamIr(level);
         }

@@ -10,9 +10,11 @@ import java.util.List;
 
 public class LoadArrayValueIr extends IntermediateInstruction {
     private int scope;
-    public LoadArrayValueIr(Operand base, Operand offset, Operand resIdx, int scope) {
+    private boolean isBasePointer;
+    public LoadArrayValueIr(Operand base, Operand offset, Operand resIdx, int scope, boolean flag) {
         super(base, offset, resIdx);
         this.scope = scope;
+        isBasePointer = flag;
     }
 
     public String toString() {
@@ -31,13 +33,22 @@ public class LoadArrayValueIr extends IntermediateInstruction {
         mipsCodes.addAll(base.loadToReg(t0));
         mipsCodes.addAll(offset.loadToReg(t1));
         // base + offset
-        mipsCodes.add(new Add(t0, t1, t2));
+//        mipsCodes.add(new Add(t0, t1, t2));
         // sp - (base + offset)
 
-        if (scope == 0) {
-            mipsCodes.add(new Add(gp, t2, t2));
+        if (!isBasePointer) {
+            mipsCodes.add(new Add(t0, t1, t2));
+            if (scope == 0) {
+                mipsCodes.add(new Add(gp, t2, t2));
+            } else {
+                mipsCodes.add(new Sub(sp, t2, t2));
+            }
         } else {
-            mipsCodes.add(new Sub(sp, t2, t2));
+            if (scope == 0) {
+                mipsCodes.add(new Add(t0, t1, t2));
+            } else {
+                mipsCodes.add(new Sub(t0, t1, t2));
+            }
         }
         mipsCodes.add(new Lw(t2, t2, 0));
         mipsCodes.addAll(res.saveValue(t2));

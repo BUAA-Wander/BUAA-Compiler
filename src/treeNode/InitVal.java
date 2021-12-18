@@ -62,7 +62,8 @@ public class InitVal extends TreeNode {
     }
 
     public int generateIr(int level, List<IntermediateInstruction> instructions,
-                          String arrayName, int headAddr, int dims, int lastDimSize, int curId) {
+                          String arrayName, int headAddr, int dims, int lastDimSize,
+                          int curId, boolean isVarPointer) {
         int id = curId;
         if (arrayInitVal != null) {
             for (int i = 0; i < arrayInitVal.size(); i++) {
@@ -70,7 +71,7 @@ public class InitVal extends TreeNode {
                 // {{1, 2}, {3, 4}}
                 if (initVal.getType() == InitValType.ARRAY) {
                     int size = initVal.generateIr(
-                            level, instructions, arrayName, headAddr, dims, lastDimSize, id);
+                            level, instructions, arrayName, headAddr, dims, lastDimSize, id, isVarPointer);
                     id += size;
                 } else {
                     // {1, 2}
@@ -81,10 +82,10 @@ public class InitVal extends TreeNode {
 
                     if (level == 0) {
                         instructions.add(new OffsetIr(
-                                new Immediate(addr), new Immediate(0), dstId, true));
+                                new Immediate(addr), new Immediate(0), dstId, true, isVarPointer));
                     } else {
                         instructions.add(new OffsetIr(
-                                new Immediate(addr), new Immediate(0), dstId, false));
+                                new Immediate(addr), new Immediate(0), dstId, false, isVarPointer));
                     }
                     instructions.add(new StorePointerValueIr(dstId, new Immediate(0), srcId));
                     id++;

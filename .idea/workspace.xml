@@ -2,23 +2,38 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5bb7268e-7126-446a-91c7-6ec883c8c2e2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ir/BranchIfNotEqIr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mips/And.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mips/Bne.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/mips/Or.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/mips/Annotation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/symbol/type/PointerSymbol.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ir.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ir.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mips.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mips.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/ir/AndIr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/ir/AndIr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/ir/OrIr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/ir/OrIr.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/ir/utils/Variable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/ir/utils/Variable.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LAndExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LAndExp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LOrExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LOrExp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/AndIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/AndIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/OrIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/OrIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/utils/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/utils/Variable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/LAndExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LAndExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/LOrExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LOrExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/Compiler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/Compiler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/ir/LoadArrayValueIr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/ir/LoadArrayValueIr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/ir/OffsetIr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/ir/OffsetIr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/ir/utils/Pointer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/symbol/SymbolTable.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/symbol/SymbolTable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/symbol/SymbolTableItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/symbol/SymbolTableItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/symbol/type/SymbolType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/symbol/type/SymbolType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/AssignValueStmt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/AssignValueStmt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/Block.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/Block.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/FuncFParam.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/FuncFParam.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/InitVal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/InitVal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LVal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LVal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/VarDef.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/VarDef.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src.rar" beforeDir="false" afterPath="$PROJECT_DIR$/src.rar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Compiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Compiler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ir/LoadArrayValueIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/LoadArrayValueIr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ir/OffsetIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/OffsetIr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ir/utils/Pointer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/utils/ArrayOp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/symbol/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbol/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/symbol/SymbolTableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbol/SymbolTableItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/symbol/type/SymbolType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbol/type/SymbolType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/AssignValueStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/AssignValueStmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/Block.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/FuncFParam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/FuncFParam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/InitVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/InitVal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/LVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LVal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/VarDef.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/VarDef.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testfile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +98,8 @@
       <workItem from="1639715615701" duration="4182000" />
       <workItem from="1639720561481" duration="1650000" />
       <workItem from="1639724982616" duration="6772000" />
-      <workItem from="1639742981246" duration="27338000" />
+      <workItem from="1639742981246" duration="29456000" />
+      <workItem from="1639797708069" duration="6186000" />
     </task>
     <servers />
   </component>
@@ -103,45 +119,71 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="267" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1639751970288" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1639775904504">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1639803974813">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639775904504" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1639775904504">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639803974813" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1639803974813">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1639775904504" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1639775904503">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1639803974813" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1639803974813">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1639775904503" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1639775904504">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1639803974813" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1639803974813">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1639775904504" />
-    <state width="1493" height="231" key="GridCell.Tab.1.bottom" timestamp="1639768161734">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1639803974813" />
+    <state width="1493" height="178" key="GridCell.Tab.1.bottom" timestamp="1639803148502">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639768161734" />
-    <state width="1493" height="231" key="GridCell.Tab.1.center" timestamp="1639768161734">
+    <state width="1493" height="178" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639803148502" />
+    <state width="1493" height="178" key="GridCell.Tab.1.center" timestamp="1639803148502">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1639768161734" />
-    <state width="1493" height="231" key="GridCell.Tab.1.left" timestamp="1639768161734">
+    <state width="1493" height="178" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1639803148502" />
+    <state width="1493" height="178" key="GridCell.Tab.1.left" timestamp="1639803148502">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1639768161734" />
-    <state width="1493" height="231" key="GridCell.Tab.1.right" timestamp="1639768161734">
+    <state width="1493" height="178" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1639803148502" />
+    <state width="1493" height="178" key="GridCell.Tab.1.right" timestamp="1639803148502">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="231" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1639768161734" />
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1639743066251">
+    <state width="1493" height="178" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1639803148502" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1639797708804">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1639743066251" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1639769602118">
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1639797708804" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1639801499360">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1639769602118" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1639801499360" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ir/MovImmIr.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/treeNode/FuncDef.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/treeNode/FuncFParam.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="item.getAddr()" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

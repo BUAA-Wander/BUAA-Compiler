@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VarDef extends TreeNode {
+    // 这里有可能是定义指针类型（指的是函数参数传递的形参）
     private Ident ident;
     private List<LeftBrack> leftBracks;
     private List<ConstExp> dimSizes;
@@ -86,8 +87,9 @@ public class VarDef extends TreeNode {
             e.printStackTrace();
         }
         if (initVal != null) {
+            boolean isPoiner = LocalSymbolTable.isExist(level, ident.getName(), SymbolType.POINTER);
             initVal.generateIr(level, instructions, ident.getName(),
-                    addr, leftBracks.size(), lastDimSize, 0);
+                    addr, leftBracks.size(), lastDimSize, 0, isPoiner);
         }
         return instructions;
     }

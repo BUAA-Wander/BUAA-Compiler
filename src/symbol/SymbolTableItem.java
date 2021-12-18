@@ -10,6 +10,7 @@ public class SymbolTableItem {
     private int addr; // offset according to localAddrBase or globalAddrBase, function's is 0
     private int size; // variable or array size, function's size is 0?
     private Symbol symbol; // more detail information
+    private boolean valid = true;
 
     public SymbolTableItem(int level, String name, SymbolType type, Symbol symbol) {
         this.level = level;
@@ -49,5 +50,13 @@ public class SymbolTableItem {
 
     public int getSize() {
         return size;
+    }
+
+    public void disable() {
+        this.valid = false;
+    }
+
+    public boolean isValid() {
+        return valid;
     }
 }

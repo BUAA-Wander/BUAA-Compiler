@@ -1,5 +1,5 @@
 package symbol.type;
 
 public enum SymbolType {
-    FUNC, VAR, ARRAY
+    FUNC, VAR, ARRAY, POINTER
 }

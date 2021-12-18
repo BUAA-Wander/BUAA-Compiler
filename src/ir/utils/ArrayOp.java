@@ -7,12 +7,12 @@ import mips.Sw;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pointer extends Operand {
+public class ArrayOp extends Operand {
     // absolute addr
     private int addr;
     private boolean isGlobal;
 
-    public Pointer(int addr, boolean isGlobal) {
+    public ArrayOp(int addr, boolean isGlobal) {
         this.addr = addr;
         this.isGlobal = isGlobal;
     }

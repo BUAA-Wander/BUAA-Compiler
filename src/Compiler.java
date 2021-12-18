@@ -3,7 +3,9 @@ import exception.NoMatchToken;
 import exception.ParseError;
 import exception.ParseOutOfBound;
 import ir.IntermediateInstruction;
+import ir.LoadArrayValueIr;
 import lex.Lexer;
+import mips.Annotation;
 import mips.MipsCode;
 import mips.TargetCodeContainer;
 import parse.Parser;
@@ -11,6 +13,7 @@ import symbol.FunctionLocalSymbolTables;
 import symbol.GlobalSymbolTable;
 import symbol.SymbolTable;
 import symbol.SymbolTableItem;
+import symbol.type.Symbol;
 import token.Token;
 import treeNode.CompUnit;
 
@@ -60,9 +63,15 @@ public class Compiler {
         int pos = 1;
         for (IntermediateInstruction i : ir) {
             try {
+                if (i instanceof LoadArrayValueIr) {
+                    TargetCodeContainer.codes.add((new Annotation("begin loadArrayValue")));
+                }
                 List<MipsCode> list = i.toMips();
                 if (list != null) {
                     TargetCodeContainer.codes.addAll(list);
+                }
+                if (i instanceof LoadArrayValueIr) {
+                    TargetCodeContainer.codes.add((new Annotation("END loadArrayValue")));
                 }
             } catch (NullPointerException e) {
                 System.out.println(i.toString());

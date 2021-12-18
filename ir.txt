@@ -1,103 +1,75 @@
 MovImm 0 #0
-MovImm 0 #3
-Mov #3 #2
-Mov #2 #1
-Mov #1 @global_var@global@4
 Br main
 Stop
-InsertLabel func
-Mov @global_var@global@4 #5
-Mov #5 #4
-MovImm 1 #7
+InsertLabel f
+Mov #0 #3
+MovImm 0 #7
 Mov #7 #6
-Add #4 #6 #4
-Mov #4 @global_var@global@4
-MovImm 1 #10
-Mov #10 #9
-Mov #9 #8
-PassReturnValue #8
-Return
-InsertLabel main
-MovImm 0 #17
-Mov #17 #16
-Mov #16 #15
+Mov #6 #5
+MovImm 4 #4
+MovImm 0 #8
+Mul #4 #5 #5
+LoadArrayValue #8 0 #8
+LoadArrayValue #8 #5 #5
+Mov #5 #2
+Mov #2 #1
+WriteInt #1
+WriteChar  
+Mov #0 #11
+MovImm 1 #15
 Mov #15 #14
 Mov #14 #13
-Mov #13 #12
-BranchIfEq #12 #0 label_4
-SaveContext
-Br func
-LoadContext
-GetReturnValue #23
-Mov #23 #21
-Mov #21 #20
-Mov #20 #19
-Mov #19 #18
-And #12 #18 #12
-BranchIfEq #12 #0 label_4
-InsertLabel label_4
-Mov #12 #11
-BranchIfNotEq #11 #0 label_3
-InsertLabel label_3
-BranchIfEq #11 #0 label_2
-Jump label_1
-InsertLabel label_2
-InsertLabel label_1
-WriteChar f
-WriteChar i
-WriteChar r
-WriteChar s
-WriteChar t
-WriteChar :
+MovImm 4 #12
+MovImm 0 #16
+Mul #12 #13 #13
+LoadArrayValue #16 0 #16
+LoadArrayValue #16 #13 #13
+Mov #13 #10
+Mov #10 #9
+WriteInt #9
 WriteChar  
-Mov @global_var@global@4 #25
-Mov #25 #24
-WriteInt #24
+Mov #0 #19
+MovImm 2 #23
+Mov #23 #22
+Mov #22 #21
+MovImm 4 #20
+MovImm 0 #24
+Mul #20 #21 #21
+LoadArrayValue #24 0 #24
+LoadArrayValue #24 #21 #21
+Mov #21 #18
+Mov #18 #17
+WriteInt #17
 WriteChar 
 
-MovImm 1 #32
-Mov #32 #31
+Return
+InsertLabel main
+MovImm 998 #27
+Mov #27 #26
+Mov #26 #25
+Offset 0 0 #28
+StorePointerValue #28 0 #25
+MovImm 244 #31
 Mov #31 #30
 Mov #30 #29
-Mov #29 #28
-Mov #28 #27
-BranchIfEq #27 #0 label_8
-InsertLabel label_8
-Mov #27 #26
-BranchIfNotEq #26 #0 label_7
-SaveContext
-Br func
-LoadContext
-GetReturnValue #39
-Mov #39 #37
-Mov #37 #36
-Mov #36 #35
+Offset 4 0 #32
+StorePointerValue #32 0 #29
+MovImm 353 #35
 Mov #35 #34
 Mov #34 #33
-BranchIfEq #33 #0 label_9
-InsertLabel label_9
-Or #26 #33 #26
-BranchIfNotEq #26 #0 label_7
-InsertLabel label_7
-BranchIfEq #26 #0 label_6
-Jump label_5
-InsertLabel label_6
-InsertLabel label_5
-WriteChar s
-WriteChar e
-WriteChar c
-WriteChar o
-WriteChar n
-WriteChar d
-WriteChar :
-WriteChar  
-Mov @global_var@global@4 #41
+Offset 8 0 #36
+StorePointerValue #36 0 #33
+Offset 0 0 #42
+Mov #42 #41
 Mov #41 #40
-WriteInt #40
-WriteChar 
-
-MovImm 0 #44
+PassParam #40
+SaveContext
+Br f
+LoadContext
+Mov #0 #38
+Mov #38 #37
+MovImm 0 #45
+Mov #45 #44
 Mov #44 #43
-Mov #43 #42
-PassReturnValue #42
+PassReturnValue #43
 Return

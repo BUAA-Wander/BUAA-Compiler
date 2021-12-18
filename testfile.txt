@@ -1,18 +1,9 @@
-int global_var = 0;
-int func() {
-    global_var = global_var + 1;
-    return 1;
+void f(int array[]) {
+    printf("%d %d %d\n", array[0], array[1], array[2]);
 }
+
 int main() {
-    if (0 && func()){
-        ;
-    }
-    printf("first: %d\n",global_var);
-
-    if (1 || func()) {
-        ;
-    }
-
-    printf("second: %d\n", global_var);
+    int a[3] = {998, 244, 353};
+    f(a);
     return 0;
 }

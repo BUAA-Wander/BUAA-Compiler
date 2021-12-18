@@ -22,7 +22,8 @@ public class SymbolTable {
                 continue;
             }
             if (name.equals(symbolTable.get(i).getName())
-                    && symbolType.equals(symbolTable.get(i).getSymbolType())) {
+                    && symbolType.equals(symbolTable.get(i).getSymbolType())
+                    && symbolTable.get(i).isValid()) {
                 return true;
             }
         }
@@ -37,7 +38,8 @@ public class SymbolTable {
                 continue;
             }
             if (name.equals(symbolTable.get(i).getName())
-                    && symbolType.equals(symbolTable.get(i).getSymbolType())) {
+                    && symbolType.equals(symbolTable.get(i).getSymbolType())
+                    && symbolTable.get(i).isValid()) {
                 return true;
             }
         }
@@ -53,13 +55,19 @@ public class SymbolTable {
     }
 
     public void delete(int level) {
-        symbolTable.removeIf(item -> item.getLevel() > level);
+        for (int i = 0; i < symbolTable.size(); i++) {
+            SymbolTableItem item = symbolTable.get(i);
+            if (item.getLevel() > level) {
+                item.disable();
+            }
+        }
     }
 
     public SymbolTableItem getItem(String name, SymbolType symbolType) {
         for (int i = symbolTable.size() - 1; i >= 0; i--) {
             if (name.equals(symbolTable.get(i).getName())
-                    && symbolType.equals(symbolTable.get(i).getSymbolType())) {
+                    && symbolType.equals(symbolTable.get(i).getSymbolType())
+                    && symbolTable.get(i).isValid()) {
                 return symbolTable.get(i);
             }
         }
@@ -73,7 +81,7 @@ public class SymbolTable {
             if (symbolTable.get(i).getLevel() < level) {
                 continue;
             }
-            if (name.equals(symbolTable.get(i).getName())) {
+            if (name.equals(symbolTable.get(i).getName()) && symbolTable.get(i).isValid()) {
                 item = symbolTable.get(i);
             }
         }

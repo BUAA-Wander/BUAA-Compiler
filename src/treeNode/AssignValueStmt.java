@@ -5,7 +5,6 @@ import ir.MovIr;
 import ir.StorePointerValueIr;
 import ir.utils.Immediate;
 import ir.utils.Operand;
-import ir.utils.Pointer;
 
 import java.util.ArrayList;
 import java.util.List;
