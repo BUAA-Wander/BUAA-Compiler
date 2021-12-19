@@ -26,26 +26,56 @@ Mov #10 #9
 WriteInt #9
 WriteChar 
 
+Mov #0 #19
+MovImm 2 #23
+Mov #23 #22
+Mov #22 #21
+MovImm 4 #20
+MovImm 0 #24
+Mul #20 #21 #21
+LoadArrayValue #24 0 #24
+LoadArrayValue #24 #21 #21
+Mov #21 #18
+Mov #18 #17
+WriteInt #17
+WriteChar 
+
 Return
 InsertLabel main
-MovImm 1 #19
-Mov #19 #18
-Mov #18 #17
-Mov #17 @a@local@0
-Mov @a@local@0 #24
-Mov #24 #23
-PassParam #23
-Offset 4 0 #27
+MovImm 1 #27
 Mov #27 #26
 Mov #26 #25
-PassParam #25
+Mov #25 @a@local@0
+MovImm 114514 #30
+Mov #30 #29
+Mov #29 #28
+Offset 16 0 #31
+StorePointerValue #31 0 #28
+MovImm 19260817 #34
+Mov #34 #33
+Mov #33 #32
+Offset 20 0 #35
+StorePointerValue #35 0 #32
+MovImm 200044 #38
+Mov #38 #37
+Mov #37 #36
+Offset 24 0 #39
+StorePointerValue #39 0 #36
+Offset 16 0 #45
+Mov #45 #44
+Mov #44 #43
+PassParam #43
+Offset 4 0 #48
+Mov #48 #47
+Mov #47 #46
+PassParam #46
 SaveContext
 Br check_block
 LoadContext
-Mov #0 #21
-Mov #21 #20
-MovImm 0 #30
-Mov #30 #29
-Mov #29 #28
-PassReturnValue #28
+Mov #0 #41
+Mov #41 #40
+MovImm 0 #51
+Mov #51 #50
+Mov #50 #49
+PassReturnValue #49
 Return

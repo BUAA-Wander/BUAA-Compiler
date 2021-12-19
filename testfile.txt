@@ -1,12 +1,14 @@
 int var_array1_a[2] = {244, 353};
-void check_block(int a2, int b2[]) {
+void check_block(int a2[], int b2[]) {
     printf("%d\n", b2[1]);
+    printf("%d\n", a2[2]);
     return;
 }
 
 int main() {
     int a;
     a = 1;
-    check_block(a, var_array1_a);
+    int c[3] = {114514, 19260817, 200044};
+    check_block(c, var_array1_a);
     return 0;
 }

@@ -234,13 +234,6 @@ public class LVal extends TreeNode {
 
         // base is not the headAddr of array!!! base = 4
         instructions.add(new MovImmIr(new Immediate(4), base));
-        // TODO
-
-//        if (symbol instanceof PointerSymbol) {
-//
-//        } else {
-//            instructions.add(new MovImmIr(new Immediate(item.getAddr()), headAddr));
-//        }
 
         instructions.add(new MovImmIr(new Immediate(item.getAddr()), headAddr));
         instructions.add(new MulIr(base, offsetId, offsetId));
@@ -253,11 +246,13 @@ public class LVal extends TreeNode {
         // 注意如果是全局数组则不能传scope = 1
         boolean isBasePointer = (symbol instanceof PointerSymbol);
         if (isBasePointer) {
+            // 当前的headAddr是个偏移量
             // 传false的原因是当前headAddr不是绝对地址，所以需要让它在该中间指令内部确定自己按照什么方式算绝对地址
             instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, false));
             // instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, true));
         }
 
+        // TODO 当isBasePointer = true的时候，如何告诉中间代码他现在处理的这个pointer指向的是局部还是全局地址
         if (level == 0) {
             instructions.add(new LoadArrayValueIr(headAddr, offsetId, offsetId, scope, isBasePointer));
         } else {

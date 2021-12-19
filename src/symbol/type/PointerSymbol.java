@@ -14,6 +14,13 @@ public class PointerSymbol extends Symbol {
         this.dims = dims;
     }
 
+    public PointerSymbol(int lineNumber, String name, ConstExp lastDimSize, int dims, boolean isGlobal) {
+        super(lineNumber, name);
+        this.lastDimSize = lastDimSize;
+        this.dims = dims;
+        this.isGlobal = isGlobal;
+    }
+
     public int getDims() {
         return dims;
     }
