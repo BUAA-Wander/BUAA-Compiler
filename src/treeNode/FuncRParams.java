@@ -38,6 +38,7 @@ public class FuncRParams extends TreeNode {
         List<IntermediateInstruction> instructions = new ArrayList<>();
         for (int i = 0; i < exps.size(); i++) {
             // TODO 必须把数组当成左值分析？
+            // TODO 数组必须传进去地址
             LValAnalyseMode.setAnalyseMode(true);
             Operand memAddr = exps.get(i).generateIr(level, instructions, i * 4 + used);
             LValAnalyseMode.setAnalyseMode(false);

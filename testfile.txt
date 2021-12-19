@@ -1,8 +1,10 @@
-void sort(int a[]) {
-	sort(a);
-	return ;
+void calc(int a[]) {
+    a[2] = 114;
+    printf("%d\n", a[2]);
 }
 
 int main() {
-    return 0;
+	int ori[3] = {998, 244, 353};
+	calc(ori);
+	return 0;
 }

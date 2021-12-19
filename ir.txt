@@ -1,20 +1,62 @@
 MovImm 0 #0
 Br main
 Stop
-InsertLabel sort
-Offset 0 0 #6
-Mov #6 #5
+InsertLabel calc
+Mov #0 #1
+MovImm 2 #5
 Mov #5 #4
-PassParam #4
-SaveContext
-Br sort
-LoadContext
-Mov #0 #2
-Mov #2 #1
+Mov #4 #3
+MovImm 4 #2
+MovImm 0 #6
+Mul #2 #3 #3
+LoadArrayValue #6 0 #6
+Offset #6 #3 #7
+MovImm 114 #10
+Mov #10 #9
+Mov #9 #8
+StorePointerValue #7 0 #8
+Mov #0 #13
+MovImm 2 #17
+Mov #17 #16
+Mov #16 #15
+MovImm 4 #14
+MovImm 0 #18
+Mul #14 #15 #15
+LoadArrayValue #18 0 #18
+LoadArrayValue #18 #15 #15
+Mov #15 #12
+Mov #12 #11
+WriteInt #11
+WriteChar 
+
 Return
 InsertLabel main
-MovImm 0 #9
-Mov #9 #8
-Mov #8 #7
-PassReturnValue #7
+MovImm 998 #21
+Mov #21 #20
+Mov #20 #19
+Offset 0 0 #22
+StorePointerValue #22 0 #19
+MovImm 244 #25
+Mov #25 #24
+Mov #24 #23
+Offset 4 0 #26
+StorePointerValue #26 0 #23
+MovImm 353 #29
+Mov #29 #28
+Mov #28 #27
+Offset 8 0 #30
+StorePointerValue #30 0 #27
+Offset 0 0 #36
+Mov #36 #35
+Mov #35 #34
+PassParam #34
+SaveContext
+Br calc
+LoadContext
+Mov #0 #32
+Mov #32 #31
+MovImm 0 #39
+Mov #39 #38
+Mov #38 #37
+PassReturnValue #37
 Return

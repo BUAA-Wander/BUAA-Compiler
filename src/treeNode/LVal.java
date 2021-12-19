@@ -340,6 +340,11 @@ public class LVal extends TreeNode {
         Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
         boolean isGlobal = (scope == 0);
         boolean isBasePointer = (symbol instanceof PointerSymbol);
+
+        if (isBasePointer) {
+            instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, false));
+        }
+
         instructions.add(new OffsetIr(headAddr, offsetId, res, isGlobal, isBasePointer));
 
         return res;

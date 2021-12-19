@@ -33,7 +33,11 @@ public class OffsetIr extends IntermediateInstruction {
 
         mipsCodes.addAll(op1.loadToReg(t0));
         mipsCodes.addAll(op2.loadToReg(t1));
-        mipsCodes.add(new Add(t0, t1, t2));
+        if (isGlobal) {
+            mipsCodes.add(new Add(t0, t1, t2));
+        } else {
+            mipsCodes.add(new Sub(t0, t1, t2));
+        }
 
         // 如果不是指针，才加gp和sp
         if (!isBasePointer) {
