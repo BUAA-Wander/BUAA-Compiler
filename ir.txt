@@ -1,76 +1,119 @@
 MovImm 0 #0
 Br main
 Stop
-InsertLabel main
-MovImm 0 #3
-Mov #3 #2
-Mov #2 #1
-Mov #1 @a@local@0
-MovImm 0 #6
+InsertLabel check_group
+Mov #0 #3
+MovImm 0 #7
+Mov #7 #6
 Mov #6 #5
-Mov #5 #4
-Mov #4 @c@local@16
-MovImm 998 #9
-Mov #9 #8
-Mov #8 #7
-Offset 32 0 #10
-StorePointerValue #10 0 #7
-MovImm 244 #13
-Mov #13 #12
-Mov #12 #11
-Offset 36 0 #14
-StorePointerValue #14 0 #11
-Mov #0 #15
-MovImm 1 #19
-Mov #19 #18
-Mov #18 #17
-MovImm 4 #16
-MovImm 32 #20
-Mul #16 #17 #17
-Offset #20 #17 #21
-MovImm 353 #24
-Mov #24 #23
-Mov #23 #22
-StorePointerValue #21 0 #22
-Mov #0 #25
-MovImm 0 #29
-Mov #29 #28
-Mov #28 #27
-MovImm 4 #26
-MovImm 32 #30
-Mul #26 #27 #27
-Offset #30 #27 #31
-MovImm 114514 #34
-Mov #34 #33
-Mov #33 #32
-StorePointerValue #31 0 #32
-Mov #0 #37
-MovImm 0 #41
-Mov #41 #40
-Mov #40 #39
-MovImm 4 #38
-MovImm 32 #42
-Mul #38 #39 #39
-LoadArrayValue #42 #39 #39
-Mov #39 #36
-Mov #36 #35
-WriteInt #35
+MovImm 4 #4
+MovImm 0 #8
+Mul #4 #5 #5
+LoadArrayValue #8 0 #8
+LoadArrayValue #8 #5 #5
+Mov #5 #2
+Mov #2 #1
+WriteInt #1
 WriteChar  
-Mov #0 #45
-MovImm 1 #49
-Mov #49 #48
-Mov #48 #47
-MovImm 4 #46
-MovImm 32 #50
-Mul #46 #47 #47
-LoadArrayValue #50 #47 #47
-Mov #47 #44
-Mov #44 #43
-WriteInt #43
+Mov #0 #11
+MovImm 1 #15
+Mov #15 #14
+Mov #14 #13
+MovImm 4 #12
+MovImm 0 #16
+Mul #12 #13 #13
+LoadArrayValue #16 0 #16
+LoadArrayValue #16 #13 #13
+Mov #13 #10
+Mov #10 #9
+WriteInt #9
 WriteChar 
 
-MovImm 0 #53
-Mov #53 #52
-Mov #52 #51
-PassReturnValue #51
+Return
+InsertLabel main
+MovImm 111 #19
+Mov #19 #18
+Mov #18 #17
+Offset 0 0 #20
+StorePointerValue #20 0 #17
+MovImm 2222 #23
+Mov #23 #22
+Mov #22 #21
+Offset 4 0 #24
+StorePointerValue #24 0 #21
+MovImm 3 #27
+Mov #27 #26
+Mov #26 #25
+Offset 8 0 #28
+StorePointerValue #28 0 #25
+MovImm 4 #31
+Mov #31 #30
+Mov #30 #29
+Offset 12 0 #32
+StorePointerValue #32 0 #29
+MovImm 5 #35
+Mov #35 #34
+Mov #34 #33
+Offset 16 0 #36
+StorePointerValue #36 0 #33
+MovImm 6 #39
+Mov #39 #38
+Mov #38 #37
+Offset 20 0 #40
+StorePointerValue #40 0 #37
+Mov #0 #46
+MovImm 0 #50
+Mov #50 #49
+Mov #49 #48
+Mul #48 2 #48
+MovImm 4 #47
+MovImm 0 #51
+Mul #47 #48 #48
+Offset #51 #48 #52
+Mov #52 #45
+Mov #45 #44
+PassParam #44
+SaveContext
+Br check_group
+LoadContext
+Mov #0 #42
+Mov #42 #41
+Mov #0 #58
+MovImm 1 #62
+Mov #62 #61
+Mov #61 #60
+Mul #60 2 #60
+MovImm 4 #59
+MovImm 0 #63
+Mul #59 #60 #60
+Offset #63 #60 #64
+Mov #64 #57
+Mov #57 #56
+PassParam #56
+SaveContext
+Br check_group
+LoadContext
+Mov #0 #54
+Mov #54 #53
+Mov #0 #70
+MovImm 2 #74
+Mov #74 #73
+Mov #73 #72
+Mul #72 2 #72
+MovImm 4 #71
+MovImm 0 #75
+Mul #71 #72 #72
+Offset #75 #72 #76
+Mov #76 #69
+Mov #69 #68
+PassParam #68
+SaveContext
+Br check_group
+LoadContext
+Mov #0 #66
+Mov #66 #65
+MovImm 0 #79
+Mov #79 #78
+Mov #78 #77
+PassReturnValue #77
 Return
