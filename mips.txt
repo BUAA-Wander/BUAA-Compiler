@@ -1,237 +1,164 @@
 addi $t2 $0 0
 sw $t2 0($gp)
-addi $t2 $0 0
-sw $t2 816($gp)
-lw $t0 816($gp)
+addi $t2 $0 2
+sw $t2 28($gp)
+lw $t0 28($gp)
 add $t2 $t0 0
-sw $t2 812($gp)
-lw $t0 812($gp)
+sw $t2 24($gp)
+lw $t0 24($gp)
 add $t2 $t0 0
-sw $t2 808($gp)
-lw $t0 808($gp)
+sw $t2 20($gp)
+addi $t0 $0 4
+addi $t1 $0 0
+add $t2 $t0 $t1
+add $t2 $t2 $gp
+sw $t2 32($gp)
+# begin StorePointerValue
+lw $t0 32($gp)
+addi $t1 $0 0
+add $t2 $t0 $t1
+lw $t3 20($gp)
+sw $t3 0($t2)
+# END StorePointerValue
+addi $t2 $0 1
+sw $t2 44($gp)
+lw $t0 44($gp)
 add $t2 $t0 0
-sw $t2 804($gp)
-addi $sp $sp -224
+sw $t2 40($gp)
+lw $t0 40($gp)
+add $t2 $t0 0
+sw $t2 36($gp)
+addi $t0 $0 8
+addi $t1 $0 0
+add $t2 $t0 $t1
+add $t2 $t2 $gp
+sw $t2 48($gp)
+# begin StorePointerValue
+lw $t0 48($gp)
+addi $t1 $0 0
+add $t2 $t0 $t1
+lw $t3 36($gp)
+sw $t3 0($t2)
+# END StorePointerValue
+addi $t2 $0 2
+sw $t2 60($gp)
+lw $t0 60($gp)
+add $t2 $t0 0
+sw $t2 56($gp)
+lw $t0 56($gp)
+add $t2 $t0 0
+sw $t2 52($gp)
+addi $t0 $0 12
+addi $t1 $0 0
+add $t2 $t0 $t1
+add $t2 $t2 $gp
+sw $t2 64($gp)
+# begin StorePointerValue
+lw $t0 64($gp)
+addi $t1 $0 0
+add $t2 $t0 $t1
+lw $t3 52($gp)
+sw $t3 0($t2)
+# END StorePointerValue
+addi $t2 $0 2
+sw $t2 76($gp)
+lw $t0 76($gp)
+add $t2 $t0 0
+sw $t2 72($gp)
+lw $t0 72($gp)
+add $t2 $t0 0
+sw $t2 68($gp)
+addi $t0 $0 16
+addi $t1 $0 0
+add $t2 $t0 $t1
+add $t2 $t2 $gp
+sw $t2 80($gp)
+# begin StorePointerValue
+lw $t0 80($gp)
+addi $t1 $0 0
+add $t2 $t0 $t1
+lw $t3 68($gp)
+sw $t3 0($t2)
+# END StorePointerValue
+addi $sp $sp -88
 jal main
-addi $sp $sp 224
+addi $sp $sp 88
 addi $v0 $0 10
 syscall
-main:
-addi $v0 $0 5
-syscall
-sw $v0 0($sp)
+fun_int_3:
 lw $t0 0($sp)
 add $t2 $t0 0
-sw $t2 804($gp)
-addi $t2 $0 100
-sw $t2 -24($sp)
-lw $t0 -24($sp)
-add $t2 $t0 0
-sw $t2 -20($sp)
-lw $t0 -20($sp)
-add $t2 $t0 0
-sw $t2 -16($sp)
-lw $t0 -16($sp)
-add $t2 $t0 0
-sw $t2 -12($sp)
-addi $t2 $0 998
-sw $t2 -36($sp)
-lw $t0 -36($sp)
-add $t2 $t0 0
-sw $t2 -32($sp)
-lw $t0 -32($sp)
-add $t2 $t0 0
-sw $t2 -28($sp)
-lw $t0 -28($sp)
-add $t2 $t0 0
 sw $t2 -8($sp)
-addi $t2 $0 0
-sw $t2 -48($sp)
-lw $t0 -48($sp)
-add $t2 $t0 0
-sw $t2 -44($sp)
-lw $t0 -44($sp)
-add $t2 $t0 0
-sw $t2 -40($sp)
-lw $t0 -40($sp)
+lw $t0 -8($sp)
 add $t2 $t0 0
 sw $t2 -4($sp)
-label_1:
-lw $t0 -4($sp)
-add $t2 $t0 0
-sw $t2 -72($sp)
-lw $t0 -72($sp)
-add $t2 $t0 0
-sw $t2 -68($sp)
-lw $t0 -68($sp)
-add $t2 $t0 0
-sw $t2 -64($sp)
-lw $t0 804($gp)
-add $t2 $t0 0
-sw $t2 -80($sp)
-lw $t0 -80($sp)
-add $t2 $t0 0
-sw $t2 -76($sp)
-lw $t0 -64($sp)
-lw $t1 -76($sp)
-slt $t2 $t0 $t1
-sw $t2 -64($sp)
-lw $t0 -64($sp)
-add $t2 $t0 0
-sw $t2 -60($sp)
-lw $t0 -60($sp)
-add $t2 $t0 0
-sw $t2 -56($sp)
-lw $t0 -56($sp)
-lw $t1 0($gp)
-beq $t0 $t1 label_4
-label_4:
-lw $t0 -56($sp)
-add $t2 $t0 0
-sw $t2 -52($sp)
-lw $t0 -52($sp)
-lw $t1 0($gp)
-bne $t0 $t1 label_3
-label_3:
-lw $t0 -52($sp)
-lw $t1 0($gp)
-beq $t0 $t1 label_2
-lw $t0 0($gp)
-add $t2 $t0 0
-sw $t2 -92($sp)
-lw $t0 -4($sp)
-add $t2 $t0 0
-sw $t2 -104($sp)
-lw $t0 -104($sp)
-add $t2 $t0 0
-sw $t2 -100($sp)
-addi $t2 $0 0
-sw $t2 -116($sp)
-lw $t0 -116($sp)
-add $t2 $t0 0
-sw $t2 -112($sp)
-lw $t0 -112($sp)
-add $t2 $t0 0
-sw $t2 -108($sp)
-addi $t2 $0 2
-sw $t2 -128($sp)
-lw $t0 -128($sp)
-add $t2 $t0 0
-sw $t2 -124($sp)
-lw $t0 -124($sp)
-add $t2 $t0 0
-sw $t2 -120($sp)
-lw $t0 -100($sp)
-lw $t1 -120($sp)
-mul $t2 $t0 $t1
-mflo $t2
-sw $t2 -100($sp)
-lw $t0 -100($sp)
-lw $t1 -108($sp)
-add $t2 $t0 $t1
-sw $t2 -92($sp)
-addi $t2 $0 4
-sw $t2 -96($sp)
-addi $t2 $0 4
-sw $t2 -132($sp)
-lw $t0 -96($sp)
-lw $t1 -92($sp)
-mul $t2 $t0 $t1
-mflo $t2
-sw $t2 -92($sp)
-# begin loadArrayValue
-lw $t0 -132($sp)
-lw $t1 -92($sp)
-add $t2 $t0 $t1
-add $t2 $gp $t2
-lw $t2 0($t2)
-sw $t2 -92($sp)
-# END loadArrayValue
-lw $t0 -92($sp)
-add $t2 $t0 0
-sw $t2 -88($sp)
-lw $t0 -88($sp)
-add $t2 $t0 0
-sw $t2 -84($sp)
-lw $a0 -84($sp)
-addi $v0 $0 1
-syscall
-addi $a0 $0 32
+lw $v1 -4($sp)
+jr $31
+main:
+addi $a0 $0 116
 addi $v0 $0 11
 syscall
-addi $a0 $0 45
+addi $a0 $0 101
 addi $v0 $0 11
 syscall
-addi $a0 $0 62
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 116
 addi $v0 $0 11
 syscall
 addi $a0 $0 32
 addi $v0 $0 11
 syscall
-lw $t0 0($gp)
-add $t2 $t0 0
-sw $t2 -144($sp)
-lw $t0 -4($sp)
-add $t2 $t0 0
-sw $t2 -156($sp)
-lw $t0 -156($sp)
-add $t2 $t0 0
-sw $t2 -152($sp)
-addi $t2 $0 1
-sw $t2 -168($sp)
-lw $t0 -168($sp)
-add $t2 $t0 0
-sw $t2 -164($sp)
-lw $t0 -164($sp)
-add $t2 $t0 0
-sw $t2 -160($sp)
-addi $t2 $0 2
-sw $t2 -180($sp)
-lw $t0 -180($sp)
-add $t2 $t0 0
-sw $t2 -176($sp)
-lw $t0 -176($sp)
-add $t2 $t0 0
-sw $t2 -172($sp)
-lw $t0 -152($sp)
-lw $t1 -172($sp)
-mul $t2 $t0 $t1
-mflo $t2
-sw $t2 -152($sp)
-lw $t0 -152($sp)
-lw $t1 -160($sp)
-add $t2 $t0 $t1
-sw $t2 -144($sp)
-addi $t2 $0 4
-sw $t2 -148($sp)
-addi $t2 $0 4
-sw $t2 -184($sp)
-lw $t0 -148($sp)
-lw $t1 -144($sp)
-mul $t2 $t0 $t1
-mflo $t2
-sw $t2 -144($sp)
-# begin loadArrayValue
-lw $t0 -184($sp)
-lw $t1 -144($sp)
-add $t2 $t0 $t1
-add $t2 $gp $t2
-lw $t2 0($t2)
-sw $t2 -144($sp)
-# END loadArrayValue
-lw $t0 -144($sp)
-add $t2 $t0 0
-sw $t2 -140($sp)
-lw $t0 -140($sp)
-add $t2 $t0 0
-sw $t2 -136($sp)
-lw $a0 -136($sp)
-addi $v0 $0 1
-syscall
-addi $a0 $0 10
+addi $a0 $0 102
 addi $v0 $0 11
 syscall
-addi $a0 $0 105
+addi $a0 $0 117
+addi $v0 $0 11
+syscall
+addi $a0 $0 110
+addi $v0 $0 11
+syscall
+addi $a0 $0 99
+addi $v0 $0 11
+syscall
+addi $a0 $0 44
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 115
+addi $v0 $0 11
+syscall
+addi $a0 $0 104
+addi $v0 $0 11
+syscall
+addi $a0 $0 111
+addi $v0 $0 11
+syscall
+addi $a0 $0 117
+addi $v0 $0 11
+syscall
+addi $a0 $0 108
+addi $v0 $0 11
+syscall
+addi $a0 $0 100
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 98
+addi $v0 $0 11
+syscall
+addi $a0 $0 101
+addi $v0 $0 11
+syscall
+addi $a0 $0 32
+addi $v0 $0 11
+syscall
+addi $a0 $0 50
 addi $v0 $0 11
 syscall
 addi $a0 $0 58
@@ -240,45 +167,94 @@ syscall
 addi $a0 $0 32
 addi $v0 $0 11
 syscall
+lw $t0 0($gp)
+add $t2 $t0 0
+sw $t2 -20($sp)
+addi $t2 $0 1
+sw $t2 -36($sp)
+lw $t0 -36($sp)
+add $t2 $t0 0
+sw $t2 -32($sp)
+lw $t0 -32($sp)
+add $t2 $t0 0
+sw $t2 -28($sp)
+addi $t2 $0 1
+sw $t2 -48($sp)
+lw $t0 -48($sp)
+add $t2 $t0 0
+sw $t2 -44($sp)
+lw $t0 -44($sp)
+add $t2 $t0 0
+sw $t2 -40($sp)
+addi $t2 $0 2
+sw $t2 -60($sp)
+lw $t0 -60($sp)
+add $t2 $t0 0
+sw $t2 -56($sp)
+lw $t0 -56($sp)
+add $t2 $t0 0
+sw $t2 -52($sp)
+lw $t0 -28($sp)
+lw $t1 -52($sp)
+mul $t2 $t0 $t1
+mflo $t2
+sw $t2 -28($sp)
+lw $t0 -28($sp)
+lw $t1 -40($sp)
+add $t2 $t0 $t1
+sw $t2 -20($sp)
+addi $t2 $0 4
+sw $t2 -24($sp)
+addi $t2 $0 4
+sw $t2 -64($sp)
+lw $t0 -24($sp)
+lw $t1 -20($sp)
+mul $t2 $t0 $t1
+mflo $t2
+sw $t2 -20($sp)
+# begin loadArrayValue
+lw $t0 -64($sp)
+lw $t1 -20($sp)
+add $t2 $t0 $t1
+add $t2 $gp $t2
+lw $t2 0($t2)
+sw $t2 -68($sp)
+# END loadArrayValue
+lw $t0 -68($sp)
+add $t2 $t0 0
+sw $t2 -16($sp)
+lw $t0 -16($sp)
+add $t2 $t0 0
+sw $t2 -12($sp)
+# begin PassParam
+lw $t0 -12($sp)
+sw $t0 -88($sp)
+# End PassParam
+sw $ra -8($sp)
+addi $sp $sp -88
+jal fun_int_3
+addi $sp $sp 88
+lw $ra -8($sp)
+sw $v1 -72($sp)
+lw $t0 -72($sp)
+add $t2 $t0 0
+sw $t2 -4($sp)
 lw $t0 -4($sp)
 add $t2 $t0 0
-sw $t2 -192($sp)
-lw $t0 -192($sp)
-add $t2 $t0 0
-sw $t2 -188($sp)
-lw $a0 -188($sp)
+sw $t2 0($sp)
+lw $a0 0($sp)
 addi $v0 $0 1
 syscall
 addi $a0 $0 10
 addi $v0 $0 11
 syscall
-lw $t0 -4($sp)
-add $t2 $t0 0
-sw $t2 -200($sp)
-lw $t0 -200($sp)
-add $t2 $t0 0
-sw $t2 -196($sp)
-addi $t2 $0 1
-sw $t2 -208($sp)
-lw $t0 -208($sp)
-add $t2 $t0 0
-sw $t2 -204($sp)
-lw $t0 -196($sp)
-lw $t1 -204($sp)
-add $t2 $t0 $t1
-sw $t2 -196($sp)
-lw $t0 -196($sp)
-add $t2 $t0 0
-sw $t2 -4($sp)
-j label_1
-label_2:
 addi $t2 $0 0
-sw $t2 -220($sp)
-lw $t0 -220($sp)
+sw $t2 -84($sp)
+lw $t0 -84($sp)
 add $t2 $t0 0
-sw $t2 -216($sp)
-lw $t0 -216($sp)
+sw $t2 -80($sp)
+lw $t0 -80($sp)
 add $t2 $t0 0
-sw $t2 -212($sp)
-lw $v1 -212($sp)
+sw $t2 -76($sp)
+lw $v1 -76($sp)
 jr $31

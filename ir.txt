@@ -1,100 +1,86 @@
 MovImm 0 #0
-MovImm 0 #3
+MovImm 2 #3
 Mov #3 #2
 Mov #2 #1
-Mov #1 @len@global@804
-Br main
-Stop
-InsertLabel main
-Getint #4
-Mov #4 @len@global@804
-MovImm 100 #7
+Offset 4 0 #4
+StorePointerValue #4 0 #1
+MovImm 1 #7
 Mov #7 #6
 Mov #6 #5
-Mov #5 @i@local@12
-MovImm 998 #10
+Offset 8 0 #8
+StorePointerValue #8 0 #5
+MovImm 2 #11
+Mov #11 #10
 Mov #10 #9
-Mov #9 #8
-Mov #8 @j@local@8
-MovImm 0 #13
-Mov #13 #12
-Mov #12 #11
-Mov #11 @i@local@4
-InsertLabel label_1
-Mov @i@local@4 #19
-Mov #19 #18
-Mov #18 #17
-Mov @len@global@804 #21
-Mov #21 #20
-Less #17 #20 #17
-Mov #17 #16
-Mov #16 #15
-BranchIfEq #15 #0 label_4
-InsertLabel label_4
+Offset 12 0 #12
+StorePointerValue #12 0 #9
+MovImm 2 #15
 Mov #15 #14
-BranchIfNotEq #14 #0 label_3
-InsertLabel label_3
-BranchIfEq #14 #0 label_2
-Mov #0 #24
-Mov @i@local@4 #27
-Mov #27 #26
-MovImm 0 #30
-Mov #30 #29
-Mov #29 #28
-MovImm 2 #33
-Mov #33 #32
-Mov #32 #31
-Mul #26 #31 #26
-Add #26 #28 #24
-MovImm 4 #25
-MovImm 4 #34
-Mul #25 #24 #24
-LoadArrayValue #34 #24 #24
-Mov #24 #23
-Mov #23 #22
-WriteInt #22
+Mov #14 #13
+Offset 16 0 #16
+StorePointerValue #16 0 #13
+Br main
+Stop
+InsertLabel fun_int_3
+Mov @a@local@0 #18
+Mov #18 #17
+PassReturnValue #17
+Return
+InsertLabel main
+WriteChar t
+WriteChar e
+WriteChar s
+WriteChar t
 WriteChar  
-WriteChar -
-WriteChar >
+WriteChar f
+WriteChar u
+WriteChar n
+WriteChar c
+WriteChar ,
 WriteChar  
-Mov #0 #37
-Mov @i@local@4 #40
-Mov #40 #39
-MovImm 1 #43
-Mov #43 #42
-Mov #42 #41
-MovImm 2 #46
-Mov #46 #45
-Mov #45 #44
-Mul #39 #44 #39
-Add #39 #41 #37
-MovImm 4 #38
-MovImm 4 #47
-Mul #38 #37 #37
-LoadArrayValue #47 #37 #37
-Mov #37 #36
-Mov #36 #35
-WriteInt #35
-WriteChar 
-
-WriteChar i
+WriteChar s
+WriteChar h
+WriteChar o
+WriteChar u
+WriteChar l
+WriteChar d
+WriteChar  
+WriteChar b
+WriteChar e
+WriteChar  
+WriteChar 2
 WriteChar :
 WriteChar  
-Mov @i@local@4 #49
-Mov #49 #48
-WriteInt #48
+Mov #0 #24
+MovImm 1 #28
+Mov #28 #27
+Mov #27 #26
+MovImm 1 #31
+Mov #31 #30
+Mov #30 #29
+MovImm 2 #34
+Mov #34 #33
+Mov #33 #32
+Mul #26 #32 #26
+Add #26 #29 #24
+MovImm 4 #25
+MovImm 4 #35
+Mul #25 #24 #24
+LoadArrayValue #35 #24 #36
+Mov #36 #23
+Mov #23 #22
+PassParam #22
+SaveContext
+Br fun_int_3
+LoadContext
+GetReturnValue #37
+Mov #37 #20
+Mov #20 #19
+WriteInt #19
 WriteChar 
 
-Mov @i@local@4 #51
-Mov #51 #50
-MovImm 1 #53
-Mov #53 #52
-Add #50 #52 #50
-Mov #50 @i@local@4
-Jump label_1
-InsertLabel label_2
-MovImm 0 #56
-Mov #56 #55
-Mov #55 #54
-PassReturnValue #54
+MovImm 0 #40
+Mov #40 #39
+Mov #39 #38
+PassReturnValue #38
 Return

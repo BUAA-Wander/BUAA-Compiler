@@ -26,6 +26,7 @@ import symbol.type.SymbolType;
 import symbol.type.VarArraySymbol;
 import symbol.type.VarBTypeSymbol;
 import treeNode.util.LValAnalyseMode;
+import treeNode.util.PassingValueMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -345,7 +346,16 @@ public class LVal extends TreeNode {
             // instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, true));
         }
 
-        instructions.add(new OffsetIr(headAddr, offsetId, res, isGlobal, isBasePointer));
+        if (PassingValueMode.getAnalyseMode() && dimSizes != null && dimSizes.size() == index.size()) {
+            if (level == 0) {
+                instructions.add(new LoadArrayValueIr(headAddr, offsetId, res, scope, isBasePointer));
+            } else {
+                instructions.add(new LoadArrayValueIr(headAddr, offsetId, res, scope, isBasePointer));
+            }
+        } else {
+            instructions.add(new OffsetIr(headAddr, offsetId, res, isGlobal, isBasePointer));
+        }
+
 
         return res;
     }

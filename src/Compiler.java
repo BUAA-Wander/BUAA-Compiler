@@ -4,6 +4,7 @@ import exception.ParseError;
 import exception.ParseOutOfBound;
 import ir.IntermediateInstruction;
 import ir.LoadArrayValueIr;
+import ir.PassParamIr;
 import ir.StorePointerValueIr;
 import lex.Lexer;
 import mips.Annotation;
@@ -68,6 +69,8 @@ public class Compiler {
                     TargetCodeContainer.codes.add((new Annotation("begin loadArrayValue")));
                 } else if (i instanceof StorePointerValueIr) {
                     TargetCodeContainer.codes.add((new Annotation("begin StorePointerValue")));
+                } else if (i instanceof PassParamIr) {
+                    TargetCodeContainer.codes.add((new Annotation("begin PassParam")));
                 }
                 List<MipsCode> list = i.toMips();
                 if (list != null) {
@@ -77,6 +80,8 @@ public class Compiler {
                     TargetCodeContainer.codes.add((new Annotation("END loadArrayValue")));
                 } else if (i instanceof StorePointerValueIr) {
                     TargetCodeContainer.codes.add((new Annotation("END StorePointerValue")));
+                } else if (i instanceof PassParamIr) {
+                    TargetCodeContainer.codes.add((new Annotation("End PassParam")));
                 }
             } catch (NullPointerException e) {
                 e.printStackTrace();
