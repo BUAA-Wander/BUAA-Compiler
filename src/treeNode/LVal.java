@@ -309,7 +309,7 @@ public class LVal extends TreeNode {
         // calculate index!!!!!
         if (index.size() == 1) {
             offsetId = index.get(0).generateIr(level, instructions);
-            if (dimSizes.size() > 1) {
+            if (dimSizes != null && dimSizes.size() > 1) {
                 ConstExp secondSize = dimSizes.get(1);
                 instructions.add(new MulIr(offsetId, new Immediate(secondSize.getValue(level)), offsetId));
             }
