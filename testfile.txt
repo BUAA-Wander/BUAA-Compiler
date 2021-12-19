@@ -1,10 +1,12 @@
-void calc(int a[]) {
-    a[2] = 114;
-    printf("%d\n", a[2]);
+void f(int a[]) {
+    a[1] = 244;
+    printf("%d\n", a[1]);
 }
 
 int main() {
-	int ori[3] = {998, 244, 353};
-	calc(ori);
+	int array1[2];
+	array1[1] = 353;
+	printf("%d\n",array1[1]);
+	f(array1);
 	return 0;
 }
