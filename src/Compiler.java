@@ -4,6 +4,7 @@ import exception.ParseError;
 import exception.ParseOutOfBound;
 import ir.IntermediateInstruction;
 import ir.LoadArrayValueIr;
+import ir.StorePointerValueIr;
 import lex.Lexer;
 import mips.Annotation;
 import mips.MipsCode;
@@ -65,6 +66,8 @@ public class Compiler {
             try {
                 if (i instanceof LoadArrayValueIr) {
                     TargetCodeContainer.codes.add((new Annotation("begin loadArrayValue")));
+                } else if (i instanceof StorePointerValueIr) {
+                    TargetCodeContainer.codes.add((new Annotation("begin StorePointerValue")));
                 }
                 List<MipsCode> list = i.toMips();
                 if (list != null) {
@@ -72,6 +75,8 @@ public class Compiler {
                 }
                 if (i instanceof LoadArrayValueIr) {
                     TargetCodeContainer.codes.add((new Annotation("END loadArrayValue")));
+                } else if (i instanceof StorePointerValueIr) {
+                    TargetCodeContainer.codes.add((new Annotation("END StorePointerValue")));
                 }
             } catch (NullPointerException e) {
                 System.out.println(i.toString());

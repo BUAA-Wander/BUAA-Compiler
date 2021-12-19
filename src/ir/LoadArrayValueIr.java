@@ -32,10 +32,8 @@ public class LoadArrayValueIr extends IntermediateInstruction {
         String t0 = "$t0", t1 = "$t1", t2 = "$t2", sp = "$sp", gp = "$gp";
         mipsCodes.addAll(base.loadToReg(t0));
         mipsCodes.addAll(offset.loadToReg(t1));
-        // base + offset
-//        mipsCodes.add(new Add(t0, t1, t2));
-        // sp - (base + offset)
 
+        // 根据是否为指针以及是否是全局来选择不同的计算方式
         if (!isBasePointer) {
             mipsCodes.add(new Add(t0, t1, t2));
             if (scope == 0) {
@@ -44,6 +42,7 @@ public class LoadArrayValueIr extends IntermediateInstruction {
                 mipsCodes.add(new Sub(sp, t2, t2));
             }
         } else {
+            // 如果是指针，在考虑偏移的时候就应该考虑这个指针指向的是局部地址还是全局地址
             if (scope == 0) {
                 mipsCodes.add(new Add(t0, t1, t2));
             } else {

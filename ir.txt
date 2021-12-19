@@ -1,75 +1,76 @@
 MovImm 0 #0
 Br main
 Stop
-InsertLabel f
-Mov #0 #3
-MovImm 0 #7
-Mov #7 #6
-Mov #6 #5
-MovImm 4 #4
-MovImm 0 #8
-Mul #4 #5 #5
-LoadArrayValue #8 0 #8
-LoadArrayValue #8 #5 #5
-Mov #5 #2
+InsertLabel main
+MovImm 0 #3
+Mov #3 #2
 Mov #2 #1
-WriteInt #1
-WriteChar  
-Mov #0 #11
-MovImm 1 #15
-Mov #15 #14
-Mov #14 #13
-MovImm 4 #12
-MovImm 0 #16
-Mul #12 #13 #13
-LoadArrayValue #16 0 #16
-LoadArrayValue #16 #13 #13
-Mov #13 #10
-Mov #10 #9
-WriteInt #9
-WriteChar  
-Mov #0 #19
-MovImm 2 #23
-Mov #23 #22
-Mov #22 #21
-MovImm 4 #20
-MovImm 0 #24
-Mul #20 #21 #21
-LoadArrayValue #24 0 #24
-LoadArrayValue #24 #21 #21
-Mov #21 #18
+Mov #1 @a@local@0
+MovImm 0 #6
+Mov #6 #5
+Mov #5 #4
+Mov #4 @c@local@16
+MovImm 998 #9
+Mov #9 #8
+Mov #8 #7
+Offset 32 0 #10
+StorePointerValue #10 0 #7
+MovImm 244 #13
+Mov #13 #12
+Mov #12 #11
+Offset 36 0 #14
+StorePointerValue #14 0 #11
+Mov #0 #15
+MovImm 1 #19
+Mov #19 #18
 Mov #18 #17
-WriteInt #17
+MovImm 4 #16
+MovImm 32 #20
+Mul #16 #17 #17
+Offset #20 #17 #21
+MovImm 353 #24
+Mov #24 #23
+Mov #23 #22
+StorePointerValue #21 0 #22
+Mov #0 #25
+MovImm 0 #29
+Mov #29 #28
+Mov #28 #27
+MovImm 4 #26
+MovImm 32 #30
+Mul #26 #27 #27
+Offset #30 #27 #31
+MovImm 114514 #34
+Mov #34 #33
+Mov #33 #32
+StorePointerValue #31 0 #32
+Mov #0 #37
+MovImm 0 #41
+Mov #41 #40
+Mov #40 #39
+MovImm 4 #38
+MovImm 32 #42
+Mul #38 #39 #39
+LoadArrayValue #42 #39 #39
+Mov #39 #36
+Mov #36 #35
+WriteInt #35
+WriteChar  
+Mov #0 #45
+MovImm 1 #49
+Mov #49 #48
+Mov #48 #47
+MovImm 4 #46
+MovImm 32 #50
+Mul #46 #47 #47
+LoadArrayValue #50 #47 #47
+Mov #47 #44
+Mov #44 #43
+WriteInt #43
 WriteChar 
 
-Return
-InsertLabel main
-MovImm 998 #27
-Mov #27 #26
-Mov #26 #25
-Offset 0 0 #28
-StorePointerValue #28 0 #25
-MovImm 244 #31
-Mov #31 #30
-Mov #30 #29
-Offset 4 0 #32
-StorePointerValue #32 0 #29
-MovImm 353 #35
-Mov #35 #34
-Mov #34 #33
-Offset 8 0 #36
-StorePointerValue #36 0 #33
-Offset 0 0 #42
-Mov #42 #41
-Mov #41 #40
-PassParam #40
-SaveContext
-Br f
-LoadContext
-Mov #0 #38
-Mov #38 #37
-MovImm 0 #45
-Mov #45 #44
-Mov #44 #43
-PassReturnValue #43
+MovImm 0 #53
+Mov #53 #52
+Mov #52 #51
+PassReturnValue #51
 Return

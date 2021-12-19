@@ -25,6 +25,7 @@ import symbol.type.Symbol;
 import symbol.type.SymbolType;
 import symbol.type.VarArraySymbol;
 import symbol.type.VarBTypeSymbol;
+import treeNode.util.LValAnalyseMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,7 @@ public class LVal extends TreeNode {
     private List<Exp> index;
     private List<RightBrack> rightBracks;
     private boolean analyseMode;
+    private boolean isGlobal;
 
     public LVal(int num, Ident ident, List<LeftBrack> leftBracks, List<Exp> index, List<RightBrack> rightBracks) {
         super(num);
@@ -159,6 +161,12 @@ public class LVal extends TreeNode {
         return false;
     }
 
+    public boolean isGlobalVar() {
+        return GlobalSymbolTable.isExist(0, ident.getName(), SymbolType.ARRAY)
+                || GlobalSymbolTable.isExist(0, ident.getName(), SymbolType.VAR)
+                || GlobalSymbolTable.isExist(0, ident.getName(), SymbolType.POINTER);
+    }
+
     private Operand analyseRightMode(int level, List<IntermediateInstruction> instructions)
             throws ValueTypeException {
         // return a value
@@ -226,6 +234,14 @@ public class LVal extends TreeNode {
 
         // base is not the headAddr of array!!! base = 4
         instructions.add(new MovImmIr(new Immediate(4), base));
+        // TODO
+
+//        if (symbol instanceof PointerSymbol) {
+//
+//        } else {
+//            instructions.add(new MovImmIr(new Immediate(item.getAddr()), headAddr));
+//        }
+
         instructions.add(new MovImmIr(new Immediate(item.getAddr()), headAddr));
         instructions.add(new MulIr(base, offsetId, offsetId));
 
@@ -233,6 +249,7 @@ public class LVal extends TreeNode {
         // TODO: find value by offset and array head
         // 如果是函数的形参数组，则需要先通过符号表项，拿出来这个指针的值（即指向的绝对地址）
         // 然后再通过这个绝对地址去取数组的值
+        // 当前的headAddr不是绝对地址
         boolean isBasePointer = (symbol instanceof PointerSymbol);
         if (isBasePointer) {
             instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, false));
@@ -319,7 +336,7 @@ public class LVal extends TreeNode {
         Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
         boolean isGlobal = (scope == 0);
         boolean isBasePointer = (symbol instanceof PointerSymbol);
-        instructions.add(new OffsetIr(offsetId, new Immediate(0), res, isGlobal, isBasePointer));
+        instructions.add(new OffsetIr(headAddr, offsetId, res, isGlobal, isBasePointer));
 
         return res;
     }
@@ -368,7 +385,7 @@ public class LVal extends TreeNode {
                     }
                 }
             } else {
-                if (analyseMode) {
+                if (analyseMode || LValAnalyseMode.getAnalyseMode()) {
                     return analyseLeftMode(level, instructions);
                 } else {
                     return analyseRightMode(level, instructions);

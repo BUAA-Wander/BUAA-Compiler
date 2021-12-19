@@ -5,6 +5,7 @@ import ir.PassParamIr;
 import ir.utils.Operand;
 import symbol.SymbolTable;
 import symbol.type.ParamType;
+import treeNode.util.LValAnalyseMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,10 @@ public class FuncRParams extends TreeNode {
     public List<IntermediateInstruction> generateIr(int level, int used) {
         List<IntermediateInstruction> instructions = new ArrayList<>();
         for (int i = 0; i < exps.size(); i++) {
+            // TODO 必须把数组当成左值分析？
+            LValAnalyseMode.setAnalyseMode(true);
             Operand memAddr = exps.get(i).generateIr(level, instructions, i * 4 + used);
+            LValAnalyseMode.setAnalyseMode(false);
             instructions.add(new PassParamIr(memAddr, -i * 4 - used));
         }
         return instructions;

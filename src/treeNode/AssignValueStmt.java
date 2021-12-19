@@ -30,7 +30,9 @@ public class AssignValueStmt extends Stmt {
         lVal.setAnalyseMode(false);
         Operand src = exp.generateIr(level, instructions);
         if (lVal.isPointer(level)) {
-            instructions.add(new StorePointerValueIr(dst, new Immediate(0), src));
+            instructions.add(
+                    new StorePointerValueIr(
+                            dst, new Immediate(0), src, lVal.isPointer(0), true));
         } else {
             instructions.add(new MovIr(src, dst));
         }

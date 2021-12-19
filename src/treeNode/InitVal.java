@@ -87,7 +87,8 @@ public class InitVal extends TreeNode {
                         instructions.add(new OffsetIr(
                                 new Immediate(addr), new Immediate(0), dstId, false, isVarPointer));
                     }
-                    instructions.add(new StorePointerValueIr(dstId, new Immediate(0), srcId));
+                    instructions.add(new StorePointerValueIr(
+                            dstId, new Immediate(0), srcId, (level == 0), true));
                     id++;
                 }
             }
