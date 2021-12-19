@@ -63,8 +63,11 @@ public class SymbolTable {
         }
     }
 
-    public SymbolTableItem getItem(String name, SymbolType symbolType) {
+    public SymbolTableItem getItem(int level, String name, SymbolType symbolType) {
         for (int i = symbolTable.size() - 1; i >= 0; i--) {
+            if (level < symbolTable.get(i).getLevel()) {
+                continue;
+            }
             if (name.equals(symbolTable.get(i).getName())
                     && symbolType.equals(symbolTable.get(i).getSymbolType())
                     && symbolTable.get(i).isValid()) {

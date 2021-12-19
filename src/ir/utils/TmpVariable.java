@@ -14,9 +14,11 @@ import java.util.List;
 public class TmpVariable extends Operand {
     private String name;
     private boolean isGlobal;
+    private int level;
 
-    public TmpVariable(String name, boolean isGlobal) {
+    public TmpVariable(int level, String name, boolean isGlobal) {
         super();
+        this.level = level;
         this.name = name;
         this.isGlobal = isGlobal;
     }
@@ -30,7 +32,7 @@ public class TmpVariable extends Operand {
             item = GlobalSymbolTable.getItem(name, SymbolType.VAR);
             mipsCodes.add(new Lw("$gp", reg, item.getAddr()));
         } else {
-            item = LocalSymbolTable.getItem(name, SymbolType.VAR);
+            item = LocalSymbolTable.getItem(level, name, SymbolType.VAR);
             mipsCodes.add(new Lw("$sp", reg, -item.getAddr()));
         }
         return mipsCodes;
@@ -47,7 +49,7 @@ public class TmpVariable extends Operand {
             item = GlobalSymbolTable.getItem(name, SymbolType.VAR);
             mipsCodes.add(new Sw("$gp", reg, item.getAddr()));
         } else {
-            item = LocalSymbolTable.getItem(name, SymbolType.VAR);
+            item = LocalSymbolTable.getItem(level, name, SymbolType.VAR);
             mipsCodes.add(new Sw("$sp", reg, -item.getAddr()));
         }
         return mipsCodes;

@@ -27,7 +27,7 @@ public class GlobalSymbolTable {
     }
 
     public static SymbolTableItem getItem(String name, SymbolType symbolType) {
-        return symbolTable.getItem(name, symbolType);
+        return symbolTable.getItem(0, name, symbolType);
     }
 
     public static SymbolTableItem getItem(String name) {

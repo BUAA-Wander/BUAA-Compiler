@@ -64,7 +64,7 @@ public class UnaryExp extends TreeNode {
 
     public ParamType getParamType(SymbolTable symbolTable) {
         if (type == UnaryExpType.FUNCCALL) {
-            SymbolTableItem item = symbolTable.getItem(ident.getName(), SymbolType.FUNC);
+            SymbolTableItem item = symbolTable.getItem(0, ident.getName(), SymbolType.FUNC);
             if (item.getSymbol() instanceof FuncSymbol) {
                 FuncSymbol funcSymbol = ((FuncSymbol) item.getSymbol());
                 if (funcSymbol.getReturnType() == FuncType.VOID) {
@@ -104,7 +104,7 @@ public class UnaryExp extends TreeNode {
             // then pass parameter
             // after that, save context in the unit we prepared before
 
-            Operand raId = new TmpVariable(TmpVarGenerator.nextId(), (level == 0)); // save ra
+            Operand raId = new TmpVariable(level, TmpVarGenerator.nextId(), (level == 0)); // save ra
             int addr = AddressPtr.getLocalAddr();
             AddressPtr.addLocalAddr(4);
             LocalSymbolTable.insert(level, raId.toString(), SymbolType.VAR,
@@ -130,13 +130,13 @@ public class UnaryExp extends TreeNode {
             Symbol symbol = item.getSymbol();
             if (symbol instanceof FuncSymbol) {
                 if (((FuncSymbol) symbol).getReturnType().equals(FuncType.INT)) {
-                    Operand resId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+                    Operand resId = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
                     instructions.add(new GetReturnValueIr(resId));
                     return resId;
                 }
             }
             // void function
-            return new TmpVariable("#0", true);
+            return new TmpVariable(level, "#0", true);
         } else {
             System.out.println("No such function!");
             return null;
@@ -144,16 +144,16 @@ public class UnaryExp extends TreeNode {
     }
 
     private Operand generateOtherIr(int level, List<IntermediateInstruction> instructions, int used) {
-        Operand id = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        Operand id = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         if (unaryOp.getType().equals(UnaryOpType.NOT)) {
             instructions.add(new NotIr(unaryExp.generateIr(level, instructions, used), id));
         } else if (unaryOp.getType().equals(UnaryOpType.ADD)) {
             instructions.add(
-                    new AddIr(unaryExp.generateIr(level, instructions, used), new TmpVariable("#0", true), id));
+                    new AddIr(unaryExp.generateIr(level, instructions, used), new TmpVariable(level, "#0", true), id));
         } else {
             instructions.add(
-                    new SubIr(new TmpVariable("#0", true), unaryExp.generateIr(level, instructions, used), id));
+                    new SubIr(new TmpVariable(level, "#0", true), unaryExp.generateIr(level, instructions, used), id));
         }
         return id;
     }

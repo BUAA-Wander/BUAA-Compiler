@@ -69,7 +69,7 @@ public class PrimaryExp extends TreeNode {
 
     public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
         if (type == PrimaryExpType.NUMBER) {
-            Operand id = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+            Operand id = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
 
             int value = num.getValue();
             instructions.add(new MovImmIr(new Immediate(value), id));

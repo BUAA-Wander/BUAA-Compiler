@@ -3,10 +3,29 @@
   <component name="ChangeListManager">
     <list default="true" id="5bb7268e-7126-446a-91c7-6ec883c8c2e2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ir.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ir.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mips.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mips.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ir/LoadArrayValueIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/LoadArrayValueIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/symbol/type/PointerSymbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbol/type/PointerSymbol.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src.rar" beforeDir="false" afterPath="$PROJECT_DIR$/src.rar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ir/IntermediateInstruction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/IntermediateInstruction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ir/utils/TmpVariable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/utils/TmpVariable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/symbol/GlobalSymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbol/GlobalSymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/symbol/LocalSymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbol/LocalSymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/symbol/SymbolTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/symbol/SymbolTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/AddExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/AddExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/CompUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/CompUnit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/EqExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/EqExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/IfStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/IfStmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/InitVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/InitVal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/LAndExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LAndExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/LOrExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LOrExp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/treeNode/LVal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LVal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/MulExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/MulExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/PrimaryExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/PrimaryExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/ReadValueStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/ReadValueStmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/RelExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/RelExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/UnaryExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/UnaryExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/WhileStmt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/WhileStmt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testfile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +99,7 @@
       <workItem from="1639797708069" duration="9489000" />
       <workItem from="1639821344902" duration="6865000" />
       <workItem from="1639909020375" duration="18392000" />
-      <workItem from="1639931552214" duration="4399000" />
+      <workItem from="1639931552214" duration="8420000" />
     </task>
     <servers />
   </component>
@@ -100,38 +119,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="267" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1639751970288" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1639936099111">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1639940242441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639936099111" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1639936099111">
+    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639940242441" />
+    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1639940242441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1639936099111" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1639936099111">
+    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1639940242441" />
+    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1639940242441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1639936099111" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1639936099111">
+    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1639940242441" />
+    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1639940242441">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1639936099111" />
-    <state width="1493" height="178" key="GridCell.Tab.1.bottom" timestamp="1639935997551">
+    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1639940242441" />
+    <state width="1493" height="178" key="GridCell.Tab.1.bottom" timestamp="1639940203941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639935997551" />
-    <state width="1493" height="178" key="GridCell.Tab.1.center" timestamp="1639935997551">
+    <state width="1493" height="178" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1639940203941" />
+    <state width="1493" height="178" key="GridCell.Tab.1.center" timestamp="1639940203941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1639935997551" />
-    <state width="1493" height="178" key="GridCell.Tab.1.left" timestamp="1639935997551">
+    <state width="1493" height="178" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1639940203941" />
+    <state width="1493" height="178" key="GridCell.Tab.1.left" timestamp="1639940203941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1639935997551" />
-    <state width="1493" height="178" key="GridCell.Tab.1.right" timestamp="1639935997551">
+    <state width="1493" height="178" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1639940203941" />
+    <state width="1493" height="178" key="GridCell.Tab.1.right" timestamp="1639940203941">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1639935997551" />
+    <state width="1493" height="178" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1639940203941" />
     <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1639931550599">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -145,20 +164,21 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ir/utils/TmpVariable.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ir/LoadArrayValueIr.java</url>
           <line>30</line>
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ir/GetintIr.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="item.getAddr()" language="JAVA" />
+        <watch expression="LocalSymbolTable.getCurrentLocalSymbolTable()" language="JAVA" />
       </configuration>
     </watches-manager>
   </component>

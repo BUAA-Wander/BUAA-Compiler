@@ -1,81 +1,44 @@
 MovImm 0 #0
-MovImm 244 #3
-Mov #3 #2
-Mov #2 #1
-Offset 4 0 #4
-StorePointerValue #4 0 #1
-MovImm 353 #7
-Mov #7 #6
-Mov #6 #5
-Offset 8 0 #8
-StorePointerValue #8 0 #5
 Br main
 Stop
-InsertLabel check_block
-Mov #0 #11
-MovImm 1 #15
-Mov #15 #14
-Mov #14 #13
-MovImm 4 #12
-MovImm 4 #16
-Mul #12 #13 #13
-LoadArrayValue #16 0 #16
-LoadArrayValue #16 #13 #13
-Mov #13 #10
-Mov #10 #9
-WriteInt #9
-WriteChar 
-
-Mov #0 #19
-MovImm 2 #23
-Mov #23 #22
-Mov #22 #21
-MovImm 4 #20
-MovImm 0 #24
-Mul #20 #21 #21
-LoadArrayValue #24 0 #24
-LoadArrayValue #24 #21 #21
-Mov #21 #18
-Mov #18 #17
-WriteInt #17
-WriteChar 
-
+InsertLabel read
+Mov #0 #1
+MovImm 0 #5
+Mov #5 #4
+Mov #4 #3
+MovImm 4 #2
+MovImm 0 #6
+Mul #2 #3 #3
+LoadArrayValue #6 0 #6
+Offset #6 #3 #7
+Getint #8
+StorePointerValue #7 0 #8
 Return
 InsertLabel main
-MovImm 1 #27
-Mov #27 #26
-Mov #26 #25
-Mov #25 @a@local@0
-MovImm 114514 #30
-Mov #30 #29
-Mov #29 #28
-Offset 16 0 #31
-StorePointerValue #31 0 #28
-MovImm 19260817 #34
-Mov #34 #33
-Mov #33 #32
-Offset 20 0 #35
-StorePointerValue #35 0 #32
-MovImm 200044 #38
-Mov #38 #37
-Mov #37 #36
-Offset 24 0 #39
-StorePointerValue #39 0 #36
-Offset 16 0 #45
-Mov #45 #44
-Mov #44 #43
-PassParam #43
-Offset 4 0 #48
-Mov #48 #47
-Mov #47 #46
-PassParam #46
+Offset 0 0 #14
+Mov #14 #13
+Mov #13 #12
+PassParam #12
 SaveContext
-Br check_block
+Br read
 LoadContext
-Mov #0 #41
-Mov #41 #40
-MovImm 0 #51
-Mov #51 #50
-Mov #50 #49
-PassReturnValue #49
+Mov #0 #10
+Mov #10 #9
+Mov #0 #17
+MovImm 0 #21
+Mov #21 #20
+Mov #20 #19
+MovImm 4 #18
+MovImm 0 #22
+Mul #18 #19 #19
+LoadArrayValue #22 #19 #19
+Mov #19 #16
+Mov #16 #15
+WriteInt #15
+WriteChar 
+
+MovImm 0 #25
+Mov #25 #24
+Mov #24 #23
+PassReturnValue #23
 Return

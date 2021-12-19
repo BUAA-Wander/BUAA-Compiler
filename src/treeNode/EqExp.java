@@ -26,7 +26,7 @@ public class EqExp extends TreeNode {
     }
 
     public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
-        Operand resId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        Operand resId = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         for (int i = 0; i < relExps.size(); i++) {
             // TODO

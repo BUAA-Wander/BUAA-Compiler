@@ -85,7 +85,7 @@ public class LVal extends TreeNode {
         if (leftBracks.size() != 0) {
             SymbolTableItem item;
             if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
-                item = LocalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+                item = LocalSymbolTable.getItem(level, ident.getName(), SymbolType.ARRAY);
             } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
                 item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
             } else {
@@ -118,7 +118,7 @@ public class LVal extends TreeNode {
             }
         } else {
             if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.VAR)) {
-                SymbolTableItem item = LocalSymbolTable.getItem(ident.getName(), SymbolType.VAR);
+                SymbolTableItem item = LocalSymbolTable.getItem(level, ident.getName(), SymbolType.VAR);
                 Symbol symbol = item.getSymbol();
                 if (symbol instanceof ConstBTypeSymbol) {
                     value = ((ConstBTypeSymbol) symbol).getValue();
@@ -173,7 +173,7 @@ public class LVal extends TreeNode {
         SymbolTableItem item;
         int scope;
         if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
-            item = LocalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+            item = LocalSymbolTable.getItem(level, ident.getName(), SymbolType.ARRAY);
             scope = 1; // 1是局部，0是全局
         } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
             item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
@@ -182,7 +182,7 @@ public class LVal extends TreeNode {
             // 左值是指针类型，在本文法下只可能是数组作为参数传入某个函数，然后该函数使用该参数
             if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.POINTER)) {
                 // System.out.println("Haven't implement pointer LVal yet!");
-                item = LocalSymbolTable.getItem(ident.getName(), SymbolType.POINTER);
+                item = LocalSymbolTable.getItem(level, ident.getName(), SymbolType.POINTER);
                 scope = 1;
             } else {
                 throw new ValueTypeException();
@@ -205,10 +205,10 @@ public class LVal extends TreeNode {
             }
         }
 
-        Operand offsetId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
-        instructions.add(new MovIr(new TmpVariable("#0", true), offsetId));
+        Operand offsetId = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
+        instructions.add(new MovIr(new TmpVariable(level, "#0", true), offsetId));
 
-        Operand base = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        Operand base = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         // calculate index!!!!!
         if (index.size() == 1) {
@@ -230,7 +230,7 @@ public class LVal extends TreeNode {
             instructions.add(new AddIr(tmp0, tmp1, offsetId));
         }
 
-        Operand headAddr = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        Operand headAddr = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         // base is not the headAddr of array!!! base = 4
         instructions.add(new MovImmIr(new Immediate(4), base));
@@ -267,7 +267,7 @@ public class LVal extends TreeNode {
         SymbolTableItem item;
         int scope;
         if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
-            item = LocalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+            item = LocalSymbolTable.getItem(level, ident.getName(), SymbolType.ARRAY);
             scope = 1;
         } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
             item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
@@ -276,7 +276,7 @@ public class LVal extends TreeNode {
             // 左值是指针类型，在本文法下只可能是数组作为参数传入某个函数，然后该函数使用该参数
             if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.POINTER)) {
                 // System.out.println("Haven't implement pointer LVal yet!");
-                item = LocalSymbolTable.getItem(ident.getName(), SymbolType.POINTER);
+                item = LocalSymbolTable.getItem(level, ident.getName(), SymbolType.POINTER);
                 scope = 1;
             } else {
                 throw new ValueTypeException();
@@ -299,10 +299,10 @@ public class LVal extends TreeNode {
             }
         }
 
-        Operand offsetId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
-        instructions.add(new MovIr(new TmpVariable("#0", true), offsetId));
+        Operand offsetId = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
+        instructions.add(new MovIr(new TmpVariable(level, "#0", true), offsetId));
 
-        Operand base = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        Operand base = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         // calculate index!!!!!
         if (index.size() == 1) {
@@ -328,14 +328,14 @@ public class LVal extends TreeNode {
             instructions.add(new AddIr(tmp0, tmp1, offsetId));
         }
 
-        Operand headAddr = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        Operand headAddr = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         // base is not the headAddr of array!!! base = 4
         instructions.add(new MovImmIr(new Immediate(4), base));
         instructions.add(new MovImmIr(new Immediate(item.getAddr()), headAddr));
         instructions.add(new MulIr(base, offsetId, offsetId));
 
-        Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        Operand res = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
         boolean isGlobal = (scope == 0);
         boolean isBasePointer = (symbol instanceof PointerSymbol);
 
@@ -357,7 +357,7 @@ public class LVal extends TreeNode {
                 // TODO delete expired variable!!!!!!!!!!!!
                 // 先看是不是基本变量
                 if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.VAR)) {
-                    SymbolTableItem item = LocalSymbolTable.getItem(ident.getName(), SymbolType.VAR);
+                    SymbolTableItem item = LocalSymbolTable.getItem(level, ident.getName(), SymbolType.VAR);
                     return new Variable(item.getName(), item.getAddr(), false);
                 } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.VAR)) {
                     SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.VAR);
@@ -365,16 +365,16 @@ public class LVal extends TreeNode {
                 } else {
                     // 再看是不是数组
                     if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
-                        SymbolTableItem item = LocalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+                        SymbolTableItem item = LocalSymbolTable.getItem(level, ident.getName(), SymbolType.ARRAY);
                         int addr = item.getAddr();
-                        Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+                        Operand res = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
                         instructions.add(new OffsetIr(
                                 new Immediate(addr), new Immediate(0), res, false, false));
                         return res;
                     } else if (GlobalSymbolTable.isExist(level, ident.getName(), SymbolType.ARRAY)) {
                         SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
                         int addr = item.getAddr();
-                        Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+                        Operand res = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
                         instructions.add(new OffsetIr(
                                 new Immediate(addr), new Immediate(0), res, true, false));
                         // 这种情况下res里面存的是一个地址
@@ -382,9 +382,9 @@ public class LVal extends TreeNode {
                     } else {
                         // 最后看是不是指针
                         if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.POINTER)) {
-                            SymbolTableItem item = LocalSymbolTable.getItem(ident.getName(), SymbolType.POINTER);
+                            SymbolTableItem item = LocalSymbolTable.getItem(level, ident.getName(), SymbolType.POINTER);
                             int addr = item.getAddr();
-                            Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+                            Operand res = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
                             instructions.add(new OffsetIr(
                                     new Immediate(addr), new Immediate(0), res, false, true));
                             return res;

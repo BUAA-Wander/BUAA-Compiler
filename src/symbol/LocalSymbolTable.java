@@ -47,8 +47,8 @@ public class LocalSymbolTable {
         symbolTable.delete(level);
     }
 
-    public static SymbolTableItem getItem(String name, SymbolType symbolType) {
-        return symbolTable.getItem(name, symbolType);
+    public static SymbolTableItem getItem(int level, String name, SymbolType symbolType) {
+        return symbolTable.getItem(level, name, symbolType);
     }
 
     public static SymbolTableItem getItem(String name) {

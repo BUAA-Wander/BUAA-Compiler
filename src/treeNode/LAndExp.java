@@ -30,7 +30,7 @@ public class LAndExp extends TreeNode {
     }
 
     public Operand generateIr(int level, List<IntermediateInstruction> instructions) {
-        Operand resId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        Operand resId = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
         LabelOp label = new LabelOp(LabelGenerator.nextLabel());
         for (int i = 0; i < eqExps.size(); i++) {
             // TODO
@@ -42,7 +42,7 @@ public class LAndExp extends TreeNode {
             }
             // 短路求值
             instructions.add(
-                    new BranchIfEqIr(resId, new TmpVariable("#0", true), label));
+                    new BranchIfEqIr(resId, new TmpVariable(level, "#0", true), label));
         }
         instructions.add(new InsertLabelIr(label));
         return resId;

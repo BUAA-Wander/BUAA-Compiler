@@ -48,7 +48,7 @@ public class IfStmt extends Stmt {
         String label_2 = LabelGenerator.nextLabel();
 
         Operand resId = cond.generateIr(level, instructions);
-        instructions.add(new BranchIfEqIr(resId, new TmpVariable("#0", true), new LabelOp(label_2)));
+        instructions.add(new BranchIfEqIr(resId, new TmpVariable(level, "#0", true), new LabelOp(label_2)));
 
         // TODO create code and insert tag
         if (stmt != null) {
@@ -70,7 +70,7 @@ public class IfStmt extends Stmt {
         String label_2 = LabelGenerator.nextLabel();
 
         Operand resId = cond.generateIr(level, instructions);
-        instructions.add(new BranchIfEqIr(resId, new TmpVariable("#0", true), new LabelOp(label_2)));
+        instructions.add(new BranchIfEqIr(resId, new TmpVariable(level, "#0", true), new LabelOp(label_2)));
 
         // TODO create code and insert tag
         if (stmt != null) {

@@ -34,7 +34,7 @@ public class CompUnit extends TreeNode {
         AddressPtr.addGlobalAddr(4);
         GlobalSymbolTable.insert(level, "#0", SymbolType.VAR,
                 new VarBTypeSymbol(-1, "#0"), addr, 4);
-        instructions.add(new MovImmIr(new Immediate(0), new TmpVariable("#0", true)));
+        instructions.add(new MovImmIr(new Immediate(0), new TmpVariable(level, "#0", true)));
 
         for (int i = 0; i < decls.size(); i++) {
             // if level == 0, then declare a global variable

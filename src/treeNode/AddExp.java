@@ -50,7 +50,7 @@ public class AddExp extends TreeNode {
     }
 
     public Operand generateIr(int level, List<IntermediateInstruction> instructions, int used) {
-        Operand resId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
+        Operand resId = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
 
         for (int i = 0; i < mulExps.size(); i++) {
             Operand id = mulExps.get(i).generateIr(level, instructions, used);
