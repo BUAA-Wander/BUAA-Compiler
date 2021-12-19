@@ -377,7 +377,7 @@ public class LVal extends TreeNode {
                     } else {
                         // 最后看是不是指针
                         if (LocalSymbolTable.isExist(level, ident.getName(), SymbolType.POINTER)) {
-                            SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.ARRAY);
+                            SymbolTableItem item = GlobalSymbolTable.getItem(ident.getName(), SymbolType.POINTER);
                             int addr = item.getAddr();
                             Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
                             instructions.add(new OffsetIr(
