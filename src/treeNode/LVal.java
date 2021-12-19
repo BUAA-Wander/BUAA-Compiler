@@ -382,6 +382,7 @@ public class LVal extends TreeNode {
                             Operand res = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
                             instructions.add(new OffsetIr(
                                     new Immediate(addr), new Immediate(0), res, false, true));
+                            return res;
                         } else {
                             System.out.println("mei you zhen mei you");
                             throw new ValueTypeException();

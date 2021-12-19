@@ -1,127 +1,20 @@
 MovImm 0 #0
-MovImm 1 #3
-Mov #3 #2
-Mov #2 #1
-Mov #1 @constconst@global@4
-MovImm 1 #6
-Mov #6 #5
-Mov #5 #4
-Mov #4 @constconst@global@8
-MovImm 1 #9
-Mov #9 #8
-Mov #8 #7
-Mov #7 @constconst@global@12
-MovImm 1 #12
-Mov #12 #11
-Mov #11 #10
-Mov #10 @constconst@global@16
-MovImm 1 #15
-Mov #15 #14
-Mov #14 #13
-Mov #13 @constconst@global@20
-MovImm 1 #18
-Mov #18 #17
-Mov #17 #16
-Offset 84 0 #19
-StorePointerValue #19 0 #16
-MovImm 2 #22
-Mov #22 #21
-Mov #21 #20
-Offset 88 0 #23
-StorePointerValue #23 0 #20
-MovImm 3 #26
-Mov #26 #25
-Mov #25 #24
-Offset 92 0 #27
-StorePointerValue #27 0 #24
-MovImm 4 #30
-Mov #30 #29
-Mov #29 #28
-Offset 96 0 #31
-StorePointerValue #31 0 #28
-MovImm 5 #34
-Mov #34 #33
-Mov #33 #32
-Offset 100 0 #35
-StorePointerValue #35 0 #32
-MovImm 6 #38
-Mov #38 #37
-Mov #37 #36
-Offset 104 0 #39
-StorePointerValue #39 0 #36
-MovImm 7 #42
-Mov #42 #41
-Mov #41 #40
-Offset 108 0 #43
-StorePointerValue #43 0 #40
-MovImm 8 #46
-Mov #46 #45
-Mov #45 #44
-Offset 112 0 #47
-StorePointerValue #47 0 #44
-MovImm 9 #50
-Mov #50 #49
-Mov #49 #48
-Offset 116 0 #51
-StorePointerValue #51 0 #48
-MovImm 1 #54
-Mov #54 #53
-Mov #53 #52
-Offset 264 0 #55
-StorePointerValue #55 0 #52
-MovImm 1 #58
-Mov #58 #57
-Mov #57 #56
-Offset 268 0 #59
-StorePointerValue #59 0 #56
-MovImm 1 #62
-Mov #62 #61
-Mov #61 #60
-Offset 272 0 #63
-StorePointerValue #63 0 #60
-MovImm 1 #66
-Mov #66 #65
-Mov #65 #64
-Offset 276 0 #67
-StorePointerValue #67 0 #64
-MovImm 1 #70
-Mov #70 #69
-Mov #69 #68
-Offset 280 0 #71
-StorePointerValue #71 0 #68
-MovImm 0 #74
-Mov #74 #73
-Mov #73 #72
-Mov #72 @zero@global@364
-MovImm 1 #77
-Mov #77 #76
-Mov #76 #75
-Offset 380 0 #78
-StorePointerValue #78 0 #75
-MovImm 2 #81
-Mov #81 #80
-Mov #80 #79
-Offset 384 0 #82
-StorePointerValue #82 0 #79
-MovImm 3 #85
-Mov #85 #84
-Mov #84 #83
-Offset 388 0 #86
-StorePointerValue #86 0 #83
-MovImm 4 #89
-Mov #89 #88
-Mov #88 #87
-Offset 392 0 #90
-StorePointerValue #90 0 #87
-MovImm 0 #93
-Mov #93 #92
-Mov #92 #91
-Mov #91 @i@global@496
 Br main
 Stop
+InsertLabel sort
+Offset 0 0 #6
+Mov #6 #5
+Mov #5 #4
+PassParam #4
+SaveContext
+Br sort
+LoadContext
+Mov #0 #2
+Mov #2 #1
+Return
 InsertLabel main
-MovImm 0 #96
-Mov #96 #95
-Mov #95 #94
-PassReturnValue #94
+MovImm 0 #9
+Mov #9 #8
+Mov #8 #7
+PassReturnValue #7
 Return
