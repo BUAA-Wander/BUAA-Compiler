@@ -79,10 +79,26 @@ public class Compiler {
                     TargetCodeContainer.codes.add((new Annotation("END StorePointerValue")));
                 }
             } catch (NullPointerException e) {
+                e.printStackTrace();
                 System.out.println(i.toString());
                 System.out.println(pos);
                 break;
             }
+//            if (i instanceof LoadArrayValueIr) {
+//                TargetCodeContainer.codes.add((new Annotation("begin loadArrayValue")));
+//            } else if (i instanceof StorePointerValueIr) {
+//                TargetCodeContainer.codes.add((new Annotation("begin StorePointerValue")));
+//            }
+//            List<MipsCode> list = i.toMips();
+//            if (list != null) {
+//                TargetCodeContainer.codes.addAll(list);
+//            }
+//            if (i instanceof LoadArrayValueIr) {
+//                TargetCodeContainer.codes.add((new Annotation("END loadArrayValue")));
+//            } else if (i instanceof StorePointerValueIr) {
+//                TargetCodeContainer.codes.add((new Annotation("END StorePointerValue")));
+//            }
+
             pos++;
         }
     }

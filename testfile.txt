@@ -1,11 +1,11 @@
-void check_group(int t[]) {
-    printf("%d %d\n", t[0], t[1]);
-}
-
+const int constconst[5] = {1,1,1,1,1};
+int a33[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+int const1[5] = {1,1,1,1,1};
+int zero = 0;
+int a2[2][2] = {{1,2},{3,4}};
+int a1[5];
+int m,n,p,q;
+int i = 0;
 int main() {
-    int tmp[3][2] = {{111, 2222},{3,   4},{5,   6}};
-    check_group(tmp[0]);
-    check_group(tmp[1]);
-    check_group(tmp[2]);
     return 0;
 }

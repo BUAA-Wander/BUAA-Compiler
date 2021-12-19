@@ -40,6 +40,9 @@ public class TmpVariable extends Operand {
     public List<MipsCode> saveValue(String reg) {
         List<MipsCode> mipsCodes = new ArrayList<>();
         SymbolTableItem item;
+        if (name.equals("#19")) {
+            System.out.println("begin");
+        }
         if (isGlobal) {
             item = GlobalSymbolTable.getItem(name, SymbolType.VAR);
             mipsCodes.add(new Sw("$gp", reg, item.getAddr()));

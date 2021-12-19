@@ -78,7 +78,7 @@ public class InitVal extends TreeNode {
                     Operand srcId = initVal.generateIr(level, instructions);
                     int addr = headAddr + id * 4;
 
-                    Operand dstId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), false);
+                    Operand dstId = new TmpVariable(TmpVarGenerator.nextTmpVar(level), (level == 0));
 
                     if (level == 0) {
                         instructions.add(new OffsetIr(
