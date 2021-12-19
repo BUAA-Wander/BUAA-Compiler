@@ -57,7 +57,7 @@ public class SymbolTable {
     public void delete(int level) {
         for (int i = 0; i < symbolTable.size(); i++) {
             SymbolTableItem item = symbolTable.get(i);
-            if (item.getLevel() > level) {
+            if (item.getLevel() > level && item.getName().charAt(0) != '#') {
                 item.disable();
             }
         }

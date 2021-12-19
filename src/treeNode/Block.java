@@ -31,7 +31,7 @@ public class Block extends TreeNode {
         for (int i = 0; i < blockItems.size(); i++) {
             instructions.addAll(blockItems.get(i).generateIr(level + 1));
         }
-//        LocalSymbolTable.getCurrentLocalSymbolTable().delete(level);
+        LocalSymbolTable.getCurrentLocalSymbolTable().delete(level);
         return instructions;
     }
 
@@ -40,7 +40,7 @@ public class Block extends TreeNode {
         for (int i = 0; i < blockItems.size(); i++) {
             instructions.addAll(blockItems.get(i).generateIr(level + 1, label_1, label_2));
         }
-//        LocalSymbolTable.getCurrentLocalSymbolTable().delete(level);
+        LocalSymbolTable.getCurrentLocalSymbolTable().delete(level);
         return instructions;
     }
 }
