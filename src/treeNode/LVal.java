@@ -250,9 +250,12 @@ public class LVal extends TreeNode {
         // 如果是函数的形参数组，则需要先通过符号表项，拿出来这个指针的值（即指向的绝对地址）
         // 然后再通过这个绝对地址去取数组的值
         // 当前的headAddr不是绝对地址
+        // 注意如果是全局数组则不能传scope = 1
         boolean isBasePointer = (symbol instanceof PointerSymbol);
         if (isBasePointer) {
+            // 传false的原因是当前headAddr不是绝对地址，所以需要让它在该中间指令内部确定自己按照什么方式算绝对地址
             instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, false));
+            // instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, true));
         }
 
         if (level == 0) {
@@ -342,7 +345,9 @@ public class LVal extends TreeNode {
         boolean isBasePointer = (symbol instanceof PointerSymbol);
 
         if (isBasePointer) {
-            instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, false));
+            // ?
+             instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, false));
+            // instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, true));
         }
 
         instructions.add(new OffsetIr(headAddr, offsetId, res, isGlobal, isBasePointer));

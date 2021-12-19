@@ -1,72 +1,51 @@
 MovImm 0 #0
+MovImm 244 #3
+Mov #3 #2
+Mov #2 #1
+Offset 4 0 #4
+StorePointerValue #4 0 #1
+MovImm 353 #7
+Mov #7 #6
+Mov #6 #5
+Offset 8 0 #8
+StorePointerValue #8 0 #5
 Br main
 Stop
-InsertLabel f
-Mov #0 #1
-MovImm 1 #5
-Mov #5 #4
-Mov #4 #3
-MovImm 4 #2
-MovImm 0 #6
-Mul #2 #3 #3
-LoadArrayValue #6 0 #6
-Offset #6 #3 #7
-MovImm 244 #10
+InsertLabel check_block
+Mov #0 #11
+MovImm 1 #15
+Mov #15 #14
+Mov #14 #13
+MovImm 4 #12
+MovImm 4 #16
+Mul #12 #13 #13
+LoadArrayValue #16 0 #16
+LoadArrayValue #16 #13 #13
+Mov #13 #10
 Mov #10 #9
-Mov #9 #8
-StorePointerValue #7 0 #8
-Mov #0 #13
-MovImm 1 #17
-Mov #17 #16
-Mov #16 #15
-MovImm 4 #14
-MovImm 0 #18
-Mul #14 #15 #15
-LoadArrayValue #18 0 #18
-LoadArrayValue #18 #15 #15
-Mov #15 #12
-Mov #12 #11
-WriteInt #11
+WriteInt #9
 WriteChar 
 
 Return
 InsertLabel main
-Mov #0 #19
-MovImm 1 #23
-Mov #23 #22
-Mov #22 #21
-MovImm 4 #20
-MovImm 0 #24
-Mul #20 #21 #21
-Offset #24 #21 #25
-MovImm 353 #28
-Mov #28 #27
+MovImm 1 #19
+Mov #19 #18
+Mov #18 #17
+Mov #17 @a@local@0
+Mov @a@local@0 #24
+Mov #24 #23
+PassParam #23
+Offset 4 0 #27
 Mov #27 #26
-StorePointerValue #25 0 #26
-Mov #0 #31
-MovImm 1 #35
-Mov #35 #34
-Mov #34 #33
-MovImm 4 #32
-MovImm 0 #36
-Mul #32 #33 #33
-LoadArrayValue #36 #33 #33
-Mov #33 #30
-Mov #30 #29
-WriteInt #29
-WriteChar 
-
-Offset 0 0 #42
-Mov #42 #41
-Mov #41 #40
-PassParam #40
+Mov #26 #25
+PassParam #25
 SaveContext
-Br f
+Br check_block
 LoadContext
-Mov #0 #38
-Mov #38 #37
-MovImm 0 #45
-Mov #45 #44
-Mov #44 #43
-PassReturnValue #43
+Mov #0 #21
+Mov #21 #20
+MovImm 0 #30
+Mov #30 #29
+Mov #29 #28
+PassReturnValue #28
 Return
