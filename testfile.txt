@@ -1,17 +1,27 @@
 void quickSort(int arr[], int left, int right) {
+    printf("left: %d, right: %d\n", left, right);
     if (left >= right) {
         return;
     }
     int i = left, j = right, base, temp;
     base = arr[left];
+    printf("base: %d\n", base);
+    printf("i: %d, j: %d\n", i, j);
     while (i < j) {
+        printf("arr[j]: %d\n", arr[j]);
         while (arr[j] >= base && i < j) {
+			printf("Cond1 success\n");
             j = j - 1;
         }
+        printf("current i: %d, j: %d\n", i, j);
+        printf("arr[i]: %d\n", arr[i]);
         while (arr[i] <= base && i < j) {
+			printf("Cond2 success\n");
             i = i + 1;
         }
+        printf("current i: %d, j: %d\n", i, j);
         if (i < j) {
+			printf("Cond3 success\n");
             temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
@@ -19,36 +29,16 @@ void quickSort(int arr[], int left, int right) {
     }
     arr[left] = arr[i];
     arr[i] = base;
+	printf("%d %d\n", i, j);
     quickSort(arr, left, i - 1);
     quickSort(arr, i + 1, right);
 }
 
 int main() {
-    printf("19373611\n");
-    printf("19373611\n");
-    printf("19373611\n");
-    const int length = 5;
-    const int array_const[5] = {1, 2, 3, 4, 5};
-    int array[5];
-    printf("Please input base number a:\n");
-    int a, b;
-    a = getint();
-    printf("Please input base number b:\n");
-    b = getint();
-    array[0] = a + b;
-    array[1] = a - b;
-    array[2] = a * b;
-    if (!b) {
-        array[3] = array_const[3];
-        array[4] = array_const[4];
-        printf("error.\n");
-    } else {
-        array[3] = a / b;
-        array[4] = a % b;
-    }
-    quickSort(array, 0, 4);
+    int array[3] = {1, 3, 2};
+    quickSort(array, 0, 2);
     int i = 0;
-    while (i < 5) {
+    while (i < 3) {
         printf("The No.%d number is %d.\n", i, array[i]);
         i = i + 1;
     }

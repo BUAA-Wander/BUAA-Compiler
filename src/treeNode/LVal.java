@@ -354,7 +354,8 @@ public class LVal extends TreeNode {
 
         if (isBasePointer) {
             // ?
-             instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, false));
+            instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, false));
+
             // instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, true));
         }
 
@@ -408,8 +409,13 @@ public class LVal extends TreeNode {
                             SymbolTableItem item = LocalSymbolTable.getItem(level, ident.getName(), SymbolType.POINTER);
                             int addr = item.getAddr();
                             Operand res = new TmpVariable(level, TmpVarGenerator.nextTmpVar(level), (level == 0));
+                            // TODO 十分迷惑的地方
                             instructions.add(new OffsetIr(
-                                    new Immediate(addr), new Immediate(0), res, false, true));
+                                    new Immediate(addr), new Immediate(0), res, false, false));
+                            // scope is useless
+                            instructions.add(new LoadArrayValueIr(res, new Immediate(0), res, 0, true));
+                            //instructions.add(new OffsetIr(
+                            //        new Immediate(addr), new Immediate(0), res, false, true));
                             return res;
                         } else {
                             System.out.println("mei you zhen mei you");

@@ -2,540 +2,512 @@ MovImm 0 #0
 Br main
 Stop
 InsertLabel quickSort
-Mov @left@local@4 #6
-Mov #6 #5
-Mov #5 #4
-Mov @right@local@8 #8
-Mov #8 #7
-Geq #4 #7 #4
-Mov #4 #3
-Mov #3 #2
-BranchIfEq #2 #0 label_4
-InsertLabel label_4
+WriteChar l
+WriteChar e
+WriteChar f
+WriteChar t
+WriteChar :
+WriteChar  
+Mov @left@local@4 #2
 Mov #2 #1
-BranchIfNotEq #1 #0 label_3
+WriteInt #1
+WriteChar ,
+WriteChar  
+WriteChar r
+WriteChar i
+WriteChar g
+WriteChar h
+WriteChar t
+WriteChar :
+WriteChar  
+Mov @right@local@8 #4
+Mov #4 #3
+WriteInt #3
+WriteChar 
+
+Mov @left@local@4 #10
+Mov #10 #9
+Mov #9 #8
+Mov @right@local@8 #12
+Mov #12 #11
+Geq #8 #11 #8
+Mov #8 #7
+Mov #7 #6
+BranchIfEq #6 #0 label_4
+InsertLabel label_4
+Mov #6 #5
+BranchIfNotEq #5 #0 label_3
 InsertLabel label_3
-BranchIfEq #1 #0 label_2
+BranchIfEq #5 #0 label_2
 Return
 Jump label_1
 InsertLabel label_2
 InsertLabel label_1
-Mov @left@local@4 #10
-Mov #10 #9
-Mov #9 @i@local@44
-Mov @right@local@8 #12
-Mov #12 #11
-Mov #11 @j@local@56
-Mov #0 #15
-Mov @left@local@4 #18
-Mov #18 #17
-MovImm 4 #16
-MovImm 0 #19
-Mul #16 #17 #17
-LoadArrayValue #19 0 #19
-LoadArrayValue #19 #17 #17
-Mov #17 #14
+Mov @left@local@4 #14
 Mov #14 #13
-Mov #13 @base@local@68
-InsertLabel label_5
-Mov @i@local@44 #25
-Mov #25 #24
-Mov #24 #23
-Mov @j@local@56 #27
-Mov #27 #26
-Less #23 #26 #23
-Mov #23 #22
+Mov #13 @i@local@60
+Mov @right@local@8 #16
+Mov #16 #15
+Mov #15 @j@local@72
+Mov #0 #19
+Mov @left@local@4 #22
 Mov #22 #21
-BranchIfEq #21 #0 label_8
-InsertLabel label_8
-Mov #21 #20
-BranchIfNotEq #20 #0 label_7
-InsertLabel label_7
-BranchIfEq #20 #0 label_6
-InsertLabel label_9
-Mov #0 #34
-Mov @j@local@56 #37
+MovImm 4 #20
+MovImm 0 #23
+Mul #20 #21 #21
+LoadArrayValue #23 0 #23
+LoadArrayValue #23 #21 #21
+Mov #21 #18
+Mov #18 #17
+Mov #17 @base@local@84
+WriteChar b
+WriteChar a
+WriteChar s
+WriteChar e
+WriteChar :
+WriteChar  
+Mov @base@local@84 #25
+Mov #25 #24
+WriteInt #24
+WriteChar 
+
+WriteChar i
+WriteChar :
+WriteChar  
+Mov @i@local@60 #27
+Mov #27 #26
+WriteInt #26
+WriteChar ,
+WriteChar  
+WriteChar j
+WriteChar :
+WriteChar  
+Mov @j@local@72 #29
+Mov #29 #28
+WriteInt #28
+WriteChar 
+
+InsertLabel label_5
+Mov @i@local@60 #35
+Mov #35 #34
+Mov #34 #33
+Mov @j@local@72 #37
 Mov #37 #36
-MovImm 4 #35
-MovImm 0 #38
-Mul #35 #36 #36
-LoadArrayValue #38 0 #38
-LoadArrayValue #38 #36 #36
-Mov #36 #33
+Less #33 #36 #33
 Mov #33 #32
 Mov #32 #31
-Mov @base@local@68 #40
-Mov #40 #39
-Geq #31 #39 #31
+BranchIfEq #31 #0 label_8
+InsertLabel label_8
 Mov #31 #30
-Mov #30 #29
-BranchIfEq #29 #0 label_12
-Mov @i@local@44 #44
-Mov #44 #43
+BranchIfNotEq #30 #0 label_7
+InsertLabel label_7
+BranchIfEq #30 #0 label_6
+WriteChar a
+WriteChar r
+WriteChar r
+WriteChar [
+WriteChar j
+WriteChar ]
+WriteChar :
+WriteChar  
+Mov #0 #40
+Mov @j@local@72 #43
 Mov #43 #42
-Mov @j@local@56 #46
-Mov #46 #45
-Less #42 #45 #42
-Mov #42 #41
-And #29 #41 #29
-BranchIfEq #29 #0 label_12
-InsertLabel label_12
-Mov #29 #28
-BranchIfNotEq #28 #0 label_11
-InsertLabel label_11
-BranchIfEq #28 #0 label_10
-Mov @j@local@56 #48
-Mov #48 #47
-MovImm 1 #50
+MovImm 4 #41
+MovImm 0 #44
+Mul #41 #42 #42
+LoadArrayValue #44 0 #44
+LoadArrayValue #44 #42 #42
+Mov #42 #39
+Mov #39 #38
+WriteInt #38
+WriteChar 
+
+InsertLabel label_9
+Mov #0 #51
+Mov @j@local@72 #54
+Mov #54 #53
+MovImm 4 #52
+MovImm 0 #55
+Mul #52 #53 #53
+LoadArrayValue #55 0 #55
+LoadArrayValue #55 #53 #53
+Mov #53 #50
 Mov #50 #49
-Sub #47 #49 #47
-Mov #47 @j@local@56
+Mov #49 #48
+Mov @base@local@84 #57
+Mov #57 #56
+Geq #48 #56 #48
+Mov #48 #47
+Mov #47 #46
+BranchIfEq #46 #0 label_12
+Mov @i@local@60 #61
+Mov #61 #60
+Mov #60 #59
+Mov @j@local@72 #63
+Mov #63 #62
+Less #59 #62 #59
+Mov #59 #58
+And #46 #58 #46
+BranchIfEq #46 #0 label_12
+InsertLabel label_12
+Mov #46 #45
+BranchIfNotEq #45 #0 label_11
+InsertLabel label_11
+BranchIfEq #45 #0 label_10
+WriteChar C
+WriteChar o
+WriteChar n
+WriteChar d
+WriteChar 1
+WriteChar  
+WriteChar s
+WriteChar u
+WriteChar c
+WriteChar c
+WriteChar e
+WriteChar s
+WriteChar s
+WriteChar 
+
+Mov @j@local@72 #65
+Mov #65 #64
+MovImm 1 #67
+Mov #67 #66
+Sub #64 #66 #64
+Mov #64 @j@local@72
 Jump label_9
 InsertLabel label_10
-InsertLabel label_13
-Mov #0 #57
-Mov @i@local@44 #60
-Mov #60 #59
-MovImm 4 #58
-MovImm 0 #61
-Mul #58 #59 #59
-LoadArrayValue #61 0 #61
-LoadArrayValue #61 #59 #59
-Mov #59 #56
-Mov #56 #55
-Mov #55 #54
-Mov @base@local@68 #63
-Mov #63 #62
-Leq #54 #62 #54
-Mov #54 #53
-Mov #53 #52
-BranchIfEq #52 #0 label_16
-Mov @i@local@44 #67
-Mov #67 #66
-Mov #66 #65
-Mov @j@local@56 #69
+WriteChar c
+WriteChar u
+WriteChar r
+WriteChar r
+WriteChar e
+WriteChar n
+WriteChar t
+WriteChar  
+WriteChar i
+WriteChar :
+WriteChar  
+Mov @i@local@60 #69
 Mov #69 #68
-Less #65 #68 #65
-Mov #65 #64
-And #52 #64 #52
-BranchIfEq #52 #0 label_16
-InsertLabel label_16
-Mov #52 #51
-BranchIfNotEq #51 #0 label_15
-InsertLabel label_15
-BranchIfEq #51 #0 label_14
-Mov @i@local@44 #71
+WriteInt #68
+WriteChar ,
+WriteChar  
+WriteChar j
+WriteChar :
+WriteChar  
+Mov @j@local@72 #71
 Mov #71 #70
-MovImm 1 #73
+WriteInt #70
+WriteChar 
+
+WriteChar a
+WriteChar r
+WriteChar r
+WriteChar [
+WriteChar i
+WriteChar ]
+WriteChar :
+WriteChar  
+Mov #0 #74
+Mov @i@local@60 #77
+Mov #77 #76
+MovImm 4 #75
+MovImm 0 #78
+Mul #75 #76 #76
+LoadArrayValue #78 0 #78
+LoadArrayValue #78 #76 #76
+Mov #76 #73
 Mov #73 #72
-Add #70 #72 #70
-Mov #70 @i@local@44
+WriteInt #72
+WriteChar 
+
+InsertLabel label_13
+Mov #0 #85
+Mov @i@local@60 #88
+Mov #88 #87
+MovImm 4 #86
+MovImm 0 #89
+Mul #86 #87 #87
+LoadArrayValue #89 0 #89
+LoadArrayValue #89 #87 #87
+Mov #87 #84
+Mov #84 #83
+Mov #83 #82
+Mov @base@local@84 #91
+Mov #91 #90
+Leq #82 #90 #82
+Mov #82 #81
+Mov #81 #80
+BranchIfEq #80 #0 label_16
+Mov @i@local@60 #95
+Mov #95 #94
+Mov #94 #93
+Mov @j@local@72 #97
+Mov #97 #96
+Less #93 #96 #93
+Mov #93 #92
+And #80 #92 #80
+BranchIfEq #80 #0 label_16
+InsertLabel label_16
+Mov #80 #79
+BranchIfNotEq #79 #0 label_15
+InsertLabel label_15
+BranchIfEq #79 #0 label_14
+WriteChar C
+WriteChar o
+WriteChar n
+WriteChar d
+WriteChar 2
+WriteChar  
+WriteChar s
+WriteChar u
+WriteChar c
+WriteChar c
+WriteChar e
+WriteChar s
+WriteChar s
+WriteChar 
+
+Mov @i@local@60 #99
+Mov #99 #98
+MovImm 1 #101
+Mov #101 #100
+Add #98 #100 #98
+Mov #98 @i@local@60
 Jump label_13
 InsertLabel label_14
-Mov @i@local@44 #79
-Mov #79 #78
-Mov #78 #77
-Mov @j@local@56 #81
-Mov #81 #80
-Less #77 #80 #77
-Mov #77 #76
-Mov #76 #75
-BranchIfEq #75 #0 label_20
-InsertLabel label_20
-Mov #75 #74
-BranchIfNotEq #74 #0 label_19
-InsertLabel label_19
-BranchIfEq #74 #0 label_18
-Mov #0 #84
-Mov @i@local@44 #87
-Mov #87 #86
-MovImm 4 #85
-MovImm 0 #88
-Mul #85 #86 #86
-LoadArrayValue #88 0 #88
-LoadArrayValue #88 #86 #86
-Mov #86 #83
-Mov #83 #82
-Mov #82 @temp@local@72
-Mov #0 #89
-Mov @i@local@44 #92
-Mov #92 #91
-MovImm 4 #90
-MovImm 0 #93
-Mul #90 #91 #91
-LoadArrayValue #93 0 #93
-Offset #93 #91 #94
-Mov #0 #97
-Mov @j@local@56 #100
-Mov #100 #99
-MovImm 4 #98
-MovImm 0 #101
-Mul #98 #99 #99
-LoadArrayValue #101 0 #101
-LoadArrayValue #101 #99 #99
-Mov #99 #96
-Mov #96 #95
-StorePointerValue #94 0 #95
-Mov #0 #102
-Mov @j@local@56 #105
+WriteChar c
+WriteChar u
+WriteChar r
+WriteChar r
+WriteChar e
+WriteChar n
+WriteChar t
+WriteChar  
+WriteChar i
+WriteChar :
+WriteChar  
+Mov @i@local@60 #103
+Mov #103 #102
+WriteInt #102
+WriteChar ,
+WriteChar  
+WriteChar j
+WriteChar :
+WriteChar  
+Mov @j@local@72 #105
 Mov #105 #104
-MovImm 4 #103
-MovImm 0 #106
-Mul #103 #104 #104
-LoadArrayValue #106 0 #106
-Offset #106 #104 #107
-Mov @temp@local@72 #109
+WriteInt #104
+WriteChar 
+
+Mov @i@local@60 #111
+Mov #111 #110
+Mov #110 #109
+Mov @j@local@72 #113
+Mov #113 #112
+Less #109 #112 #109
 Mov #109 #108
-StorePointerValue #107 0 #108
+Mov #108 #107
+BranchIfEq #107 #0 label_20
+InsertLabel label_20
+Mov #107 #106
+BranchIfNotEq #106 #0 label_19
+InsertLabel label_19
+BranchIfEq #106 #0 label_18
+WriteChar C
+WriteChar o
+WriteChar n
+WriteChar d
+WriteChar 3
+WriteChar  
+WriteChar s
+WriteChar u
+WriteChar c
+WriteChar c
+WriteChar e
+WriteChar s
+WriteChar s
+WriteChar 
+
+Mov #0 #116
+Mov @i@local@60 #119
+Mov #119 #118
+MovImm 4 #117
+MovImm 0 #120
+Mul #117 #118 #118
+LoadArrayValue #120 0 #120
+LoadArrayValue #120 #118 #118
+Mov #118 #115
+Mov #115 #114
+Mov #114 @temp@local@88
+Mov #0 #121
+Mov @i@local@60 #124
+Mov #124 #123
+MovImm 4 #122
+MovImm 0 #125
+Mul #122 #123 #123
+LoadArrayValue #125 0 #125
+Offset #125 #123 #126
+Mov #0 #129
+Mov @j@local@72 #132
+Mov #132 #131
+MovImm 4 #130
+MovImm 0 #133
+Mul #130 #131 #131
+LoadArrayValue #133 0 #133
+LoadArrayValue #133 #131 #131
+Mov #131 #128
+Mov #128 #127
+StorePointerValue #126 0 #127
+Mov #0 #134
+Mov @j@local@72 #137
+Mov #137 #136
+MovImm 4 #135
+MovImm 0 #138
+Mul #135 #136 #136
+LoadArrayValue #138 0 #138
+Offset #138 #136 #139
+Mov @temp@local@88 #141
+Mov #141 #140
+StorePointerValue #139 0 #140
 Jump label_17
 InsertLabel label_18
 InsertLabel label_17
 Jump label_5
 InsertLabel label_6
-Mov #0 #110
-Mov @left@local@4 #113
-Mov #113 #112
-MovImm 4 #111
-MovImm 0 #114
-Mul #111 #112 #112
-LoadArrayValue #114 0 #114
-Offset #114 #112 #115
-Mov #0 #118
-Mov @i@local@44 #121
-Mov #121 #120
-MovImm 4 #119
-MovImm 0 #122
-Mul #119 #120 #120
-LoadArrayValue #122 0 #122
-LoadArrayValue #122 #120 #120
-Mov #120 #117
-Mov #117 #116
-StorePointerValue #115 0 #116
-Mov #0 #123
-Mov @i@local@44 #126
-Mov #126 #125
-MovImm 4 #124
-MovImm 0 #127
-Mul #124 #125 #125
-LoadArrayValue #127 0 #127
-Offset #127 #125 #128
-Mov @base@local@68 #130
-Mov #130 #129
-StorePointerValue #128 0 #129
-Offset 0 0 #136
-Mov #136 #135
-Mov #135 #134
-PassParam #134
-Mov @left@local@4 #138
-Mov #138 #137
-PassParam #137
-Mov @i@local@44 #140
-Mov #140 #139
-MovImm 1 #142
-Mov #142 #141
-Sub #139 #141 #139
-PassParam #139
-SaveContext
-Br quickSort
-LoadContext
-Mov #0 #132
-Mov #132 #131
-Offset 0 0 #148
-Mov #148 #147
-Mov #147 #146
-PassParam #146
-Mov @i@local@44 #150
-Mov #150 #149
-MovImm 1 #152
-Mov #152 #151
-Add #149 #151 #149
-PassParam #149
-Mov @right@local@8 #154
-Mov #154 #153
-PassParam #153
-SaveContext
-Br quickSort
-LoadContext
-Mov #0 #144
-Mov #144 #143
-Return
-InsertLabel main
-WriteChar 1
-WriteChar 9
-WriteChar 3
-WriteChar 7
-WriteChar 3
-WriteChar 6
-WriteChar 1
-WriteChar 1
-WriteChar 
-
-WriteChar 1
-WriteChar 9
-WriteChar 3
-WriteChar 7
-WriteChar 3
-WriteChar 6
-WriteChar 1
-WriteChar 1
-WriteChar 
-
-WriteChar 1
-WriteChar 9
-WriteChar 3
-WriteChar 7
-WriteChar 3
-WriteChar 6
-WriteChar 1
-WriteChar 1
-WriteChar 
-
-MovImm 5 #157
-Mov #157 #156
-Mov #156 #155
-Mov #155 @length@local@0
-MovImm 1 #160
-Mov #160 #159
-Mov #159 #158
-Mov #158 @array_const@local@16
-MovImm 2 #163
-Mov #163 #162
+Mov #0 #142
+Mov @left@local@4 #145
+Mov #145 #144
+MovImm 4 #143
+MovImm 0 #146
+Mul #143 #144 #144
+LoadArrayValue #146 0 #146
+Offset #146 #144 #147
+Mov #0 #150
+Mov @i@local@60 #153
+Mov #153 #152
+MovImm 4 #151
+MovImm 0 #154
+Mul #151 #152 #152
+LoadArrayValue #154 0 #154
+LoadArrayValue #154 #152 #152
+Mov #152 #149
+Mov #149 #148
+StorePointerValue #147 0 #148
+Mov #0 #155
+Mov @i@local@60 #158
+Mov #158 #157
+MovImm 4 #156
+MovImm 0 #159
+Mul #156 #157 #157
+LoadArrayValue #159 0 #159
+Offset #159 #157 #160
+Mov @base@local@84 #162
 Mov #162 #161
-Mov #161 @array_const@local@20
-MovImm 3 #166
+StorePointerValue #160 0 #161
+Mov @i@local@60 #164
+Mov #164 #163
+WriteInt #163
+WriteChar  
+Mov @j@local@72 #166
 Mov #166 #165
-Mov #165 #164
-Mov #164 @array_const@local@24
-MovImm 4 #169
-Mov #169 #168
-Mov #168 #167
-Mov #167 @array_const@local@28
-MovImm 5 #172
+WriteInt #165
+WriteChar 
+
+Offset 0 0 #172
+LoadArrayValue #172 0 #172
 Mov #172 #171
 Mov #171 #170
-Mov #170 @array_const@local@32
-WriteChar P
-WriteChar l
-WriteChar e
-WriteChar a
-WriteChar s
-WriteChar e
-WriteChar  
-WriteChar i
-WriteChar n
-WriteChar p
-WriteChar u
-WriteChar t
-WriteChar  
-WriteChar b
-WriteChar a
-WriteChar s
-WriteChar e
-WriteChar  
-WriteChar n
-WriteChar u
-WriteChar m
-WriteChar b
-WriteChar e
-WriteChar r
-WriteChar  
-WriteChar a
-WriteChar :
-WriteChar 
-
-Getint #173
-Mov #173 @a@local@116
-WriteChar P
-WriteChar l
-WriteChar e
-WriteChar a
-WriteChar s
-WriteChar e
-WriteChar  
-WriteChar i
-WriteChar n
-WriteChar p
-WriteChar u
-WriteChar t
-WriteChar  
-WriteChar b
-WriteChar a
-WriteChar s
-WriteChar e
-WriteChar  
-WriteChar n
-WriteChar u
-WriteChar m
-WriteChar b
-WriteChar e
-WriteChar r
-WriteChar  
-WriteChar b
-WriteChar :
-WriteChar 
-
-Getint #174
-Mov #174 @b@local@120
-Mov #0 #175
-MovImm 0 #179
-Mov #179 #178
+PassParam #170
+Mov @left@local@4 #174
+Mov #174 #173
+PassParam #173
+Mov @i@local@60 #176
+Mov #176 #175
+MovImm 1 #178
 Mov #178 #177
-MovImm 4 #176
-MovImm 96 #180
-Mul #176 #177 #177
-Offset #180 #177 #181
-Mov @a@local@116 #183
-Mov #183 #182
-Mov @b@local@120 #184
-Add #182 #184 #182
-StorePointerValue #181 0 #182
-Mov #0 #185
-MovImm 1 #189
-Mov #189 #188
-Mov #188 #187
-MovImm 4 #186
-MovImm 96 #190
-Mul #186 #187 #187
-Offset #190 #187 #191
-Mov @a@local@116 #193
-Mov #193 #192
-Mov @b@local@120 #194
-Sub #192 #194 #192
-StorePointerValue #191 0 #192
-Mov #0 #195
-MovImm 2 #199
-Mov #199 #198
-Mov #198 #197
-MovImm 4 #196
-MovImm 96 #200
-Mul #196 #197 #197
-Offset #200 #197 #201
-Mov @a@local@116 #203
-Mul #203 @b@local@120 #203
-Mov #203 #202
-StorePointerValue #201 0 #202
-Not @b@local@120 #210
-Mov #210 #209
-Mov #209 #208
-Mov #208 #207
-Mov #207 #206
-Mov #206 #205
-BranchIfEq #205 #0 label_24
-InsertLabel label_24
-Mov #205 #204
-BranchIfNotEq #204 #0 label_23
-InsertLabel label_23
-BranchIfEq #204 #0 label_22
-Mov #0 #211
-MovImm 3 #215
-Mov #215 #214
-Mov #214 #213
-MovImm 4 #212
-MovImm 96 #216
-Mul #212 #213 #213
-Offset #216 #213 #217
-Mov #0 #220
-MovImm 3 #224
-Mov #224 #223
-Mov #223 #222
-MovImm 4 #221
-MovImm 16 #225
-Mul #221 #222 #222
-LoadArrayValue #225 #222 #222
-Mov #222 #219
-Mov #219 #218
-StorePointerValue #217 0 #218
-Mov #0 #226
-MovImm 4 #230
-Mov #230 #229
-Mov #229 #228
-MovImm 4 #227
-MovImm 96 #231
-Mul #227 #228 #228
-Offset #231 #228 #232
-Mov #0 #235
-MovImm 4 #239
-Mov #239 #238
-Mov #238 #237
-MovImm 4 #236
-MovImm 16 #240
-Mul #236 #237 #237
-LoadArrayValue #240 #237 #237
-Mov #237 #234
-Mov #234 #233
-StorePointerValue #232 0 #233
-WriteChar e
-WriteChar r
-WriteChar r
-WriteChar o
-WriteChar r
-WriteChar .
-WriteChar 
-
-Jump label_21
-InsertLabel label_22
-Mov #0 #241
-MovImm 3 #245
-Mov #245 #244
-Mov #244 #243
-MovImm 4 #242
-MovImm 96 #246
-Mul #242 #243 #243
-Offset #246 #243 #247
-Mov @a@local@116 #249
-Div #249 @b@local@120 #249
-Mov #249 #248
-StorePointerValue #247 0 #248
-Mov #0 #250
-MovImm 4 #254
-Mov #254 #253
-Mov #253 #252
-MovImm 4 #251
-MovImm 96 #255
-Mul #251 #252 #252
-Offset #255 #252 #256
-Mov @a@local@116 #258
-Mod #258 @b@local@120 #258
-Mov #258 #257
-StorePointerValue #256 0 #257
-InsertLabel label_21
-Offset 96 0 #264
-Mov #264 #263
-Mov #263 #262
-PassParam #262
-MovImm 0 #267
-Mov #267 #266
-Mov #266 #265
-PassParam #265
-MovImm 4 #270
-Mov #270 #269
-Mov #269 #268
-PassParam #268
+Sub #175 #177 #175
+PassParam #175
 SaveContext
 Br quickSort
 LoadContext
-Mov #0 #260
-Mov #260 #259
-MovImm 0 #273
-Mov #273 #272
-Mov #272 #271
-Mov #271 @i@local@516
-InsertLabel label_25
-Mov @i@local@516 #279
-Mov #279 #278
-Mov #278 #277
-MovImm 5 #282
-Mov #282 #281
-Mov #281 #280
-Less #277 #280 #277
-Mov #277 #276
-Mov #276 #275
-BranchIfEq #275 #0 label_28
-InsertLabel label_28
-Mov #275 #274
-BranchIfNotEq #274 #0 label_27
-InsertLabel label_27
-BranchIfEq #274 #0 label_26
+Mov #0 #168
+Mov #168 #167
+Offset 0 0 #184
+LoadArrayValue #184 0 #184
+Mov #184 #183
+Mov #183 #182
+PassParam #182
+Mov @i@local@60 #186
+Mov #186 #185
+MovImm 1 #188
+Mov #188 #187
+Add #185 #187 #185
+PassParam #185
+Mov @right@local@8 #190
+Mov #190 #189
+PassParam #189
+SaveContext
+Br quickSort
+LoadContext
+Mov #0 #180
+Mov #180 #179
+Return
+InsertLabel main
+MovImm 1 #193
+Mov #193 #192
+Mov #192 #191
+Offset 0 0 #194
+StorePointerValue #194 0 #191
+MovImm 3 #197
+Mov #197 #196
+Mov #196 #195
+Offset 4 0 #198
+StorePointerValue #198 0 #195
+MovImm 2 #201
+Mov #201 #200
+Mov #200 #199
+Offset 8 0 #202
+StorePointerValue #202 0 #199
+Offset 0 0 #208
+Mov #208 #207
+Mov #207 #206
+PassParam #206
+MovImm 0 #211
+Mov #211 #210
+Mov #210 #209
+PassParam #209
+MovImm 2 #214
+Mov #214 #213
+Mov #213 #212
+PassParam #212
+SaveContext
+Br quickSort
+LoadContext
+Mov #0 #204
+Mov #204 #203
+MovImm 0 #217
+Mov #217 #216
+Mov #216 #215
+Mov #215 @i@local@108
+InsertLabel label_21
+Mov @i@local@108 #223
+Mov #223 #222
+Mov #222 #221
+MovImm 3 #226
+Mov #226 #225
+Mov #225 #224
+Less #221 #224 #221
+Mov #221 #220
+Mov #220 #219
+BranchIfEq #219 #0 label_24
+InsertLabel label_24
+Mov #219 #218
+BranchIfNotEq #218 #0 label_23
+InsertLabel label_23
+BranchIfEq #218 #0 label_22
 WriteChar T
 WriteChar h
 WriteChar e
@@ -543,9 +515,9 @@ WriteChar
 WriteChar N
 WriteChar o
 WriteChar .
-Mov @i@local@516 #284
-Mov #284 #283
-WriteInt #283
+Mov @i@local@108 #228
+Mov #228 #227
+WriteInt #227
 WriteChar  
 WriteChar n
 WriteChar u
@@ -557,29 +529,29 @@ WriteChar
 WriteChar i
 WriteChar s
 WriteChar  
-Mov #0 #287
-Mov @i@local@516 #290
-Mov #290 #289
-MovImm 4 #288
-MovImm 96 #291
-Mul #288 #289 #289
-LoadArrayValue #291 #289 #289
-Mov #289 #286
-Mov #286 #285
-WriteInt #285
+Mov #0 #231
+Mov @i@local@108 #234
+Mov #234 #233
+MovImm 4 #232
+MovImm 0 #235
+Mul #232 #233 #233
+LoadArrayValue #235 #233 #233
+Mov #233 #230
+Mov #230 #229
+WriteInt #229
 WriteChar .
 WriteChar 
 
-Mov @i@local@516 #293
-Mov #293 #292
-MovImm 1 #295
-Mov #295 #294
-Add #292 #294 #292
-Mov #292 @i@local@516
-Jump label_25
-InsertLabel label_26
-MovImm 0 #298
-Mov #298 #297
-Mov #297 #296
-PassReturnValue #296
+Mov @i@local@108 #237
+Mov #237 #236
+MovImm 1 #239
+Mov #239 #238
+Add #236 #238 #236
+Mov #236 @i@local@108
+Jump label_21
+InsertLabel label_22
+MovImm 0 #242
+Mov #242 #241
+Mov #241 #240
+PassReturnValue #240
 Return
