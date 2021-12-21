@@ -1,11 +1,13 @@
-/*cover yellow, focus on Stmt*/
-int a[2][2] = {{2, 1}, {2, 2}};
-
-int fun_int_3(int a){
-	return a;
+void func(int a,int b) {
+    printf("a=%d b=%d\n",a,b);
+    if (a >= b)
+        return;
+    int c = (a+b)/2;
+    printf("c=%d\n",c);
+    func(a,c);
 }
 
-int main(){
-	printf("test func, should be 2: %d\n", fun_int_3(a[1][1]));
-	return 0;
+int main() {
+    func(0,2);
+    return 0;
 }

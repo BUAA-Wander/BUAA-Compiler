@@ -287,6 +287,7 @@ public class LVal extends TreeNode {
         Symbol symbol = item.getSymbol();
         List<ConstExp> dimSizes = null;
         ConstExp lastDimSize = null;
+        int dims = 0;
         if (symbol instanceof ConstArraySymbol) {
             dimSizes = ((ConstArraySymbol) symbol).getDimSizes();
         } else if (symbol instanceof VarArraySymbol) {
@@ -295,6 +296,7 @@ public class LVal extends TreeNode {
             // 指针类型
             if (symbol instanceof PointerSymbol) {
                 lastDimSize = ((PointerSymbol) symbol).getLastDimSize();
+                dims = ((PointerSymbol) symbol).getDims();
             } else {
                 throw new ValueTypeException();
             }
@@ -311,6 +313,14 @@ public class LVal extends TreeNode {
             if (dimSizes != null && dimSizes.size() > 1) {
                 ConstExp secondSize = dimSizes.get(1);
                 instructions.add(new MulIr(offsetId, new Immediate(secondSize.getValue(level)), offsetId));
+            } else if (lastDimSize != null) {
+                // TODO 二维数组先被作为参数传到一个函数，然后在这个函数中又做了部分数组传参
+                if (dims == 2) {
+                    // 二维数组变成的指针被用了一维
+                    instructions.add(new MulIr(offsetId, new Immediate(lastDimSize.getValue(level)), offsetId));
+                } else {
+                    // TODO
+                }
             }
         } else {
             Operand tmp0 = index.get(0).generateIr(level, instructions);
