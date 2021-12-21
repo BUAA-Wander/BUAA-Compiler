@@ -49,7 +49,11 @@ public class RelExp extends TreeNode {
                     instructions.add(new GeqIr(resId, id, resId));
                 }
             } else {
-                instructions.add(new MovIr(id, resId));
+                if (addExps.size() == 1) {
+                    return id;
+                } else {
+                    instructions.add(new MovIr(id, resId));
+                }
             }
         }
         return resId;

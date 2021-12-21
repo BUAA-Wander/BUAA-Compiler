@@ -38,7 +38,11 @@ public class EqExp extends TreeNode {
                     instructions.add(new NeqIr(resId, id, resId));
                 }
             } else {
-                instructions.add(new MovIr(id, resId));
+                if (relExps.size() == 1) {
+                    return id;
+                } else {
+                    instructions.add(new MovIr(id, resId));
+                }
             }
         }
         return resId;

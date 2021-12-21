@@ -66,7 +66,11 @@ public class MulExp extends TreeNode {
                     instructions.add(new ModIr(resId, id, resId));
                 }
             } else {
-                instructions.add(new MovIr(id, resId));
+                if (unaryExps.size() == 1) {
+                    return id;
+                } else {
+                    instructions.add(new MovIr(id, resId));
+                }
             }
         }
         return resId;

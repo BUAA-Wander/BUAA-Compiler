@@ -38,7 +38,11 @@ public class LAndExp extends TreeNode {
             if (i != 0) {
                 instructions.add(new AndIr(resId, id, resId));
             } else {
-                instructions.add(new MovIr(id, resId));
+                if (eqExps.size() == 1) {
+                    return id;
+                } else {
+                    instructions.add(new MovIr(id, resId));
+                }
             }
             // 短路求值
             instructions.add(
