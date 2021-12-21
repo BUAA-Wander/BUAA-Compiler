@@ -4,6 +4,9 @@ import ir.utils.Operand;
 import mips.Abs;
 import mips.Add;
 import mips.And;
+import mips.Bne;
+import mips.J;
+import mips.Label;
 import mips.MipsCode;
 
 import java.util.ArrayList;
@@ -32,7 +35,19 @@ public class AndIr extends IntermediateInstruction {
         // TODO
         mipsCodes.add(new Abs(t0, t0));
         mipsCodes.add(new Abs(t1, t1));
-        mipsCodes.add(new Add(t0, t1, t2));
+        String label_1 = LabelGenerator.nextLabel();
+        String label_2 = LabelGenerator.nextLabel();
+        String label_3 = LabelGenerator.nextLabel();
+        mipsCodes.add(new Bne(t0, "$0", label_1));
+        mipsCodes.add(new Add("$0", "$0", t2));
+        mipsCodes.add(new J(label_3));
+        mipsCodes.add(new Label(label_1));
+        mipsCodes.add(new Bne(t1, "$0", label_2));
+        mipsCodes.add(new Add("$0", "$0", t2));
+        mipsCodes.add(new J(label_3));
+        mipsCodes.add(new Label(label_2));
+        mipsCodes.add(new Add(t0, "$0", t2));
+        mipsCodes.add(new Label(label_3));
         mipsCodes.addAll(op3.saveValue(t2));
 
         return mipsCodes;

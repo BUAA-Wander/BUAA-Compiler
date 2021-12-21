@@ -36,12 +36,16 @@ public class RelExp extends TreeNode {
             if (i != 0) {
                 OperatorType type = operators.get(i - 1).getType();
                 if (type.equals(OperatorType.LSS)) {
+                    // <
                     instructions.add(new LessIr(resId, id, resId));
                 } else if (type.equals(OperatorType.LEQ)) {
+                    // <=
                     instructions.add(new LeqIr(resId, id, resId));
                 } else if (type.equals(OperatorType.GRE)) {
+                    // >
                     instructions.add(new LargerIr(resId, id, resId));
                 } else {
+                    // >=
                     instructions.add(new GeqIr(resId, id, resId));
                 }
             } else {
