@@ -6,6 +6,6 @@ public class Add extends MipsCode {
     }
 
     public String toString() {
-        return "add " + getRes() + " " + getLeft() + " " + getRight();
+        return "addu " + getRes() + " " + getLeft() + " " + getRight();
     }
 }

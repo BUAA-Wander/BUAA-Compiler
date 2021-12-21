@@ -1,42 +1,56 @@
-void setArray2D(int array[][10], int size)
-{
-    int i = 0, j = 0, mod;
-    mod = getint();
-
-    while(i < size)
-    {
-        j = 0;
-        while (j < 10)
-        {
-            array[i][j] = i * j % mod;
-            j = j + 1;
+void quickSort(int arr[], int left, int right) {
+    if (left >= right) {
+        return;
+    }
+    int i = left, j = right, base, temp;
+    base = arr[left];
+    while (i < j) {
+        while (arr[j] >= base && i < j) {
+            j = j - 1;
         }
+        while (arr[i] <= base && i < j) {
+            i = i + 1;
+        }
+        if (i < j) {
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+    arr[left] = arr[i];
+    arr[i] = base;
+    quickSort(arr, left, i - 1);
+    quickSort(arr, i + 1, right);
+}
+
+int main() {
+    printf("19373611\n");
+    printf("19373611\n");
+    printf("19373611\n");
+    const int length = 5;
+    const int array_const[5] = {1, 2, 3, 4, 5};
+    int array[5];
+    printf("Please input base number a:\n");
+    int a, b;
+    a = getint();
+    printf("Please input base number b:\n");
+    b = getint();
+    array[0] = a + b;
+    array[1] = a - b;
+    array[2] = a * b;
+    if (!b) {
+        array[3] = array_const[3];
+        array[4] = array_const[4];
+        printf("error.\n");
+    } else {
+        array[3] = a / b;
+        array[4] = a % b;
+    }
+    quickSort(array, 0, 4);
+    int i = 0;
+    while (i < 5) {
+        printf("The No.%d number is %d.\n", i, array[i]);
         i = i + 1;
     }
-    return;
-}
-
-int g(int i) {
-    return i;
-}
-
-int f(int a[],int n) {
-    int sum = 0, i = 0;
-    while (i < n) {
-        printf("oldsum=%d ",sum);
-        printf("ret=%d ",a[i]);
-        sum = sum + g(a[i]);
-        printf("newsum=%d\n",sum);
-        i = i + 1;
-    }
-    return sum;
-}
-
-int main()
-{
-    int data[10][10], sum;
-  setArray2D(data, 10);
-    sum = f(data[1],10);
-  printf("%d\n", sum);
     return 0;
 }

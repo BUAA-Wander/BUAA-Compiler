@@ -290,8 +290,10 @@ public class LVal extends TreeNode {
         int dims = 0;
         if (symbol instanceof ConstArraySymbol) {
             dimSizes = ((ConstArraySymbol) symbol).getDimSizes();
+            dims = dimSizes.size();
         } else if (symbol instanceof VarArraySymbol) {
             dimSizes = ((VarArraySymbol) symbol).getDimSizes();
+            dims = dimSizes.size();
         } else {
             // 指针类型
             if (symbol instanceof PointerSymbol) {
@@ -356,7 +358,8 @@ public class LVal extends TreeNode {
             // instructions.add(new LoadArrayValueIr(headAddr, new Immediate(0), headAddr, 1, true));
         }
 
-        if (PassingValueMode.getAnalyseMode() && dimSizes != null && dimSizes.size() == index.size()) {
+        if (PassingValueMode.getAnalyseMode() && dims != 0 && dims == index.size()) {
+//        if (PassingValueMode.getAnalyseMode() && dimSizes != null && dimSizes.size() == index.size()) {
             if (level == 0) {
                 instructions.add(new LoadArrayValueIr(headAddr, offsetId, res, scope, isBasePointer));
             } else {
