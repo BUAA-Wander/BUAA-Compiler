@@ -1,6 +1,8 @@
 package ir;
 
 import ir.utils.Operand;
+import mips.Abs;
+import mips.Add;
 import mips.And;
 import mips.MipsCode;
 
@@ -28,7 +30,9 @@ public class AndIr extends IntermediateInstruction {
         mipsCodes.addAll(op1.loadToReg(t0));
         mipsCodes.addAll(op2.loadToReg(t1));
         // TODO
-        mipsCodes.add(new And(t0, t1, t2));
+        mipsCodes.add(new Abs(t0, t0));
+        mipsCodes.add(new Abs(t1, t1));
+        mipsCodes.add(new Add(t0, t1, t2));
         mipsCodes.addAll(op3.saveValue(t2));
 
         return mipsCodes;
