@@ -117,7 +117,15 @@ public class SymbolTable {
         return symbolTable;
     }
 
-    public int getSize() {
+    private int getSize() {
         return symbolTable.size();
+    }
+
+    public int getMemSize() {
+        int res = 0;
+        for (int i = 0; i < symbolTable.size(); i++) {
+            res += symbolTable.get(i).getSize();
+        }
+        return res;
     }
 }

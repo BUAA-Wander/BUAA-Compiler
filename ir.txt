@@ -1,82 +1,236 @@
 MovImm 0 #0
 Br main
 Stop
-InsertLabel func
-WriteChar a
-WriteChar =
-Mov @a@local@0 #2
+InsertLabel setArray2D
+MovImm 0 #3
+Mov #3 #2
 Mov #2 #1
-WriteInt #1
-WriteChar  
-WriteChar b
-WriteChar =
-Mov @b@local@4 #4
-Mov #4 #3
-WriteInt #3
-WriteChar 
-
-Mov @a@local@0 #10
-Mov #10 #9
-Mov #9 #8
-Mov @b@local@4 #12
-Mov #12 #11
-Geq #8 #11 #8
-Mov #8 #7
-Mov #7 #6
-BranchIfEq #6 #0 label_4
-InsertLabel label_4
+Mov #1 @i@local@8
+MovImm 0 #6
 Mov #6 #5
-BranchIfNotEq #5 #0 label_3
-InsertLabel label_3
-BranchIfEq #5 #0 label_2
-Return
-Jump label_1
-InsertLabel label_2
+Mov #5 #4
+Mov #4 @j@local@24
+Getint #7
+Mov #7 @mod@local@40
 InsertLabel label_1
-Mov @a@local@0 #16
-Mov #16 #15
-Mov @b@local@4 #17
-Add #15 #17 #15
+Mov @i@local@8 #13
+Mov #13 #12
+Mov #12 #11
+Mov @size@local@4 #15
 Mov #15 #14
-MovImm 2 #18
-Div #14 #18 #14
-Mov #14 #13
-Mov #13 @c@local@56
-WriteChar c
-WriteChar =
-Mov @c@local@56 #20
-Mov #20 #19
-WriteInt #19
-WriteChar 
-
-Mov @a@local@0 #25
-Mov #25 #24
-PassParam #24
-Mov @c@local@56 #27
+Less #11 #14 #11
+Mov #11 #10
+Mov #10 #9
+BranchIfEq #9 #0 label_4
+InsertLabel label_4
+Mov #9 #8
+BranchIfNotEq #8 #0 label_3
+InsertLabel label_3
+BranchIfEq #8 #0 label_2
+MovImm 0 #18
+Mov #18 #17
+Mov #17 #16
+Mov #16 @j@local@24
+InsertLabel label_5
+Mov @j@local@24 #24
+Mov #24 #23
+Mov #23 #22
+MovImm 10 #27
 Mov #27 #26
-PassParam #26
-SaveContext
-Br func
-LoadContext
-Mov #0 #22
+Mov #26 #25
+Less #22 #25 #22
 Mov #22 #21
-Return
-InsertLabel main
-MovImm 0 #33
+Mov #21 #20
+BranchIfEq #20 #0 label_8
+InsertLabel label_8
+Mov #20 #19
+BranchIfNotEq #19 #0 label_7
+InsertLabel label_7
+BranchIfEq #19 #0 label_6
+Mov #0 #28
+Mov @i@local@8 #31
+Mov #31 #30
+Mov @j@local@24 #33
 Mov #33 #32
-Mov #32 #31
-PassParam #31
-MovImm 2 #36
+MovImm 10 #36
 Mov #36 #35
 Mov #35 #34
-PassParam #34
+Mul #30 #34 #30
+Add #30 #32 #28
+MovImm 4 #29
+MovImm 0 #37
+Mul #29 #28 #28
+LoadArrayValue #37 0 #37
+Offset #37 #28 #38
+Mov @i@local@8 #40
+Mul #40 @j@local@24 #40
+Mod #40 @mod@local@40 #40
+Mov #40 #39
+StorePointerValue #38 0 #39
+Mov @j@local@24 #42
+Mov #42 #41
+MovImm 1 #44
+Mov #44 #43
+Add #41 #43 #41
+Mov #41 @j@local@24
+Jump label_5
+InsertLabel label_6
+Mov @i@local@8 #46
+Mov #46 #45
+MovImm 1 #48
+Mov #48 #47
+Add #45 #47 #45
+Mov #45 @i@local@8
+Jump label_1
+InsertLabel label_2
+Return
+Return
+InsertLabel g
+Mov @i@local@0 #50
+Mov #50 #49
+PassReturnValue #49
+Return
+Return
+InsertLabel f
+MovImm 0 #53
+Mov #53 #52
+Mov #52 #51
+Mov #51 @sum@local@8
+MovImm 0 #56
+Mov #56 #55
+Mov #55 #54
+Mov #54 @i@local@24
+InsertLabel label_9
+Mov @i@local@24 #62
+Mov #62 #61
+Mov #61 #60
+Mov @n@local@4 #64
+Mov #64 #63
+Less #60 #63 #60
+Mov #60 #59
+Mov #59 #58
+BranchIfEq #58 #0 label_12
+InsertLabel label_12
+Mov #58 #57
+BranchIfNotEq #57 #0 label_11
+InsertLabel label_11
+BranchIfEq #57 #0 label_10
+WriteChar o
+WriteChar l
+WriteChar d
+WriteChar s
+WriteChar u
+WriteChar m
+WriteChar =
+Mov @sum@local@8 #66
+Mov #66 #65
+WriteInt #65
+WriteChar  
+WriteChar r
+WriteChar e
+WriteChar t
+WriteChar =
+Mov #0 #69
+Mov @i@local@24 #72
+Mov #72 #71
+MovImm 4 #70
+MovImm 0 #73
+Mul #70 #71 #71
+LoadArrayValue #73 0 #73
+LoadArrayValue #73 #71 #71
+Mov #71 #68
+Mov #68 #67
+WriteInt #67
+WriteChar  
+Mov @sum@local@8 #75
+Mov #75 #74
+Mov #0 #80
+Mov @i@local@24 #83
+Mov #83 #82
+MovImm 4 #81
+MovImm 0 #84
+Mul #81 #82 #82
+LoadArrayValue #84 0 #84
+Offset #84 #82 #85
+Mov #85 #79
+Mov #79 #78
+PassParam #78
 SaveContext
-Br func
+Br g
 LoadContext
-Mov #0 #29
-Mov #29 #28
-MovImm 0 #39
-Mov #39 #38
-Mov #38 #37
-PassReturnValue #37
+GetReturnValue #86
+Mov #86 #76
+Add #74 #76 #74
+Mov #74 @sum@local@8
+WriteChar n
+WriteChar e
+WriteChar w
+WriteChar s
+WriteChar u
+WriteChar m
+WriteChar =
+Mov @sum@local@8 #88
+Mov #88 #87
+WriteInt #87
+WriteChar 
+
+Mov @i@local@24 #90
+Mov #90 #89
+MovImm 1 #92
+Mov #92 #91
+Add #89 #91 #89
+Mov #89 @i@local@24
+Jump label_9
+InsertLabel label_10
+Mov @sum@local@8 #94
+Mov #94 #93
+PassReturnValue #93
+Return
+Return
+InsertLabel main
+Offset 0 0 #100
+Mov #100 #99
+Mov #99 #98
+PassParam #98
+MovImm 10 #103
+Mov #103 #102
+Mov #102 #101
+PassParam #101
+SaveContext
+Br setArray2D
+LoadContext
+Mov #0 #96
+Mov #96 #95
+Mov #0 #109
+MovImm 1 #113
+Mov #113 #112
+Mov #112 #111
+Mul #111 10 #111
+MovImm 4 #110
+MovImm 0 #114
+Mul #110 #111 #111
+Offset #114 #111 #115
+Mov #115 #108
+Mov #108 #107
+PassParam #107
+MovImm 10 #118
+Mov #118 #117
+Mov #117 #116
+PassParam #116
+SaveContext
+Br f
+LoadContext
+GetReturnValue #119
+Mov #119 #105
+Mov #105 #104
+Mov #104 @sum@local@400
+Mov @sum@local@400 #121
+Mov #121 #120
+WriteInt #120
+WriteChar 
+
+MovImm 0 #124
+Mov #124 #123
+Mov #123 #122
+PassReturnValue #122
 Return

@@ -1,13 +1,42 @@
-void func(int a,int b) {
-    printf("a=%d b=%d\n",a,b);
-    if (a >= b)
-        return;
-    int c = (a+b)/2;
-    printf("c=%d\n",c);
-    func(a,c);
+void setArray2D(int array[][10], int size)
+{
+    int i = 0, j = 0, mod;
+    mod = getint();
+
+    while(i < size)
+    {
+        j = 0;
+        while (j < 10)
+        {
+            array[i][j] = i * j % mod;
+            j = j + 1;
+        }
+        i = i + 1;
+    }
+    return;
 }
 
-int main() {
-    func(0,2);
+int g(int i) {
+    return i;
+}
+
+int f(int a[],int n) {
+    int sum = 0, i = 0;
+    while (i < n) {
+        printf("oldsum=%d ",sum);
+        printf("ret=%d ",a[i]);
+        sum = sum + g(a[i]);
+        printf("newsum=%d\n",sum);
+        i = i + 1;
+    }
+    return sum;
+}
+
+int main()
+{
+    int data[10][10], sum;
+  setArray2D(data, 10);
+    sum = f(data[1],10);
+  printf("%d\n", sum);
     return 0;
 }

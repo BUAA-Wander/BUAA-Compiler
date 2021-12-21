@@ -31,7 +31,7 @@ public class BrIr extends IntermediateInstruction {
 
         // move to caller's end
         // e.g. if main calls func, then sp = sp - 4 * main.size
-        int off = -4 * LocalSymbolTable.getCurrentLocalSymbolTable().getSize();
+        int off = -LocalSymbolTable.getCurrentLocalSymbolTable().getMemSize();
 
         mipsCodes.add(new Addi("$sp", "$sp", off + offset));
         Operand label = getRes();

@@ -30,7 +30,7 @@ public class PassParamIr extends IntermediateInstruction {
         mipsCodes.addAll(op.loadToReg(t0));
         // sp - symbolTable.size * 4 is new sp position, offset is offset
         mipsCodes.add(new Sw("$sp", t0,
-                offset - 4 * LocalSymbolTable.getCurrentLocalSymbolTable().getSize()));
+                offset - LocalSymbolTable.getCurrentLocalSymbolTable().getMemSize()));
 
         return mipsCodes;
     }
