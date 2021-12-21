@@ -60,6 +60,7 @@ Br func
 LoadContext
 Mov #0 #22
 Mov #22 #21
+Return
 InsertLabel main
 MovImm 0 #33
 Mov #33 #32

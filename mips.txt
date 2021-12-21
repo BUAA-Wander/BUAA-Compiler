@@ -163,6 +163,7 @@ sw $t2 -96($sp)
 lw $t0 -96($sp)
 add $t2 $t0 0
 sw $t2 -92($sp)
+jr $31
 main:
 addi $t2 $0 0
 sw $t2 -20($sp)

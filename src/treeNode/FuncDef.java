@@ -66,9 +66,8 @@ public class FuncDef extends TreeNode {
                 break;
             }
         }
-        if (!flag) {
-            instructions.add(new ReturnIr());
-        }
+        // TODO must return
+        instructions.add(new ReturnIr());
 
         return instructions;
     }
