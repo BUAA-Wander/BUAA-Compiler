@@ -3,7 +3,6 @@ package ir;
 import ir.utils.Operand;
 import mips.Abs;
 import mips.Add;
-import mips.And;
 import mips.Bne;
 import mips.J;
 import mips.Label;

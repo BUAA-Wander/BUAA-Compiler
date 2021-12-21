@@ -1,6 +1,5 @@
 package treeNode;
 
-import ir.BranchIfEqIr;
 import ir.BranchIfNotEqIr;
 import ir.InsertLabelIr;
 import ir.LabelGenerator;
@@ -11,11 +10,6 @@ import ir.OrIr;
 import ir.utils.LabelOp;
 import ir.utils.Operand;
 import ir.utils.TmpVariable;
-import symbol.AddressPtr;
-import symbol.GlobalSymbolTable;
-import symbol.LocalSymbolTable;
-import symbol.type.SymbolType;
-import symbol.type.VarBTypeSymbol;
 
 import java.util.List;
 

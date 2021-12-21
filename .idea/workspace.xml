@@ -5,8 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ir.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ir.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mips.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mips.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LOrExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LOrExp.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ir/AndIr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ir/AndIr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/RelExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/RelExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/treeNode/LOrExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LOrExp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testfile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +83,7 @@
       <workItem from="1639821344902" duration="6865000" />
       <workItem from="1639909020375" duration="18392000" />
       <workItem from="1639931552214" duration="16643000" />
-      <workItem from="1640078171450" duration="17538000" />
+      <workItem from="1640078171450" duration="21763000" />
     </task>
     <servers />
   </component>
@@ -102,22 +103,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="267" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1639751970288" />
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom" timestamp="1640096214045">
+    <state width="1493" height="150" key="GridCell.Tab.0.bottom" timestamp="1640098400699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1640096214045" />
-    <state width="1493" height="210" key="GridCell.Tab.0.center" timestamp="1640096214045">
+    <state width="1493" height="150" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1640098400699" />
+    <state width="1493" height="150" key="GridCell.Tab.0.center" timestamp="1640098400699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1640096214045" />
-    <state width="1493" height="210" key="GridCell.Tab.0.left" timestamp="1640096214045">
+    <state width="1493" height="150" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1640098400699" />
+    <state width="1493" height="150" key="GridCell.Tab.0.left" timestamp="1640098400698">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1640096214045" />
-    <state width="1493" height="210" key="GridCell.Tab.0.right" timestamp="1640096214045">
+    <state width="1493" height="150" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1640098400698" />
+    <state width="1493" height="150" key="GridCell.Tab.0.right" timestamp="1640098400699">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1640096214045" />
+    <state width="1493" height="150" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1640098400699" />
     <state width="1493" height="178" key="GridCell.Tab.1.bottom" timestamp="1640091253035">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
