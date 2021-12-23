@@ -3,11 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="5bb7268e-7126-446a-91c7-6ec883c8c2e2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src.rar" beforeDir="false" afterPath="$PROJECT_DIR$/src.rar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/EqExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/EqExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/LAndExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/LAndExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/MulExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/MulExp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/treeNode/RelExp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/treeNode/RelExp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ir.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ir.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mips.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mips.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/ir/AndIr.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/ir/AndIr.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/EqExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/EqExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LAndExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/LAndExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/MulExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/MulExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/RelExp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/complier_refactor/treeNode/RelExp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testfile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/testfile.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +86,8 @@
       <workItem from="1639909020375" duration="18392000" />
       <workItem from="1639931552214" duration="16643000" />
       <workItem from="1640078171450" duration="21763000" />
+      <workItem from="1640154616885" duration="6705000" />
+      <workItem from="1640178228565" duration="3535000" />
     </task>
     <servers />
   </component>
@@ -102,42 +107,42 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="511" y="267" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824@0.0.1536.824" timestamp="1639751970288" />
-    <state width="1493" height="150" key="GridCell.Tab.0.bottom" timestamp="1640098400699">
+    <state width="1493" height="150" key="GridCell.Tab.0.bottom" timestamp="1640186258386">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="150" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1640098400699" />
-    <state width="1493" height="150" key="GridCell.Tab.0.center" timestamp="1640098400699">
+    <state width="1493" height="150" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1640186258386" />
+    <state width="1493" height="150" key="GridCell.Tab.0.center" timestamp="1640186258386">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="150" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1640098400699" />
-    <state width="1493" height="150" key="GridCell.Tab.0.left" timestamp="1640098400698">
+    <state width="1493" height="150" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1640186258386" />
+    <state width="1493" height="150" key="GridCell.Tab.0.left" timestamp="1640186258386">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="150" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1640098400698" />
-    <state width="1493" height="150" key="GridCell.Tab.0.right" timestamp="1640098400699">
+    <state width="1493" height="150" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1640186258386" />
+    <state width="1493" height="150" key="GridCell.Tab.0.right" timestamp="1640186258386">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="150" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1640098400699" />
-    <state width="1493" height="178" key="GridCell.Tab.1.bottom" timestamp="1640091253035">
+    <state width="1493" height="150" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1640186258386" />
+    <state width="1493" height="178" key="GridCell.Tab.1.bottom" timestamp="1640105675976">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1640091253035" />
-    <state width="1493" height="178" key="GridCell.Tab.1.center" timestamp="1640091253035">
+    <state width="1493" height="178" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1640105675976" />
+    <state width="1493" height="178" key="GridCell.Tab.1.center" timestamp="1640105675976">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1640091253035" />
-    <state width="1493" height="178" key="GridCell.Tab.1.left" timestamp="1640091253035">
+    <state width="1493" height="178" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1640105675976" />
+    <state width="1493" height="178" key="GridCell.Tab.1.left" timestamp="1640105675976">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1640091253035" />
-    <state width="1493" height="178" key="GridCell.Tab.1.right" timestamp="1640091253035">
+    <state width="1493" height="178" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1640105675976" />
+    <state width="1493" height="178" key="GridCell.Tab.1.right" timestamp="1640105675976">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="178" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1640091253035" />
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1640078171618">
+    <state width="1493" height="178" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1640105675976" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1640178357247">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1640078171618" />
+    <state x="449" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1640178357247" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1640080653705">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
