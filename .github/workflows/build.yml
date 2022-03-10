@@ -1,0 +1,21 @@
+name: Compiler CI
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build_linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup jdk
+      uses: actions/setup-java@v3.0.0
+      with:
+        distribution: 'temurin'
+        java-version: '8'
+    - name: compile and run compiler
+      java -cp java Main.java
+    - name: output ir
+      cat ir.txt
