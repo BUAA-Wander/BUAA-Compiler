@@ -16,6 +16,6 @@ jobs:
         distribution: 'temurin'
         java-version: '8'
     - name: compile and run compiler
-      run: java -cp java Compiler.java
+      run: java -cp java Compiler
     - name: output ir
       run: cat ir.txt
